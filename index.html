@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>GeoForAll</title>
+
+        <meta name="description" content="GeoForAll talk slides">
+        <meta name="author" content="NCSU GeoForAll Lab members">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/osgeo.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=Sintony" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section>
+    <h2>GRASS GIS</b></h2>
+    <h3>Advanced geospatial technologies:</h3>
+    <h3>The new powerful GRASS GIS 7.2 release</h3>
+    <p style="margin-top: 0.5em">
+        <a href="http://wenzeslaus.github.io/">Vaclav (Vashek) Petras</a>
+    </p>
+    <p class="title-foot">
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">North Carolina State University</a><br>
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">NCSU</a>
+        <a href="http://geospatial.ncsu.edu/osgeorel/" title="NCSU GeoForAll Lab">GeoForAll Lab</a>
+        at
+        <a href="http://geospatial.ncsu.edu/" title="NCSU Center for Geospatial Analytics">Center for Geospatial Analytics</a>
+        <br>
+    </p>
+    <p><small>Markus Neteler - Mundialis GmbH &amp;, Co. KG;<br> Anna Petrasova - NCSU, Helena Mitasova - NCSU</small></p>
+    <img src="img/grass_gis.svg" class="stretch">
+    <p><small>FOSS4G 2017 Boston</small></p>
+</section>
+
+
+<section>
+    <h2>Runs everywhere</h2>
+    <ul>
+        <li>from Raspberry Pi to HPC cluster
+        <li>Linux, Mac, Windows, ...
+        <li>GCC, clang, C, C++98, C++11, C++14
+    </ul>
+</section>
+
+
+<section>
+    <h2>Interface: CLI</h2>
+    <img src="img/grass_cli.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Interface: GUI</h2>
+    <img src="img/grass_gui.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Tangible Landscape</h2>
+    <img src="img/tangible_landscape.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h2>APIs</h2>
+    <ul>
+        <li>C, Python, command line
+        <li>3rd party: R, Ruby, through QGIS Processing (Python or R)
+    </ul>
+</section>
+
+
+<section>
+    <h2>Functionality</h2>
+    <ul>
+        <li>Hydrology
+        <li>Remote sensing/imagery/image processing
+        <li>3D rasters, space-time cubes
+        <li>Spatio-temporal
+        <li>Lidar
+        <li>Topological vectors, network analysis
+        <li>Integrated visualizations, 3D visualizations
+        <li>Relational databases (SQLite, PostgreSQL, PostGIS, MySQL)
+    </ul>
+</section>
+
+
+<section>
+    <h2>Return of investment: 2002 code in 2017?</h2>
+    <!-- 5 pre-release -->
+    version 5.0 code works as is in 7.2:
+<pre style="font-size: 100%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
+</pre>
+<p>
+although there is a better way to write it:
+</p>
+<pre style="font-size: 100%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
+</pre>
+</section>
+
+
+<section>
+    <h2>Command line prevails: 1987</h2>
+    <img src="img/cli_movie.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Command line prevails: 2017</h2>
+    <img src="img/cli_tangible.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Scientific foundation</h2>
+    references to related scientific papers associated with a module
+    <img src="img/module_references.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>GRASS GIS 7.2</h2>
+    <ul>
+        <li>Recent releases:
+            <ul>
+                <li>7.2.0 (December 2016) <small>1,900 commits since 7.0</small>
+                <li>7.2.1 (May 2017) <small>150 commits since 7.2.0</small>
+            </ul>
+        <li style="opacity: 0.5;">Upcoming releases:
+            <ul>
+                <li>7.2.2 (summer/fall 2017)
+                <li>7.4.0 (fall/winter 2017)
+                <li>8.0.0 (panning started)
+            </ul>
+    </ul>
+</section>
+
+
+<section>
+    <h2>New features in 7.2</h2>
+</section>
+
+
+<section>
+    <h2>Data catalog</h2>
+    <img src="img/data_catalog.png" class="stretch">
+    <p>by Tereza Fiedlerova and Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Simple Python Editor</h2>
+    <img src="img/pyedit.png" class="stretch">
+    <p>by Vaclav Petras
+</section>
+
+
+<section>
+    <h2>Vector legend</h2>
+    <img src="img/.png" class="stretch">
+    <p>by Adam Laza and GSoC mentors
+</section>
+
+
+<section>
+    <h2>Advanced search in command line</h2>
+    <img src="img/g_search_modules.png" class="stretch">
+    <p>by Jachym Cepicky
+</section>
+
+
+<section>
+    <h2>3D raster flows and gradients</h2>
+    <img src="img/r3_flow.png" class="stretch">
+    <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Temporal Algebra</h2>
+    <img src="img/temporal_htc.png" class="stretch">
+    <p>by Thomas Leppelt and Soeren Gebbert
+</section>
+
+
+<section>
+    <h2>Other improvements in 7.2</h2>
+</section>
+
+
+<section>
+    <h2>viridis as default color table</h2>
+    <img src="img/viridis_comparison.png" class="stretch">
+    <p>by Vaclav Petras
+</section>
+
+
+<section>
+    <h2>Links to source code</h2>
+    <img src="img/module_author_source.png" class="stretch">
+    <p>by Luca Delucchi
+</section>
+
+
+<section>
+    <h2>Graphical index</h2>
+    <img src="img/graphical_index.png" class="stretch">
+    <p>by Vaclav Petras; designer needed!
+</section>
+
+
+<section>
+    <h2>New addons</h2>
+    <!-- Addons added since 7.0 -->
+    <img src="img/.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>SLIC</h2>
+    <em>i.superpixels.slic</em> - image segmentation using SLIC superpixels
+    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
+    <p>by Rashad Kanavath and Markus Metz
+</section>
+
+
+<section>
+    <h2>Itzï</h2>
+    <img src="img/itzi.png" class="stretch">
+    <p>by Laurent Courty
+</section>
+
+
+<section>
+    <h2>FUTURES</h2>
+    <img src="img/futures.jpg" class="stretch">
+    <p>research at NC State University, Center for Geospatial Analytics
+</section>
+
+
+<section>
+    <h2>parallel r.sun</h2>
+    <img src="img/summer_solstice_centennial.gif" class="stretch">
+    <p>by Jaroslav Hofierka et al.
+</section>
+
+
+<section>
+<h2>Resources</h2>
+
+<ul>
+    <li>
+        Full list of
+        <a href="https://grass.osgeo.org/grass72/manuals/graphical_index.html">core modules</a>
+        and official
+        <a href="https://grass.osgeo.org/grass72/manuals/addons">addon modules</a>
+    <li>
+        <a href="http://ncsu-geoforall-lab.github.io/grass-intro-workshop/">Introduction to GRASS GIS</a>
+    <li>
+        <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python GRASS GIS 7 addon</a>
+    <li>
+        <a href="http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/">
+        Spatio-temporal data handling and visualization</a>
+    <li>
+        <a href="https://grasswiki.osgeo.org/wiki/Workshop_on_urban_growth_modeling_with_FUTURES">
+        Urban growth modeling with FUTURES</a>
+    <li>
+        Books (co-)authored at NC State:
+        <ul>
+            <li>Open Source GIS: A GRASS GIS Approach
+            <li>Tangible Modeling with Open Source GIS (pre-print available)
+            <li>GIS-based Analysis of Coastal Lidar Time-Series
+        </ul>
+</ul>
+</section>
+
+
+<section>
+    <img src="img/grass_gis.svg" alt="GRASS GIS logo" style="height: 300px;">
+    <p>
+        <a href="https://grass.osgeo.org">grass.osgeo.org</a>
+    <p>
+        <!--
+        Slides
+        <br>
+        <a href="http://wenzeslaus.github.io/grass-gis-talks">wenzeslaus.github.io/grass-gis-talks</a>
+        <br>
+        -->
+        Twitter: vaclavpetras
+        <br>
+        GitHub: wenzeslaus
+    </p>
+</section>
+
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                history: true,
+                transition: "none",
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
