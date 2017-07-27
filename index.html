@@ -31,7 +31,7 @@
             <div class="slides">
 
 <section>
-    <h2>GRASS GIS</b></h2>
+    <h1>GRASS GIS</h1>
     <h3>Advanced geospatial technologies:</h3>
     <h3>The new powerful GRASS GIS 7.2 release</h3>
     <p style="margin-top: 0.5em">
@@ -104,15 +104,16 @@
 
 
 <section>
-    <h2>Return of investment: 2002 code in 2017?</h2>
+    <h2>Return of investment</h2>
+    <h3>2002 code running in 2017?</h3>
     <!-- 5 pre-release -->
     version 5.0 code works as is in 7.2:
-<pre style="font-size: 100%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
+<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
 </pre>
 <p>
 although there is a better way to write it:
 </p>
-<pre style="font-size: 100%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
+<pre style="font-size: 94%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
 </pre>
 </section>
 
@@ -192,6 +193,16 @@ although there is a better way to write it:
     <h2>3D raster flows and gradients</h2>
     <img src="img/r3_flow.png" class="stretch">
     <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Simplified batch processing</h2>
+<pre style="font-size: 94%;">grass72 /grassdata/nc_spm/work1 --exec \
+    r.viewshed input=elevation output=viewshed \
+               coordinates=642964,222890
+</pre>
+    <p>by Vaclav Petras
 </section>
 
 
