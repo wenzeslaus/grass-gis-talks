@@ -63,18 +63,21 @@
 
 <section>
     <h2>Interface: CLI</h2>
+    <p>The baseline interface for efficiency and reproducibility</p>
     <img src="img/grass_cli.png" class="stretch">
 </section>
 
 
 <section>
     <h2>Interface: GUI</h2>
+    <p>The interface for beginners and desktop</p>
     <img src="img/grass_gui.png" class="stretch">
 </section>
 
 
 <section>
     <h2>Tangible Landscape</h2>
+    <p>3rd party tangible user interface to GRASS GIS and Blender</p>
     <img src="img/tangible_landscape.jpg" class="stretch">
 </section>
 
@@ -157,11 +160,13 @@ although there is a better way to write it:
 
 <section>
     <h2>New features in 7.2</h2>
+    <a href="https://trac.osgeo.org/grass/wiki/Grass7/NewFeatures72">trac.osgeo.org/grass/wiki/Grass7/NewFeatures72</a>
 </section>
 
 
 <section>
     <h2>Data catalog</h2>
+    <p><em>g.gui.datacatalog</em> - browse and manipulate raster and vector maps</p>
     <img src="img/data_catalog.png" class="stretch">
     <p>by Tereza Fiedlerova and Anna Petrasova
 </section>
@@ -169,14 +174,24 @@ although there is a better way to write it:
 
 <section>
     <h2>Simple Python Editor</h2>
+    <p>Create Python scripts and modules with ease</p>
     <img src="img/pyedit.png" class="stretch">
     <p>by Vaclav Petras
 </section>
 
+<!--
+g.region n=264149 s=99480 w=307341 e=533491 res=10 -a
+d.vect map=sc_state fill_color=0:64:68 width=1 legend_label="South Carolina"
+d.vect map=nc_state color=0:77:82 fill_color=0:174:96 width=2 legend_label="North Carolina"
+d.vect map=urbanarea color=none fill_color=39:94:70 width=1 legend_label="Urban areas"
+d.vect map=railroads color=244:246:246 width=2 legend_label="Major roads"
+d.vect map=hospitals color=167:0:33 fill_color=255:0:51 width=1 icon=basic/cross3 size=10 legend_label=Hospitals
+d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bgcolor=198:198:198 font=Lato:Regular fontsize=15 title_font=Lato:Bold title_fontsize=15
+-->
 
 <section>
     <h2>Vector legend</h2>
-    <p><em>d.legend.vect</em></p>
+    <p><em>d.legend.vect</em> - automatic and customizable legends</p>
     <img src="img/d_legend_vect.png" class="stretch">
     <p>by Adam Laza and GSoC mentors
 </section>
@@ -184,6 +199,7 @@ although there is a better way to write it:
 
 <section>
     <h2>Advanced search in command line</h2>
+    <p><em>g.search.modules</em> - search for modules</p>
     <img src="img/g_search_modules.png" class="stretch">
     <p>by Jachym Cepicky
 </section>
@@ -191,6 +207,11 @@ although there is a better way to write it:
 
 <section>
     <h2>3D raster flows and gradients</h2>
+    <p>
+        <em>r3.flow</em> - flow lines in a 3D raster
+        <br>
+        <em>r3.gradient</em> - gradients in a 3D raster
+    </p>
     <img src="img/r3_flow.png" class="stretch">
     <p>by Anna Petrasova
 </section>
@@ -220,8 +241,9 @@ although there is a better way to write it:
 
 <section>
     <h2>viridis as default color table</h2>
+    <p>Perceptually uniform color table</p>
     <img src="img/viridis_comparison.png" class="stretch">
-    <p>by Vaclav Petras
+    <p>by Vaclav Petras (following Matplotlib's example)
 </section>
 
 
@@ -248,14 +270,23 @@ although there is a better way to write it:
 
 <section>
     <h2>SLIC</h2>
-    <em>i.superpixels.slic</em> - image segmentation using SLIC superpixels
+    <p><em>i.superpixels.slic</em> - image segmentation using SLIC superpixels</p>
     <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
     <p>by Rashad Kanavath and Markus Metz
 </section>
 
 
 <section>
+    <h2>Supervised classification</h2>
+    <p><em>r.learn.ml</em> - classification with Python scikit-learn package</p>
+    <img src="img/.png" class="stretch">
+    <p>by Steven Pawley
+</section>
+
+
+<section>
     <h2>Itzï</h2>
+    <p>Hydrologic and hydraulic model of surface water flow</p>
     <img src="img/itzi.png" class="stretch">
     <p>by Laurent Courty
 </section>
@@ -263,13 +294,15 @@ although there is a better way to write it:
 
 <section>
     <h2>FUTURES</h2>
+    <p><em>r.futures</em> - set of modules for urban spread modeling</p>
     <img src="img/futures.jpg" class="stretch">
-    <p>research at NC State University, Center for Geospatial Analytics
+    <p>by NC State University, Center for Geospatial Analytics
 </section>
 
 
 <section>
-    <h2>parallel r.sun</h2>
+    <h2>Parallelized solar radiation</h2>
+    <p><em>r.sun.mp</em> - parallelized version of <em>r.sun</em></p>
     <img src="img/summer_solstice_centennial.gif" class="stretch">
     <p>by Jaroslav Hofierka et al.
 </section>
@@ -285,6 +318,9 @@ although there is a better way to write it:
         and official
         <a href="https://grass.osgeo.org/grass72/manuals/addons">addon modules</a>
     <li>
+        Tutorials:
+        <ul>
+            <li>
         <a href="https://grasswiki.osgeo.org/wiki/From_GRASS_GIS_novice_to_power_user_(workshop_at_FOSS4G_Boston_2017)">Introduction to GRASS GIS</a>
     <li>
         <a href="https://grasswiki.osgeo.org/wiki/Processing_lidar_and_UAV_point_clouds_in_GRASS_GIS_(workshop_at_FOSS4G_Boston_2017)">Processing lidar and UAV point clouds</a>
@@ -296,6 +332,7 @@ although there is a better way to write it:
     <li>
         <a href="https://grasswiki.osgeo.org/wiki/Workshop_on_urban_growth_modeling_with_FUTURES">
         Urban growth modeling with FUTURES</a>
+        </ul>
     <li>
         Books (English):
         <ul>
@@ -304,6 +341,8 @@ although there is a better way to write it:
             <li>GIS-based Analysis of Coastal Lidar Time-Series
             <li>Open Source Approaches to Spatial Data Handling
         </ul>
+    <li>
+        <a href="https://grass.osgeo.org/support/">Community and commercial support</a>
 </ul>
 </section>
 
