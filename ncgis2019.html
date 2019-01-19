@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>GRASS GIS: What's New (NCGIS 2019)</title>
+
+        <meta name="description" content="GRASS GIS 7.2 talk slides">
+        <meta name="author" content="Vaclav Petras, Corey White, Doug Newcomb">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/osgeo.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+<!--        <link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">-->
+<style>
+/* miriam-libre-regular - latin */
+@font-face {
+  font-family: 'Miriam Libre';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Miriam Libre'), local('MiriamLibre-Regular'),
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.svg#MiriamLibre') format('svg'); /* Legacy iOS */
+}
+
+/* miriam-libre-700 - latin */
+@font-face {
+  font-family: 'Miriam Libre';
+  font-style: normal;
+  font-weight: 700;
+  src: url('lib/font/miriam-libre/miriam-libre-v1-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Miriam Libre Bold'), local('MiriamLibre-Bold'),
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.svg#MiriamLibre') format('svg'); /* Legacy iOS */
+}
+
+
+/* sintony-regular - latin */
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lib/font/sintony/sintony-v4-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Sintony'),
+       url('lib/font/sintony/sintony-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/sintony/sintony-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/sintony/sintony-v4-latin-regular.svg#Sintony') format('svg'); /* Legacy iOS */
+}
+
+/* sintony-700 - latin */
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 700;
+  src: url('lib/font/sintony/sintony-v4-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Sintony Bold'), local('Sintony-Bold'),
+       url('lib/font/sintony/sintony-v4-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/sintony/sintony-v4-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/sintony/sintony-v4-latin-700.svg#Sintony') format('svg'); /* Legacy iOS */
+}
+</style>
+
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<section>
+    <h1>GRASS GIS</h1>
+    <h2>What's New</h2>
+    <p style="margin-top: 0.5em">
+        <a href="http://wenzeslaus.github.io/">Vaclav (Vashek) Petras</a>
+    </p>
+    <p class="title-foot">
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">North Carolina State University</a><br>
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">NCSU</a>
+        <a href="http://geospatial.ncsu.edu/osgeorel/" title="NCSU GeoForAll Lab">GeoForAll Lab</a>
+        at
+        <a href="http://geospatial.ncsu.edu/" title="NCSU Center for Geospatial Analytics">Center for Geospatial Analytics</a>
+        <br>
+    </p>
+    <p><small>Corey White<br>Doug Newcomb</small></p>
+    <img src="img/grass_gis.svg" class="stretch">
+    <p><small>NCGIS 2019 Winston-Salem</small></p>
+</section>
+
+
+<section>
+    <h2>Runs everywhere</h2>
+    <ul>
+        <li>from Raspberry Pi to HPC cluster
+        <li>Linux, Mac, Windows, ...
+        <li>GCC, clang, C, C++98, C++11, C++14
+    </ul>
+</section>
+
+
+<section>
+    <h2>Interface: CLI</h2>
+    <p>The baseline interface for efficiency and reproducibility</p>
+    <img src="img/grass_cli.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Interface: GUI</h2>
+    <p>The interface for beginners and desktop</p>
+    <img src="img/grass_gui.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Tangible Landscape</h2>
+    <p>3rd party tangible user interface to GRASS GIS and Blender</p>
+    <img src="img/tangible_landscape.jpg" class="stretch">
+    <p>by NC State University, Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <h2>APIs</h2>
+    <ul>
+        <li>native:
+            <ul>
+                <li>C
+                <li>Python
+                <li>command line
+            </ul>
+        <li>3rd party:
+            <ul>
+                <li>R (<em>rgrass7</em> package)
+                <li> Ruby (<em>grassgis</em> gem)
+                <li> Java (<em>JGrasstools</em> library)
+            </ul>
+        <li>as backend:
+            <ul>
+                <li><em>QGIS Processing</em> (Python and R APIs)
+                <li><em>gvSIG JGrasstools Spatial Toolbox</em> <small>under development</small>
+    </ul>
+</section>
+
+
+<section>
+    <h2>Functionality</h2>
+    <ul>
+        <li>Hydrology
+        <li>Remote sensing/imagery/image processing
+        <li>3D rasters, space-time cubes
+        <li>Spatio-temporal
+        <li>Lidar
+        <li>Topological vectors, network analysis
+        <li>Integrated visualizations, 3D visualizations
+        <li>Relational databases (SQLite, PostgreSQL, PostGIS, MySQL)
+    </ul>
+</section>
+
+
+<section>
+    <h2>Return of investment</h2>
+    <h3>2002 code running in 2017?</h3>
+    <!-- 5 pre-release -->
+    version 5.0 code works as is in 7.2:
+<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
+</pre>
+<p>
+although there is a better way to write it:
+</p>
+<pre style="font-size: 94%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
+</pre>
+</section>
+
+
+<section>
+    <h2>Command line prevails: 1987</h2>
+    <img src="img/cli_movie.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Command line prevails: 2017</h2>
+    <img src="img/cli_tangible.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Scientific foundation</h2>
+    references to related scientific papers associated with a module
+    <img src="img/module_references.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>GRASS GIS 7.2</h2>
+    <ul>
+        <li>Recent releases:
+            <ul>
+                <li>7.2.0 (December 2016) <small>1,900 commits since 7.0</small>
+                <li>7.2.1 (May 2017) <small>150 commits since 7.2.0</small>
+            </ul>
+        <li style="opacity: 0.5;">Upcoming releases:
+            <ul>
+                <li>7.2.2 (summer/fall 2017)
+                <li>7.4.0 (fall/winter 2017)
+                <li>8.0.0 (panning started)
+            </ul>
+    </ul>
+</section>
+
+
+<section>
+    <h2>New features in 7.2</h2>
+    <a href="https://trac.osgeo.org/grass/wiki/Grass7/NewFeatures72">trac.osgeo.org/grass/wiki/Grass7/NewFeatures72</a>
+</section>
+
+
+<section>
+    <h2>Data catalog</h2>
+    <p><em>g.gui.datacatalog</em> - browse and manipulate raster and vector maps</p>
+    <img src="img/data_catalog.png" class="stretch">
+    <p>by Tereza Fiedlerova and Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Simple Python Editor</h2>
+    <p>Create Python scripts and modules with ease</p>
+    <img src="img/pyedit.png" class="stretch">
+    <p>by Vaclav Petras
+</section>
+
+<!--
+g.region n=264149 s=99480 w=307341 e=533491 res=10 -a
+d.vect map=sc_state fill_color=0:64:68 width=1 legend_label="South Carolina"
+d.vect map=nc_state color=0:77:82 fill_color=0:174:96 width=2 legend_label="North Carolina"
+d.vect map=urbanarea color=none fill_color=39:94:70 width=1 legend_label="Urban areas"
+d.vect map=railroads color=244:246:246 width=2 legend_label="Major roads"
+d.vect map=hospitals color=167:0:33 fill_color=255:0:51 width=1 icon=basic/cross3 size=10 legend_label=Hospitals
+d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bgcolor=198:198:198 font=Lato:Regular fontsize=15 title_font=Lato:Bold title_fontsize=15
+-->
+
+<section>
+    <h2>Vector legend</h2>
+    <p><em>d.legend.vect</em> - automatic and customizable legends</p>
+    <img src="img/d_legend_vect.png" class="stretch">
+    <p>by Adam Laza and GSoC mentors
+</section>
+
+
+<section>
+    <h2>Advanced search in command line</h2>
+    <p><em>g.search.modules</em> - search for modules</p>
+    <img src="img/g_search_modules.png" class="stretch">
+    <p>by Jachym Cepicky
+</section>
+
+
+<section>
+    <h2>3D raster flows and gradients</h2>
+    <p>
+        <em>r3.flow</em> - flow lines in a 3D raster
+        <br>
+        <em>r3.gradient</em> - gradients in a 3D raster
+    </p>
+    <img src="img/r3_flow.png" class="stretch">
+    <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Simplified batch processing</h2>
+<pre style="font-size: 94%;">grass72 /grassdata/nc_spm/work1 --exec \
+    r.viewshed input=elevation output=viewshed \
+               coordinates=642964,222890
+</pre>
+    <p>by Vaclav Petras
+</section>
+
+
+<section>
+    <h2>Temporal Algebra</h2>
+    <img src="img/temporal_htc.png" class="stretch">
+    <p>by Thomas Leppelt and Soeren Gebbert
+</section>
+
+
+<section>
+    <h2>Other improvements in 7.2</h2>
+</section>
+
+
+<section>
+    <h2>viridis as default color table</h2>
+    <p>Perceptually uniform color table</p>
+    <img src="img/viridis_comparison.png" class="stretch">
+    <p>by Vaclav Petras (following Matplotlib's example)
+</section>
+
+
+<section>
+    <h2>Links to source code</h2>
+    <img src="img/module_author_source.png" class="stretch">
+    <p>by Luca Delucchi
+</section>
+
+
+<section>
+    <h2>Graphical index</h2>
+    <img src="img/graphical_index.png" class="stretch">
+    <p>by Vaclav Petras; designer needed!
+</section>
+
+
+<section>
+    <h2>New addons</h2>
+    <!-- Addons added since 7.0 -->
+    <img src="img/.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>SLIC</h2>
+    <p><em>i.superpixels.slic</em> - image segmentation using SLIC superpixels</p>
+    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
+    <p>by Rashad Kanavath and Markus Metz
+</section>
+
+
+<section>
+    <h2>Supervised classification</h2>
+    <p><em>r.learn.ml</em> - classification with Python scikit-learn package</p>
+    <img src="img/.png" class="stretch">
+    <p>by Steven Pawley
+</section>
+
+
+<section>
+    <h2>Itzï</h2>
+    <p>Hydrologic and hydraulic model of surface water flow</p>
+    <img src="img/itzi.png" class="stretch">
+    <p>by Laurent Courty
+</section>
+
+
+<section>
+    <h2>FUTURES</h2>
+    <p><em>r.futures</em> - set of modules for urban spread modeling</p>
+    <img src="img/futures.jpg" class="stretch">
+    <p>by NC State University, Center for Geospatial Analytics
+</section>
+
+
+<section>
+    <h2>Parallelized solar radiation</h2>
+    <p><em>r.sun.mp</em> - parallelized version of <em>r.sun</em></p>
+    <img src="img/summer_solstice_centennial.gif" class="stretch">
+    <p>by Jaroslav Hofierka et al.
+</section>
+
+
+<section>
+<h2>Resources</h2>
+
+<ul>
+    <li>
+        Full list of
+        <a href="https://grass.osgeo.org/grass72/manuals/graphical_index.html">core modules</a>
+        and official
+        <a href="https://grass.osgeo.org/grass72/manuals/addons">addon modules</a>
+    <li>
+        Tutorials:
+        <ul>
+            <li>
+        <a href="https://grasswiki.osgeo.org/wiki/From_GRASS_GIS_novice_to_power_user_(workshop_at_FOSS4G_Boston_2017)">Introduction to GRASS GIS</a>
+    <li>
+        <a href="https://grasswiki.osgeo.org/wiki/Processing_lidar_and_UAV_point_clouds_in_GRASS_GIS_(workshop_at_FOSS4G_Boston_2017)">Processing lidar and UAV point clouds</a>
+    <li>
+        <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python GRASS GIS 7 addon</a>
+    <li>
+        <a href="http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/">
+        Spatio-temporal data handling and visualization</a>
+    <li>
+        <a href="https://grasswiki.osgeo.org/wiki/Workshop_on_urban_growth_modeling_with_FUTURES">
+        Urban growth modeling with FUTURES</a>
+        </ul>
+    <li>
+        Books (English):
+        <ul>
+            <li>Open Source GIS: A GRASS GIS Approach
+            <li>Tangible Modeling with Open Source GIS
+            <li>GIS-based Analysis of Coastal Lidar Time-Series
+            <li>Open Source Approaches to Spatial Data Handling
+        </ul>
+    <li>
+        <a href="https://grass.osgeo.org/support/">Community and commercial support</a>
+</ul>
+</section>
+
+
+<section>
+    <img src="img/grass_gis.svg" alt="GRASS GIS logo" style="height: 300px;">
+    <p>
+        <a href="https://grass.osgeo.org">grass.osgeo.org</a>
+    <p>
+        <!--
+        Slides
+        <br>
+        <a href="http://wenzeslaus.github.io/grass-gis-talks">wenzeslaus.github.io/grass-gis-talks</a>
+        <br>
+        -->
+        Twitter: vaclavpetras
+        <br>
+        GitHub: wenzeslaus
+    </p>
+</section>
+
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                history: true,
+                transition: "none",
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
