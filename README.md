@@ -1,7 +1,8 @@
 # GRASS GIS talks
 
 * FOSS4G 2017 Boston: [Advanced geospatial technologies: The new powerful GRASS GIS 7.2 release](https://wenzeslaus.github.io/grass-gis-talks/foss4g2017.html)
-* NCGIS 2019 Winston-Salem: [GRASS GIS: What's New](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019.html)
+* NCGIS 2019 Winston-Salem: [GRASS GIS: What's New](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_whats_new.html)
+* NCGIS 2019 Winston-Salem: [GRASS GIS: Getting Started](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html)
 
 ## Authors
 
