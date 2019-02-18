@@ -82,6 +82,27 @@
        url('lib/font/sintony/sintony-v4-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
        url('lib/font/sintony/sintony-v4-latin-700.svg#Sintony') format('svg'); /* Legacy iOS */
 }
+
+.reveal li > ul {
+    font-size: 85%;
+    line-height: 110%;
+  }
+
+.reveal small {
+  display: inline-block;
+  font-size: smaller;
+  line-height: 1.2em;
+  vertical-align: baseline;
+  margin: 0.1em; }
+
+.reveal small * {
+  vertical-align: baseline; }
+
+.reveal .credit {
+  font-size: small;
+  color: gray;
+  margin: 0.1em;
+}
 </style>
 
 
@@ -97,152 +118,77 @@
         <a href="http://wenzeslaus.github.io/">Vaclav (Vashek) Petras</a>
     </p>
     <p class="title-foot">
-        <a href="http://www.ncsu.edu/" title="North Carolina State University">North Carolina State University</a><br>
-        <a href="http://www.ncsu.edu/" title="North Carolina State University">NCSU</a>
-        <a href="http://geospatial.ncsu.edu/osgeorel/" title="NCSU GeoForAll Lab">GeoForAll Lab</a>
-        at
+        <a href="http://geospatial.ncsu.edu/osgeorel/" title="NCSU GeoForAll Lab">NCSU GeoForAll Lab</a>
+        at the
         <a href="http://geospatial.ncsu.edu/" title="NCSU Center for Geospatial Analytics">Center for Geospatial Analytics</a>
         <br>
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">North Carolina State University</a>
     </p>
-    <p><small>Corey White<br>Doug Newcomb</small></p>
+    <p><small>
+        Corey White
+        <br>
+        Doug Newcomb
+    </small></p>
     <img src="img/grass_gis.svg" class="stretch">
     <p><small>NCGIS 2019 Winston-Salem</small></p>
 </section>
 
 
+<!-- TODO: split to individual slides -->
 <section>
-    <h2>Runs everywhere</h2>
+    <h2>What's Old</h2>
     <ul>
-        <li>from Raspberry Pi to HPC cluster
-        <li>Linux, Mac, Windows, ...
-        <li>GCC, clang, C, C++98, C++11, C++14
-    </ul>
-</section>
-
-
-<section>
-    <h2>Interface: CLI</h2>
-    <p>The baseline interface for efficiency and reproducibility</p>
-    <img src="img/grass_cli.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Interface: GUI</h2>
-    <p>The interface for beginners and desktop</p>
-    <img src="img/grass_gui.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Tangible Landscape</h2>
-    <p>3rd party tangible user interface to GRASS GIS and Blender</p>
-    <img src="img/tangible_landscape.jpg" class="stretch">
-    <p>by NC State University, Center for Geospatial Analytics</p>
-</section>
-
-
-<section>
-    <h2>APIs</h2>
-    <ul>
-        <li>native:
+        <li>All-in-one functionality
             <ul>
-                <li>C
-                <li>Python
-                <li>command line
+                <li>All matured tools available right away
+                <li>Download of experimental tools possible
+                <li>Hydrology, remote sensing, lidar, network analysis, &hellip;
             </ul>
-        <li>3rd party:
+        <li>Return of investment
             <ul>
-                <li>R (<em>rgrass7</em> package)
-                <li> Ruby (<em>grassgis</em> gem)
-                <li> Java (<em>JGrasstools</em> library)
+                <li>Learn once, use forever.
             </ul>
-        <li>as backend:
+        <li>Scientific foundation
             <ul>
-                <li><em>QGIS Processing</em> (Python and R APIs)
-                <li><em>gvSIG JGrasstools Spatial Toolbox</em> <small>under development</small>
-    </ul>
-</section>
-
-
-<section>
-    <h2>Functionality</h2>
-    <ul>
-        <li>Hydrology
-        <li>Remote sensing/imagery/image processing
-        <li>3D rasters, space-time cubes
-        <li>Spatio-temporal
-        <li>Lidar
-        <li>Topological vectors, network analysis
-        <li>Integrated visualizations, 3D visualizations
-        <li>Relational databases (SQLite, PostgreSQL, PostGIS, MySQL)
-    </ul>
-</section>
-
-
-<section>
-    <h2>Return of investment</h2>
-    <h3>2002 code running in 2017?</h3>
-    <!-- 5 pre-release -->
-    version 5.0 code works as is in 7.2:
-<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
-</pre>
-<p>
-although there is a better way to write it:
-</p>
-<pre style="font-size: 94%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
-</pre>
-</section>
-
-
-<section>
-    <h2>Command line prevails: 1987</h2>
-    <img src="img/cli_movie.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Command line prevails: 2017</h2>
-    <img src="img/cli_tangible.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Scientific foundation</h2>
-    references to related scientific papers associated with a module
-    <img src="img/module_references.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>GRASS GIS 7.2</h2>
-    <ul>
-        <li>Recent releases:
-            <ul>
-                <li>7.2.0 (December 2016) <small>1,900 commits since 7.0</small>
-                <li>7.2.1 (May 2017) <small>150 commits since 7.2.0</small>
+                <li>references to related scientific papers associated with modules
             </ul>
-        <li style="opacity: 0.5;">Upcoming releases:
-            <ul>
-                <li>7.2.2 (summer/fall 2017)
-                <li>7.4.0 (fall/winter 2017)
-                <li>8.0.0 (panning started)
-            </ul>
+        <li>Community sharing improvements
     </ul>
+
+<aside class="notes">
+Old commands, often work in new versions with minimal changes.
+No increase in license fees over time.
+</aside>
 </section>
 
 
 <section>
-    <h2>New features in 7.2</h2>
+    <h2>New in 7.0</h2>
+    <a href="https://trac.osgeo.org/grass/wiki/Grass7/NewFeatures">trac.osgeo.org/grass/wiki/Grass7/NewFeatures</a>
+</section>
+
+
+<section>
+    <h2>Temporal Framework</h2>
+    <p>Manage and analyze spatio-temporal datasets (time series)</p>
+    <img src="img/grass760_temporal_plot_labels.png" class="stretch">
+    <p>by Sören Gebbert and Thomas Leppelt
+       <br>
+       (visualization tools by Anna Petrasova and Luca Delucchi)
+</section>
+
+
+<section>
+    <h2>Animation Tool</h2>
+    <p>Visualize spatio-temporal datasets and other series</p>
+    <img src="img/grass760_temporal_plot_labels.png" class="stretch">
+    <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>New in 7.2</h2>
     <a href="https://trac.osgeo.org/grass/wiki/Grass7/NewFeatures72">trac.osgeo.org/grass/wiki/Grass7/NewFeatures72</a>
-</section>
-
-
-<section>
-    <h2>Data catalog</h2>
-    <p><em>g.gui.datacatalog</em> - browse and manipulate raster and vector maps</p>
-    <img src="img/data_catalog.png" class="stretch">
-    <p>by Tereza Fiedlerova and Anna Petrasova
 </section>
 
 
@@ -309,11 +255,6 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
-    <h2>Other improvements in 7.2</h2>
-</section>
-
-
-<section>
     <h2>viridis as default color table</h2>
     <p>Perceptually uniform color table</p>
     <img src="img/viridis_comparison.png" class="stretch">
@@ -336,8 +277,83 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
-    <h2>New addons</h2>
-    <!-- Addons added since 7.0 -->
+    <h2>New in 7.4</h2>
+    <a href="https://trac.osgeo.org/grass/wiki/Grass7/NewFeatures74">trac.osgeo.org/grass/wiki/Grass7/NewFeatures74</a>
+</section>
+
+
+<section>
+    <h2>Geomorphon</h2>
+    <p><em>r.geomorphon</em> - landform detection</p>
+    <img src="img/data_catalog.png" class="stretch">
+    <p>by Jarek Jasiewicz and Tomek Stepinski
+</section>
+
+
+<section>
+    <h2>Parallelized solar radiation</h2>
+    <p><em>r.sun</em> - new parallelized version</p>
+    <img src="img/summer_solstice_centennial.gif" class="stretch">
+    <p>by Jaroslav Hofierka et al.
+</section>
+
+
+<section>
+    <h2>Data catalog</h2>
+    <p><em>g.gui.datacatalog</em> - browse, manage, and reproject raster and vector maps</p>
+    <img src="img/data_catalog.png" class="stretch">
+    <p>by Tereza Fiedlerova and Anna Petrasova
+</section>
+
+
+<section>
+    <h2>New in 7.6</h2>
+    <a href="https://trac.osgeo.org/grass/wiki/Grass7/NewFeatures76">trac.osgeo.org/grass/wiki/Grass7/NewFeatures76</a>
+</section>
+
+
+<section>
+    <h2>Computational Region in Map Display</h2>
+    <p><em>Map Display</em> now shows computational region extent by default</p>
+    <img src="img/grass760_show_region.png" class="stretch">
+    <p>by
+</section>
+
+
+<section>
+    <h2>Virtual raster mosaics</h2>
+    <p><em>r.buildvrt</em> - creates virtual raster (VRT) mosaics from a list of input raster maps</p>
+    <img src="img/grass760_show_region.png" class="stretch">
+    <p>by
+</section>
+
+
+<section>
+    <h2>new raster compression</h2>
+    <p><em>ZSTD</em> - ZSTD is an improvement over ZLIB's deflate method, providing both faster and higher compression than ZLIB</p>
+    <img src="img/grass760_show_region.png" class="stretch">
+    <p>by
+</section>
+
+
+<section>
+    <h2></h2>
+    <p><em>ZSTD</em> - the segment library uses a new fast all-in-memory cache instead of a file-based cache if all data can be kept in memory</p>
+    <img src="img/grass760_show_region.png" class="stretch">
+    <p>by
+</section>
+
+
+<section>
+    <h2>Simplified raster algebra</h2>
+    <p><em>r.buildvrt</em> - creates virtual raster (VRT) mosaics from a list of input raster maps</p>
+    <img src="img/grass760_show_region.png" class="stretch">
+    <p>by
+</section>
+
+
+<section>
+    <h2>New Addons</h2>
     <img src="img/.png" class="stretch">
 </section>
 
@@ -351,6 +367,14 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
+    <h2>Tools for Sentinel Data</h2>
+    <p>download, import, preprocessing, cloud detection, and masking of Sentinel&nbsp;2 data</p>
+    <img src="img/i_sentinel_mask_ES.png" class="stretch">
+    <p>by Roberta Fagandini, Martin Landa, Moritz Lennert, and Roberto Marzocchi
+</section>
+
+
+<section>
     <h2>Supervised classification</h2>
     <p><em>r.learn.ml</em> - classification with Python scikit-learn package</p>
     <img src="img/.png" class="stretch">
@@ -359,26 +383,26 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
+    <h2>Point clouds with PDAL</h2>
+    <p><em>r.in.pdal</em> - binning of points using PDAL for LAS reading</p>
+    <img src="img/itzi.png" class="stretch">
+    <p>by Anika Bettge and Vaclav Petras
+</section>
+
+
+<section>
+    <h2>Point cloud transects</h2>
+    <p><em>v.profile.points</em> - transects of point clouds</p>
+    <img src="img/itzi.png" class="stretch">
+    <p>by Vaclav Petras
+</section>
+
+
+<section>
     <h2>Itzï</h2>
     <p>Hydrologic and hydraulic model of surface water flow</p>
     <img src="img/itzi.png" class="stretch">
     <p>by Laurent Courty
-</section>
-
-
-<section>
-    <h2>FUTURES</h2>
-    <p><em>r.futures</em> - set of modules for urban spread modeling</p>
-    <img src="img/futures.jpg" class="stretch">
-    <p>by NC State University, Center for Geospatial Analytics
-</section>
-
-
-<section>
-    <h2>Parallelized solar radiation</h2>
-    <p><em>r.sun.mp</em> - parallelized version of <em>r.sun</em></p>
-    <img src="img/summer_solstice_centennial.gif" class="stretch">
-    <p>by Jaroslav Hofierka et al.
 </section>
 
 
