@@ -82,6 +82,40 @@
        url('lib/font/sintony/sintony-v4-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
        url('lib/font/sintony/sintony-v4-latin-700.svg#Sintony') format('svg'); /* Legacy iOS */
 }
+
+/* classes for sections with predefined elements */
+/* using !important because, reveal styles are applied afterwards  */
+.right, .textimg > img, .textimg > video, .textimg > iframe, .imgtext > p, .imgtext > ul, .imgtext > ol, .imgtext > div {
+    float: right;
+    text-align: left;
+    max-width: 47% !important;
+}
+.left, .imgtext > img, .imgtext > video, imgtext > iframe, .textimg > p, .textimg > ul, .textimg > ol, .textimg > div {
+    float: left;
+    text-align: left;
+    max-width: 47% !important;
+}
+
+.reveal li > ul {
+    font-size: 85%;
+    line-height: 110%;
+  }
+
+.reveal small {
+  display: inline-block;
+  font-size: smaller;
+  line-height: 1.2em;
+  vertical-align: baseline;
+  margin: 0.1em; }
+
+.reveal small * {
+  vertical-align: baseline; }
+
+.reveal .credit {
+  font-size: small;
+  color: gray;
+  margin: 0.1em;
+}
 </style>
 
 
@@ -104,36 +138,12 @@
         <a href="http://www.ncsu.edu/" title="North Carolina State University">North Carolina State University</a>
     </p>
     <p><small>
-        Corey White
+        Corey White, NCSU
         <br>
-        Doug Newcomb
+        Doug Newcomb, USFWS
     </small></p>
     <img src="img/grass_gis.svg" class="stretch">
     <p><small>NCGIS 2019 Winston-Salem</small></p>
-</section>
-
-
-<section>
-<h2>Licensing</h2>
-<ul>
-<li>According to Stallman (2002),
-    there are four freedoms that as a <em>user</em> you should have:
-    <ul>
-        <li>the freedom to use the software for any purpose,
-        <li>the freedom to change the software to suit your needs,
-        <li>the freedom to share the software, and
-        <li>the freedom to share the changes you make.
-    </ul>
-</ul>
-<figure>
-<img src="img/gpl_logo.svg" style="width: 30%">
-<figcaption><small>Logo of GNU GPL license, version 3</small></figcaption>
-</figure>
-<p>
-<small>
-Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. Gay. 1st. ed. OCLC:
-253840339. Boston, Mass: Free Software Foundation. 220 pp. ISBN 978-1-882114-98-6.
-</small>
 </section>
 
 
@@ -144,22 +154,46 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
         Timeline:
         <ul>
         <li>1983 started at US Army CERL
-            <span class="small">
-                as land management system
-            </span>
+            <small>
+                as a land management system
+            </small>
             <ul>
-                <li>Historical promotional video (1987) narrated by William Shatner <a href="https://doi.org/10.5446/12963">doi.org/10.5446/12963</a>
+                <li>William Shatner narrates a promotional video <small><a href="https://doi.org/10.5446/12963">doi.org/10.5446/12963</a></small>
+                <li>evolved into a general purpose GIS
             </ul>
-        <li>evolved into general purpose GIS
-        <li>1999 GNU GPL, international team of developers
+        <li>1999 international team of developers + GNU GPL
         <li>2008 OSGeo Project
-        <li>35 years of GRASS GIS development in 2018
+        <li>2018 35 years of GRASS GIS development
+        <li>2019 latest release Jan 21, 2019 <small>(7.6.0)</small>
         <li>check out <a href="https://trac.osgeo.org/grass/timeline">last change</a>
-            <span class="small">(probably just few hours ago)</span>
-        <li>last release Jan 21, 2019 <span class="small">[last checked Feb 2019]</span>
+            <small>(probably just few hours ago)</small>
         </ul>
 </ul>
 <img src="img/grass_logo_development.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Licensing</h2>
+<ul>
+<li>According to Stallman,
+    there are four freedoms that you should have <em>as a user:</em>
+    <ul>
+        <li>the freedom to use the software for any purpose,
+        <li>the freedom to change the software to suit your needs,
+        <li>the freedom to share the software, and
+        <li>the freedom to share the changes you make.
+    </ul>
+</ul>
+<figure>
+<img src="img/gpl_logo.svg" style="width: 30%">
+<figcaption><small class="credit">Logo of GNU GPL license, version 3 (GRASS GIS is under GPL >=v2)</small></figcaption>
+</figure>
+<p>
+<small class="credit">
+Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. Gay. 1st. ed. OCLC:
+253840339. Boston, Mass: Free Software Foundation. 220 pp. ISBN 978-1-882114-98-6.
+</small>
 </section>
 
 
@@ -183,7 +217,7 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
             sampling, statistics, aggregation, temporal topology, algebra, ...
         </dd>
     </dl>
-<img src="img/grass_modeler_skyview.png" class="stretch">
+<img src="img/hexagons_python_editor.png" class="stretch">
 </section>
 
 
@@ -196,11 +230,11 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
         </dd>
         <dt>interoperability</dt>
         <dd>
-            import from and export to different formats, WMS, ...
+            import from and export to different formats, WMS, JSON, ...
         </dd>
         <dt>extensibility</dt>
         <dd>
-            scriptable (e.g. Python), custom tools (typically Python or C), ...
+            scriptable <small>(typically Python or Bash)</small>, custom tools <small>(typically Python or C)</small>, ...
         </dd>
     </dl>
 <img src="img/drone_3d.png" class="stretch">
@@ -211,18 +245,20 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
 <h2>Research Use</h2>
 <ul>
 <li>Used as a research platform and code repository
-<li>Example: Solar radiation model (r.sun)
+<li>Example: Solar radiation model (<em>r.sun</em>)
     <ul>
         <li>available since 1993
         <li>major changes in 1996, 1999, 2002, 2003, 2006, 2008, 2017
-        <li>parallelized version in 7.4
+            <ul>
+                <li>parallelized version in 7.4
+            </ul>
+        <li>by Jaroslav Hofierka, Marcel Suri <small>et al. (2004, 2007, ...)</small>
     </ul>
-<li>by Jaroslav Hofierka et al.
 </ul>
 <br>
 <img src="img/summer_solstice_centennial.gif" class="stretch">
 <p><small>
-summer solstice dynamics on lidar DEM (Centennial Campus)
+summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
 </small></p>
 </section>
 
@@ -232,7 +268,7 @@ summer solstice dynamics on lidar DEM (Centennial Campus)
 <ul>
     <li>portable:
         <ul>
-            <li>many operating systems: MS Windows, Mac OS, Linux, ...
+            <li>many operating systems: MS Windows, macOS, Linux, ...
             <li>32bit and 64bit versions
             <li>high-end desktops, low-end laptops,
                 Raspberry Pi,
@@ -242,7 +278,7 @@ summer solstice dynamics on lidar DEM (Centennial Campus)
     <li>functionality divided into modules
     <li>written in C and Python
 </ul>
-<img src="img/grass_hexagons_3d_white_outlier.png" class="stretch">
+<img src="img/modeler_skyview.png" class="stretch">
 </section>
 
 
@@ -294,14 +330,14 @@ summer solstice dynamics on lidar DEM (Centennial Campus)
 </tbody></table>
 <small>There is more: i., t., r3., m., ps.</small>
 <br>
-<img src="img/grass_cli.png" class="stretch">
+<img src="img/gui_with_lidar_veg_bg.png" class="stretch">
 </section>
 
 
 <section>
 <h2>User Interfaces</h2>
 <ul>
-<li>Functionality divided into modules <span class="small">(over 500)</span>
+<li>Functionality divided into modules <small>(over 500)</small>
 <li>Modules can be accessed using:
     <ul>
         <li>Graphical User Interface (GUI)
@@ -338,6 +374,16 @@ Standard dialog (form) for the r.neighbors module
 
 
 <section>
+<h2>Graphical Modeler</h2>
+<ul>
+    <li>Visual programing tool
+</ul>
+<br>
+<img src="img/gmodeler.png" class="stretch">
+</section>
+
+
+<section>
 <h2>Command Line</h2>
 <ul>
 <li>The baseline interface for efficiency and reproducibility
@@ -352,10 +398,12 @@ Standard dialog (form) for the r.neighbors module
 <section>
 <h2>Python</h2>
 <ul>
-    <li>grass package part of GRASS GIS
+    <li><em>grass</em> package part of GRASS GIS
     <li>access to modules, but also to internal C functions
-    <li>integrated Python editor
+    <li>integrated Python editor in GRASS GIS
     <li>integrates with Jupyter Notebooks
+    <li>combine with PyPI <em><a href="https://pypi.org/project/grass-session/">grass-session</a></em> package for external use
+    <small>(<code>pip install grass-session</code> and <code>import grass_session</code>)</small>
 </ul>
 <pre><code>import grass.script as gs
 gs.run_command('r.fill.dir', input='elev',
@@ -370,7 +418,7 @@ gs.run_command('r.fill.dir', input='elev',
 <div class="left">
     <img src="img/r_in_lidar_dialog.png" style="width: 100%;">
 </div>
-<div class="left">
+<div class="right">
     <small>Command line (Bash):</small>
     <br>
     <img src="img/r_in_lidar_command_in_bash.png" style="width: 100%;">
@@ -401,6 +449,19 @@ code, or run them directly.
 <section>
 <h2>3rd Party Interfaces</h2>
 <ul>
+<li>Actinia <small>&ndash; The GRASS GIS REST API</small>
+    <ul>
+        <li>Used in the OpenEO GRASS GIS driver
+    </ul>
+</ul>
+<br>
+<img src="img/qgis_processing.png" class="stretch">
+</section>
+
+
+<section>
+<h2>3rd Party Interfaces</h2>
+<ul>
 <li>Tangible Landscape
     <ul>
         <li>tangible user interface to GRASS GIS and Blender
@@ -420,83 +481,79 @@ Modules running: v.surf.rst, r.contour, r.fill.dir, r.sim.water
     <ul>
         <li>native:
             <ul>
-                <li>C
+                <li>C (usable in C++)
                 <li>Python
-                <li>command line
+                <li>command line (Bash, cmd, &hellip;)
             </ul>
         <li>3rd party:
             <ul>
                 <li>R (<em>rgrass7</em> package)
-                <li> Ruby (<em>grassgis</em> gem)
-                <li> Java (<em>JGrasstools</em> library)
+                <li>Ruby (<em>grassgis</em> gem)
+                <li>Java (<em>JGrasstools</em> library)
             </ul>
         <li>as backend:
             <ul>
                 <li><em>QGIS Processing</em> (Python and R APIs)
+                <li><em>PyWPS</em> (OGC WPS)
+                <li><em>Actinia</em> (REST)
                 <li><em>gvSIG JGrasstools Spatial Toolbox</em> <small>under development</small>
-    </ul>
-</section>
-
-
-<section>
-<h2>FOSS Ecosystem: Example of a Scientific Desktop Setup</h2>
-<dl>
-<dt>QGIS, GRASS GIS</dt>
-<dd>
-GIS, remote sensing, cartography
-</dd>
-<dt>R, Octave, Python</dt>
-<dd>
-statistics, linear algebra, scripting, automation
-</dd>
-<dt>SQLite, PostgreSQL with PostGIS, LibreOffice</dt>
-<dd>
-database, tabular data
-</dd>
-<dt>Inkscape, Gimp, ImageMagic</dt>
-<dd>
-vector graphics, raster graphics
-</dd>
-</dl>
-<ul class="small">
-    <li>Portability: works on Mac, Linux, Windows
-    <li>Interoperability: programs designed to work with others
-    <li>Flexibility: standards and open formats allows to switch different components
-    <li>Scalability: can be copied to more machines at no cost
-</ul>
-<dt>PostgreSQL with PostGIS</dt>
-<!--<span class="small">(native connection between GRASS GIS and PostGIS)</span>-->
-<!--<span class="small">(OGC WPS, native support for GRASS GIS)</span>-->
-<!--<span class="small">(MapServer can read directly from GRASS GIS database)</span>-->
+            </ul>
 </section>
 
 
 <section>
 <h2>GRASS GIS in the FOSS Ecosystem</h2>
-, R, SAGA GIS, GDAL
+
 <dl>
-<dt>scripting</dt>
+<dt>Inkscape, Gimp, ImageMagic, GMT, QGIS</dt>
 <dd>
-Python, R, Bash, Perl, Ruby ...
-</dd>
-<dt>Web interface</dt>
-<dd>
-OpenLayers or Leaflet, Django or Flask
+Graphics and refined the cartography
 </dd>
 
+<dt>PostgreSQL with PostGIS</dt>
 <dd>
-database (spatial and non-spatial data storage)
+Relational database (spatial and non-spatial data storage)
+</dd>
 
-</dd>
-<dt>ZOO-Project, PyWPS, GeoServer, or QGIS Server</dt>
+
+<dt>R, Octave, Python, Jupyter, LibreOffice</dt>
 <dd>
-processing server and spatial data publishing server
+Statistics, non-spatial data analysis
 </dd>
+
+
+<dt>OpenLayers, Leaflet, Django, Flask</dt>
+<dd>
+Web interface
+</dd>
+
+<dt>PyWPS, ZOO-Project, Actinia</dt>
+<dd>
+Processing server
+</dd>
+
+<dt>MapServer, GeoServer, QGIS Server</dt>
+<dd>
+spatial data publishing server
+</dd>
+
 </dl>
 
-<ul class="small">
+<p>
 
-</ul>
+<!--<small>(native connection between GRASS GIS and PostGIS)</small>-->
+<!--<small>(OGC WPS, native support for GRASS GIS)</small>-->
+<!--<small>(MapServer can read directly from GRASS GIS database)</small>-->
+
+<!--
+GDAL, libLAS, PDAL
+
+<dt>Python, R, Bash, Perl, Ruby</dt>
+<dd>
+Scripting, extensions
+</dd>
+-->
+
 </section>
 
 
@@ -558,7 +615,7 @@ processing server and spatial data publishing server
     <li>distributed to users
     <li>including compiled C and C++ for MS Windows
     <li>automatically generated GUI
-        <span class="small">for Python and C/C++</span>
+        <small>for Python and C/C++</small>
 </ul>
 <img src="img/grass_addons.png" class="stretch">
 </section>
@@ -578,20 +635,79 @@ processing server and spatial data publishing server
 
 
 <section>
+<h2>Resources</h2>
+
+<ul>
+    <li>
+        Documentation:
+        <ul>
+            <li><a href="https://grass.osgeo.org/grass76/manuals/graphical_index.html">Full list of core modules</a>
+            <li><a href="https://grass.osgeo.org/grass74/manuals/addons">Modules in Addons repository</a>
+        </ul>
+    <li>
+        Tutorials:
+        <ul>
+            <li>
+                <a href="https://grasswiki.osgeo.org/wiki/From_GRASS_GIS_novice_to_power_user_(workshop_at_FOSS4G_Boston_2017)">Introduction to GRASS GIS</a>
+            <li>
+                <a href="https://grasswiki.osgeo.org/wiki/Processing_lidar_and_UAV_point_clouds_in_GRASS_GIS_(workshop_at_FOSS4G_Boston_2017)">Processing lidar and UAV point clouds</a>
+            <li>
+                <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python module</a>
+            <li>
+                <a href="http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/">
+                Spatio-temporal data handling and visualization</a>
+        </ul>
+    <li>
+        Books:
+        <ul>
+            <li>Open Source GIS: A GRASS GIS Approach
+            <li>Tangible Modeling with Open Source GIS
+            <li>GIS-based Analysis of Coastal Lidar Time-Series
+            <li>Open Source Approaches to Spatial Data Handling
+        </ul>
+</ul>
+</section>
+
+
+<section>
+<h2>Support</h2>
+
+<ul>
+    <li>Community support
+        <ul>
+            <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a>
+            <li><a href="https://gis.stackexchange.com/questions/tagged/grass">GIS StackExchange</a>
+            <li>&hellip;
+        </ul>
+    <li>Commercial support
+        <ul>
+            <li><a href="https://geospatial.ncsu.edu/engage/service-center/">Center for Geospatial Analytics, NC State University</a>
+            <li><a href="https://www.mundialis.de/open-source-gis/">mundialis</a>
+            <li><a href="http://opengeolabs.cz/en/home/">OpenGeoLabs</a>
+            <li><a href="http://www.faunalia.it/">Faunalia</a>
+            <li>&hellip;
+        </ul>
+</ul>
+<p>
+<small>
+<a href="https://grass.osgeo.org/support/">grass.osgeo.org/support</a>
+</small>
+</section>
+
+
+<section>
 <h2>Summary</h2>
 <ul>
     <li>Licensing: No "purchasing of licenses" needed for users
     <li>Support: Community and commercial
-        <ul>
-            <li>Students: Start with course message board now; try mailing list or GIS StackExchange later on
-        </ul>
     <li>Several user interfaces
         <ul>
-            <li>Class instructions are using GUI and command line
-            <li>Python and Jupyter are recommended for the projects
+            <li>GUI and command line
+            <li>Python (+Jupyter)
+            <li>3rd party
         </ul>
-    <li>Data in database, locations and mapsets
-    <li>Raster operations in a specified computational region
+    <li>Data organized into databases, locations and mapsets
+    <li>Raster operations follow a specified computational region
 </ul>
 <br>
 <img src="img/grass_gis.svg" class="stretch">
