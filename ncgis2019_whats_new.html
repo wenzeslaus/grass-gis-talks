@@ -215,8 +215,14 @@ No increase in license fees over time.
 <section>
     <h2>Animation Tool</h2>
     <p>Visualize spatio-temporal datasets and other series</p>
-    <img src="img/grass760_temporal_plot_labels.png" class="stretch">
+    <img src="img/temporal_precip_temp.png" class="stretch">
     <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>...and 10,000 other changes</h2>
+    <p>In total, more than 10,000 changes have been implemented so far with respect to GRASS GIS 6.4.</p>
 </section>
 
 
@@ -252,14 +258,6 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
-    <h2>Advanced search in command line</h2>
-    <p><em>g.search.modules</em> - search for modules</p>
-    <img src="img/g_search_modules.png" class="stretch">
-    <p>by Jachym Cepicky
-</section>
-
-
-<section>
     <h2>3D raster flows and gradients</h2>
     <p>
         <em>r3.flow</em> - flow lines in a 3D raster
@@ -285,14 +283,6 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
     <h2>Temporal Algebra</h2>
     <img src="img/temporal_htc.png" class="stretch">
     <p>by Thomas Leppelt and Soeren Gebbert
-</section>
-
-
-<section>
-    <h2>viridis as default color table</h2>
-    <p>Perceptually uniform color table</p>
-    <img src="img/viridis_comparison.png" class="stretch">
-    <p>by Vaclav Petras (following Matplotlib's example)
 </section>
 
 
@@ -328,7 +318,7 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
     <h2>Parallelized solar radiation</h2>
     <p><em>r.sun</em> - new parallelized version</p>
     <img src="img/summer_solstice_centennial.gif" class="stretch">
-    <p>by Jaroslav Hofierka et al.
+    <p>by Stanislav Zubal and Michal Lacko
 </section>
 
 
@@ -350,45 +340,56 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
     <h2>Computational Region in Map Display</h2>
     <p><em>Map Display</em> now shows computational region extent by default</p>
     <img src="img/grass760_show_region.png" class="stretch">
-    <p>by
+    <p>by Martin Landa
+</section>
+
+
+<section>
+    <h2>Perceptually uniform color tables</h2>
+    <p>grey, viridis, inferno, magma, plasma, and grass</p>
+    <p>viridis as default color table</p>
+    <img src="img/viridis_comparison.png" class="stretch">
+    <p>by Vaclav Petras and Pierre Roudier
 </section>
 
 
 <section>
     <h2>Virtual raster mosaics</h2>
     <p><em>r.buildvrt</em> - creates virtual raster (VRT) mosaics from a list of input raster maps</p>
-    <img src="img/grass760_show_region.png" class="stretch">
-    <p>by
+    <img src="img/lidar_city.png" class="stretch">
+    <p>by Markus Metz
 </section>
 
 
 <section>
-    <h2>new raster compression</h2>
-    <p><em>ZSTD</em> - ZSTD is an improvement over ZLIB's deflate method, providing both faster and higher compression than ZLIB</p>
-    <img src="img/grass760_show_region.png" class="stretch">
-    <p>by
+    <h2>Faster and higher compression</h2>
+    <p><em>ZSTD</em> - an improvement over ZLIB method, providing both faster and higher compression</p>
+    <img src="img/skyview.png" class="stretch">
+    <p>by Markus Metz
 </section>
 
 
 <section>
-    <h2></h2>
-    <p><em>ZSTD</em> - the segment library uses a new fast all-in-memory cache instead of a file-based cache if all data can be kept in memory</p>
+    <h2>Segment library all-in-memory mode</h2>
+    <p>the segment library uses a new fast all-in-memory cache instead of a file-based cache if all data can be kept in memory</p>
+    <p>faster cost path, point cloud binning, stream and flow, i.segment, v.surf.bspline</p>
     <img src="img/grass760_show_region.png" class="stretch">
-    <p>by
+    <p>by Markus Metz
 </section>
 
 
 <section>
     <h2>Simplified raster algebra</h2>
-    <p><em>r.buildvrt</em> - creates virtual raster (VRT) mosaics from a list of input raster maps</p>
+    <p><em>r.mapcalc.simple</em> - creates virtual raster (VRT) mosaics from a list of input raster maps</p>
+<pre style="font-size: 94%;">r.mapcalc.simple expression="A + B + C" a=zeros b=ones c=twos output=result1
+</pre>
     <img src="img/grass760_show_region.png" class="stretch">
-    <p>by
+    <p>by Vaclav Petras
 </section>
 
 
 <section>
     <h2>New Addons</h2>
-    <img src="img/.png" class="stretch">
 </section>
 
 
@@ -409,17 +410,9 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
-    <h2>Supervised classification</h2>
-    <p><em>r.learn.ml</em> - classification with Python scikit-learn package</p>
-    <img src="img/.png" class="stretch">
-    <p>by Steven Pawley
-</section>
-
-
-<section>
     <h2>Point clouds with PDAL</h2>
     <p><em>r.in.pdal</em> - binning of points using PDAL for LAS reading</p>
-    <img src="img/itzi.png" class="stretch">
+    <img src="img/lidar_vegetation_3d.png" class="stretch">
     <p>by Anika Bettge and Vaclav Petras
 </section>
 
@@ -427,7 +420,7 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 <section>
     <h2>Point cloud transects</h2>
     <p><em>v.profile.points</em> - transects of point clouds</p>
-    <img src="img/itzi.png" class="stretch">
+    <img src="img/v_profile_points.png" class="stretch">
     <p>by Vaclav Petras
 </section>
 
