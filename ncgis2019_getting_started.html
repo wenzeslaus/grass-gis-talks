@@ -116,6 +116,11 @@
   color: gray;
   margin: 0.1em;
 }
+
+.reveal dt {
+  padding-top: 0.5em;
+  padding-bottom: 0.05em;
+}
 </style>
 
 
@@ -238,28 +243,6 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
         </dd>
     </dl>
 <img src="img/drone_3d.png" class="stretch">
-</section>
-
-
-<section>
-<h2>Research Use</h2>
-<ul>
-<li>Used as a research platform and code repository
-<li>Example: Solar radiation model (<em>r.sun</em>)
-    <ul>
-        <li>available since 1993
-        <li>major changes in 1996, 1999, 2002, 2003, 2006, 2008, 2017
-            <ul>
-                <li>parallelized version in 7.4
-            </ul>
-        <li>by Jaroslav Hofierka, Marcel Suri <small>et al. (2004, 2007, ...)</small>
-    </ul>
-</ul>
-<br>
-<img src="img/summer_solstice_centennial.gif" class="stretch">
-<p><small>
-summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
-</small></p>
 </section>
 
 
@@ -437,9 +420,9 @@ code, or run them directly.
 <section>
 <h2>3rd Party Interfaces</h2>
 <ul>
-<li>QGIS <small class="small">(Processing Plugin and GRASS Plugin)</small>
-<li>R <small class="small">(rgrass7 package)</small>
-<li>...
+<li>QGIS Processing Plugin
+<li>QGIS GRASS Plugin
+<li>R <em>rgrass7</em> package
 </ul>
 <br>
 <img src="img/qgis_processing.png" class="stretch">
@@ -494,7 +477,7 @@ Modules running: v.surf.rst, r.contour, r.fill.dir, r.sim.water
         <li>as backend:
             <ul>
                 <li><em>QGIS Processing</em> (Python and R APIs)
-                <li><em>PyWPS</em> (OGC WPS)
+                <li><em>PyWPS, ZOO-Project</em> (OGC WPS)
                 <li><em>Actinia</em> (REST)
                 <li><em>gvSIG JGrasstools Spatial Toolbox</em> <small>under development</small>
             </ul>
@@ -505,6 +488,12 @@ Modules running: v.surf.rst, r.contour, r.fill.dir, r.sim.water
 <h2>GRASS GIS in the FOSS Ecosystem</h2>
 
 <dl>
+
+<dt>GRASS GIS</dt>
+<dd>
+Geospatial processing, algorithms, and workflows
+</dd>
+
 <dt>Inkscape, Gimp, ImageMagic, GMT, QGIS</dt>
 <dd>
 Graphics and refined the cartography
@@ -522,7 +511,7 @@ Statistics, non-spatial data analysis
 </dd>
 
 
-<dt>OpenLayers, Leaflet, Django, Flask</dt>
+<dt>OpenLayers, Leaflet, GeoExt, Django, Flask</dt>
 <dd>
 Web interface
 </dd>
@@ -585,30 +574,6 @@ Scripting, extensions
 
 
 <section>
-<h2>Documentation: Public Author &amp; Accessible Code</h2>
-<img src="img/grass_module_author_source.png" class="stretch">
-</section>
-
-
-<section>
-<h2>Documentation: Link to Research Papers</h2>
-<img src="img/grass_module_references.png" class="stretch">
-</section>
-
-
-<section>
-<h2>Asking Questions</h2>
-<ul>
-    <li>Mailing list discussions (archived since 1991)
-    <li>GIS StackExchange, ...
-    <li>Commercial support
-<ul>
-<img src="img/grass_user_mailing_list.png" class="stretch">
-<p>
-</section>
-
-
-<section>
 <h2>Addons Repository</h2>
 <ul>
     <li>user contributed modules, plugins, tools, functions
@@ -618,6 +583,47 @@ Scripting, extensions
         <small>for Python and C/C++</small>
 </ul>
 <img src="img/grass_addons.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Science &amp; Research</h2>
+<ul>
+<li>Used in research platform and as scientific code repository
+<li>Example: Solar radiation model (<em>r.sun</em>)
+    <ul>
+        <li>available since 1993
+        <li>major changes in 1996, 1999, 2002, 2003, 2006, 2008, 2017
+            <ul>
+                <li>parallelized version in 7.4
+            </ul>
+        <li>by Jaroslav Hofierka, Marcel Suri <small>et al. (2004, 2007, ...)</small>
+    </ul>
+</ul>
+<br>
+<img src="img/summer_solstice_centennial.gif" class="stretch">
+<p><small>
+summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
+</small></p>
+</section>
+
+
+<section>
+<h2>Peer-reviewed Implementation</h2>
+<ul>
+    <li>GRASS GIS scientific community combined:
+        <ul>
+            <li>32503 citations
+            <li>h-index: 86
+            <li>i10-index: 411
+        </ul>
+</ul>
+<br>
+<img src="img/grass_citations.png" class="stretch">
+<p class="credit">
+    <a href="https://scholar.google.com/citations?user=gJ0ZB0cAAAAJ">Source: Google Scholar (2019)</a>
+</p>
+<!-- Feb 21, 2019 -->
 </section>
 
 
@@ -635,14 +641,26 @@ Scripting, extensions
 
 
 <section>
+<h2>Research Papers References</h2>
+<img src="img/grass_module_references.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Public Author &amp; Accessible Code</h2>
+<img src="img/grass_module_author_source.png" class="stretch">
+</section>
+
+
+<section>
 <h2>Resources</h2>
 
 <ul>
     <li>
         Documentation:
         <ul>
-            <li><a href="https://grass.osgeo.org/grass76/manuals/graphical_index.html">Full list of core modules</a>
-            <li><a href="https://grass.osgeo.org/grass74/manuals/addons">Modules in Addons repository</a>
+            <li>See <a href="https://grass.osgeo.org/grass76/manuals/graphical_index.html">full list of core modules</a>
+            <li>See <a href="https://grass.osgeo.org/grass74/manuals/addons">modules in Addons repository</a>
         </ul>
     <li>
         Tutorials:
@@ -675,7 +693,7 @@ Scripting, extensions
 <ul>
     <li>Community support
         <ul>
-            <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a>
+            <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a> <small>(archived since 1991)</small>
             <li><a href="https://gis.stackexchange.com/questions/tagged/grass">GIS StackExchange</a>
             <li>&hellip;
         </ul>
@@ -692,6 +710,10 @@ Scripting, extensions
 <small>
 <a href="https://grass.osgeo.org/support/">grass.osgeo.org/support</a>
 </small>
+<!--
+<br>
+<img src="img/grass_user_mailing_list.png" class="stretch">
+-->
 </section>
 
 
