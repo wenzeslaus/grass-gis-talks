@@ -140,7 +140,7 @@
 
 
 <section>
-    <h2>All-in-one functionality</h2>
+    <h2>All-in-one</h2>
     <ul>
         <li>All matured tools available right away
         <li>Download of experimental tools possible
@@ -382,17 +382,18 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
     <h2>Segment library all-in-memory mode</h2>
     <p>the segment library uses a new fast all-in-memory cache instead of a file-based cache if all data can be kept in memory</p>
     <p>faster cost path, point cloud binning, stream and flow, i.segment, v.surf.bspline</p>
-    <img src="img/grass760_show_region.png" class="stretch">
+    <img src="img/cost.png" class="stretch">
     <p>by Markus Metz
 </section>
 
 
 <section>
     <h2>Simplified raster algebra</h2>
-    <p><em>r.mapcalc.simple</em> - creates virtual raster (VRT) mosaics from a list of input raster maps</p>
-<pre style="font-size: 94%;">r.mapcalc.simple expression="A + B + C" a=zeros b=ones c=twos output=result1
+    <p><em>r.mapcalc.simple</em> - simplified syntax for compatibility with QGIS</p>
+<pre style="font-size: 94%;">r.mapcalc.simple expression="A + B + C"
+                 a=one b=two c=three output=four
 </pre>
-    <img src="img/grass760_show_region.png" class="stretch">
+    <img src="img/uav_diff.png" class="stretch">
     <p>by Vaclav Petras
 </section>
 
