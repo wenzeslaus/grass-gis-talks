@@ -258,7 +258,6 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
                 High-Performance Computing clusters, ...
         </ul>
     <li>single integrated software
-    <li>functionality divided into modules
     <li>written in C and Python
 </ul>
 <img src="img/modeler_skyview.png" class="stretch">
@@ -266,7 +265,8 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
 
 
 <section>
-<h2>Naming of Modules</h2>
+<h2>Modules</h2>
+<p>Functionality is divided into modules <small>(over 500)</small></p>
 <table style="font-size: smaller;"><tbody>
     <tr>
         <th>Prefix</th>
@@ -320,12 +320,11 @@ Stallman, R. M. (2002). Free software, free society: selected essays. Ed. by J. 
 <section>
 <h2>User Interfaces</h2>
 <ul>
-<li>Functionality divided into modules <small>(over 500)</small>
 <li>Modules can be accessed using:
     <ul>
         <li>Graphical User Interface (GUI)
         <li>Command Line Interface (CLI)
-        <li>Python
+        <li>Python (API)
     </ul>
 </ul>
 <br>
@@ -547,6 +546,19 @@ Scripting, extensions
 
 
 <section>
+<h2>Concepts</h2>
+<ul>
+<li>locations and mapsets
+<li>data management
+<li>projections
+<li>computational region
+</ul>
+<br>
+<img src="img/hexagons_3d_white_outlier.png" class="stretch">
+</section>
+
+
+<section>
 <h2>Spatial Database</h2>
 <img src="img/grass_data_tab.svg" class="stretch"
      alt="Example of GRASS GIS database structure into locations (based on SRS) and further to mapsets (for organization)">
@@ -564,25 +576,29 @@ Scripting, extensions
 
 
 <section>
+<h2>Import, export, linking</h2>
+<ul>
+    <li>Data need to be imported or linked <small>(GDAL)</small>
+    <li>Vector and raster data can be linked
+        <ul>
+            <li>r.external, r.external.out
+            <li>v.external, v.external.out
+        </ul>
+    <li>Export to various formats (or linking)
+    <li>GRASS GIS native exchange format (v.pack, r.pack, v.unpack, &hellip;)
+</ul>
+<br>
+<img src="img/piemonte_shaded_elevation.png" class="stretch">
+</section>
+
+
+<section>
 <h2>Computational Region</h2>
 <ul>
     <li>extent and resolution for raster computations
 </ul>
 <br>
 <img src="img/grass_computational_region.png" class="stretch">
-</section>
-
-
-<section>
-<h2>Addons Repository</h2>
-<ul>
-    <li>user contributed modules, plugins, tools, functions
-    <li>distributed to users
-    <li>including compiled C and C++ for MS Windows
-    <li>automatically generated GUI
-        <small>for Python and C/C++</small>
-</ul>
-<img src="img/grass_addons.png" class="stretch">
 </section>
 
 
@@ -647,6 +663,19 @@ summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
 
 
 <section>
+<h2>Addons Repository</h2>
+<ul>
+    <li>user contributed modules, plugins, tools, functions
+    <li>distributed to users
+    <li>including compiled C and C++ for MS Windows
+    <li>automatically generated GUI
+        <small>for Python and C/C++</small>
+</ul>
+<img src="img/grass_addons.png" class="stretch">
+</section>
+
+
+<section>
 <h2>Public Author &amp; Accessible Code</h2>
 <img src="img/grass_module_author_source.png" class="stretch">
 </section>
@@ -702,6 +731,7 @@ summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
             <li><a href="https://geospatial.ncsu.edu/engage/service-center/">Center for Geospatial Analytics, NC State University</a>
             <li><a href="https://www.mundialis.de/open-source-gis/">mundialis</a>
             <li><a href="http://opengeolabs.cz/en/home/">OpenGeoLabs</a>
+            <li><a href="https://www.northrivergeographic.com/">North River Geographic Systems, Inc.</a>
             <li><a href="http://www.faunalia.it/">Faunalia</a>
             <li>&hellip;
         </ul>
@@ -720,8 +750,8 @@ summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
 <section>
 <h2>Summary</h2>
 <ul>
-    <li>Licensing: No "purchasing of licenses" needed for users
     <li>Support: Community and commercial
+    <li>Licensing: No "purchasing of licenses" needed for users
     <li>Several user interfaces
         <ul>
             <li>GUI and command line
@@ -737,7 +767,7 @@ summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
 
 
 <section>
-    <img src="img/grass_gis.svg" alt="GRASS GIS logo" style="height: 300px;">
+    <img src="img/grass_gis.svg" alt="GRASS GIS logo" class="stretch">
     <p>
         <a href="https://grass.osgeo.org/">grass.osgeo.org</a>
     <p>
@@ -751,6 +781,7 @@ summer solstice dynamics on lidar DEM <small>(NCSU Centennial Campus)</small>
         <br>
         <a href="https://gitlab.com/vpetras/">GitLab: vpetras</a>
     </p>
+    <p>Meet me here: NCSU booth, poster session, next talks</p>
 </section>
 
             </div>
