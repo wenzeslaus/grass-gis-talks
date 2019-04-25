@@ -180,36 +180,14 @@
 
 
 <section>
-    <h2>All-in-one</h2>
+    <h2>Community shares improvements</h2>
     <ul>
-        <li>All matured tools available right away
-        <li>Download of experimental tools possible
-        <li>Hydrology, remote sensing, lidar, network analysis, &hellip;
+        <li>GRASS GIS community provides software to the public
+        <li>Shares its source code
+        <li>Includes latest additions
     </ul>
     <br>
-    <img src="img/hexagons_3d_white_outlier.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Return of investment</h2>
-    <p>
-    <em>Learn once, use forever.</em>
-    </p>
-    <ul>
-        <li>Emphasis on backwards compatibility
-        <li>No increasing license fees over time
-        <li>Employer-independent
-    </ul>
-    <br>
-    <div>
-        <img src="img/cli_movie.png" style="height: 7em;">
-        <img src="img/cli_tangible.png" style="height: 7em;">
-    </div>
-<aside class="notes">
-Old commands, often work in new versions with minimal changes.
-No increase in license fees over time.
-</aside>
+    <img src="img/grass_team.jpg" class="stretch">
 </section>
 
 
@@ -225,14 +203,174 @@ No increase in license fees over time.
 
 
 <section>
-    <h2>Community shares improvements</h2>
+    <h2>Return of investment</h2>
+    <p>
+    <em>Learn once, use forever.</em>
+    </p>
     <ul>
-        <li>GRASS GIS community provides software to the public
-        <li>Shares its source code
-        <li>Includes latest additions
+        <li>Emphasis on backwards compatibility
+        <li>No increasing license fees over time
+        <li>Employer-independent and contractor-independent
     </ul>
     <br>
-    <img src="img/grass_team.jpg" class="stretch">
+    <img src="img/modeler_skyview.png" class="stretch">
+<aside class="notes">
+Old commands, often work in new versions with minimal changes.
+No increase in license fees over time.
+</aside>
+</section>
+
+
+<section>
+    <h2>Return of investment</h2>
+    <h3>2002 code running in 2017?</h3>
+    <!-- 5 pre-release -->
+    version 5.0 code works as is in 7.2:
+<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
+</pre>
+<p>
+although there is a better way to write it:
+</p>
+<pre style="font-size: 94%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
+</pre>
+</section>
+
+
+<section>
+    <h2>All-in-one</h2>
+    <p>
+    <em>GRASS covers many fields.</em>
+    </p>
+    <ul>
+        <li>All matured tools available right away
+        <li>Download of experimental tools possible
+        <li>Hydrology, remote sensing, lidar, network analysis, &hellip;
+    </ul>
+    <br>
+    <img src="img/hexagons_3d_white_outlier.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Modules</h2>
+<p>Functionality is divided into modules <small>(over 500)</small></p>
+<table style="font-size: smaller;"><tbody>
+    <tr>
+        <th>Prefix</th>
+        <th>Functionality</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>r.</td>
+        <td>raster processing</td>
+        <td>r.mapcalc: raster map algebra</td>
+    </tr>
+    <tr>
+        <td>v.</td>
+        <td>vector processing</td>
+        <td>v.surf.rst: interpolation from points</td>
+    </tr>
+    <tr>
+        <td>g.</td>
+        <td>general management</td>
+        <td>g.remove: removes maps</td>
+    </tr>
+    <tr>
+        <td>d.</td>
+        <td>display and rendering</td>
+        <td>d.rast: display raster map</td>
+    </tr>
+    <!--
+    <tr>
+        <td>i.</td>
+        <td>imagery processing</td>
+        <td>i.segment: image segmentation</td>
+    </tr>
+        <tr>
+        <td>r3.</td>
+        <td>3D raster processing</td>
+        <td>r3.stats: 3D raster statistics</td>
+    </tr>
+    <tr>
+        <td>t.</td>
+        <td>temporal data processing</td>
+        <td>t.rast.aggregate: temporal aggregation</td>
+    </tr>
+    -->
+</tbody></table>
+<small>There is more: i., t., r3., m., ps.</small>
+<br>
+<img src="img/gui_with_lidar_veg_bg.png" class="stretch">
+</section>
+
+
+<section data-years="2003 2009 2014">
+<h3>Vector network analysis</h3>
+
+<ul>
+    <li>2003: shortest path, traveling salesman, ...
+    <li>2009: centrality measures, connected components, ...
+    <li>2014: turn cost in network nodes
+</ul>
+<img src="img/network.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Cost surface calculations</h2>
+    <p>Travel cost as travel time
+    <img src="img/cost.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Viewshed</h2>
+    <p></p>
+    <img src="img/total_viewshed.png" class="stretch">
+    <p>Here applied in total viewshed computation by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Geomorphon</h2>
+    <p><em>r.geomorphon</em> - landform detection</p>
+    <img src="img/geomorphon_3d.png" class="stretch">
+    <p>by Jarek Jasiewicz and Tomek Stepinski
+</section>
+
+
+<section>
+    <h2>Parallelized solar radiation</h2>
+    <p><em>r.sun</em> - new parallelized version</p>
+    <img src="img/summer_solstice_centennial.gif" class="stretch">
+    <p>by Stanislav Zubal and Michal Lacko
+</section>
+
+
+<section data-years="2002 2016">
+<h3>Vector topology cleaning</h3>
+<ul>
+    <li>introduced in 2002
+    <li>continuous improvements
+</ul>
+<img src="img/topology_cleaning.png" class="stretch">
+</section>
+
+
+<section data-years="1992 2011">
+<!--
+    Brown and Gerdes, 1992: SG3d - supporting information
+    Brown and Astley, 1995: NVIZ
+          (It evolved from the earlier GRASS program SG3d)
+-->
+<h3>3D view</h3>
+<ul>
+    <li>visualization and analytical visualization
+</ul>
+<p class="small">
+    reviewing UAV fligh path
+</p>
+<img src="img/drone_3d.png" class="stretch">
 </section>
 
 
@@ -255,41 +393,6 @@ No increase in license fees over time.
 
 
 <section>
-    <h2>Simple Python Editor</h2>
-    <p>Create Python scripts and modules with ease</p>
-    <img src="img/pyedit.png" class="stretch">
-    <p>by Vaclav Petras
-</section>
-
-<!--
-g.region n=264149 s=99480 w=307341 e=533491 res=10 -a
-d.vect map=sc_state fill_color=0:64:68 width=1 legend_label="South Carolina"
-d.vect map=nc_state color=0:77:82 fill_color=0:174:96 width=2 legend_label="North Carolina"
-d.vect map=urbanarea color=none fill_color=39:94:70 width=1 legend_label="Urban areas"
-d.vect map=railroads color=244:246:246 width=2 legend_label="Major roads"
-d.vect map=hospitals color=167:0:33 fill_color=255:0:51 width=1 icon=basic/cross3 size=10 legend_label=Hospitals
-d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bgcolor=198:198:198 font=Lato:Regular fontsize=15 title_font=Lato:Bold title_fontsize=15
--->
-
-<section>
-    <h2>Vector legend</h2>
-    <p><em>d.legend.vect</em> - automatic and customizable legends</p>
-    <img src="img/d_legend_vect.png" class="stretch">
-    <p>by Adam Laza and GSoC mentors
-</section>
-
-
-<section>
-    <h2>Simplified batch processing</h2>
-<pre style="font-size: 94%;">grass72 /grassdata/nc_spm/work1 --exec \
-    r.viewshed input=elevation output=viewshed \
-               coordinates=642964,222890
-</pre>
-    <p>by Vaclav Petras
-</section>
-
-
-<section>
     <h2>Temporal Algebra</h2>
     <img src="img/temporal_htc.png" class="stretch">
     <p>by Thomas Leppelt and Soeren Gebbert
@@ -297,40 +400,10 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
-    <h2>Links to source code</h2>
-    Documentation now links to relevant parts of the source code.
-    <img src="img/module_author_source.png" class="stretch">
-    <p>by Luca Delucchi
-</section>
-
-
-<section>
-    <h2>Geomorphon</h2>
-    <p><em>r.geomorphon</em> - landform detection</p>
-    <img src="img/geomorphon_3d.png" class="stretch">
-    <p>by Jarek Jasiewicz and Tomek Stepinski
-</section>
-
-
-<section>
-    <h2>Parallelized solar radiation</h2>
-    <p><em>r.sun</em> - new parallelized version</p>
-    <img src="img/summer_solstice_centennial.gif" class="stretch">
-    <p>by Stanislav Zubal and Michal Lacko
-</section>
-
-
-<section>
-    <h2>Data catalog</h2>
-    <p><em>g.gui.datacatalog</em> - browse, manage, and reproject raster and vector maps</p>
-    <img src="img/data_catalog.png" class="stretch">
-    <p>by Tereza Fiedlerova and Anna Petrasova
-</section>
-
-
-<section>
-    <h2>Computational Improvements</h2>
+    <h2>Computational Features &amp; Improvements</h2>
     <ul>
+        <li>long established 64bit (since 2016 on Microsoft Windows)
+        <li>large file support <small>even on 32bit MS Windows</small>
         <li>Virtual raster mosaics <em>r.buildvrt</em> - creates virtual raster (VRT) mosaics from a list of input raster maps
         <li>Faster and higher compression <em>ZSTD</em> - an improvement over ZLIB method, providing both faster and higher compression
         <li>Segment library all-in-memory mode the segment library uses a new fast all-in-memory cache instead of a file-based cache if all data can be kept in memory
@@ -341,22 +414,15 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
 
 
 <section>
-    <h2></h2>
-    
-    <img src="img/skyview.png" class="stretch">
-    <p>by Markus Metz
-</section>
-
-
-<section>
-    <h2>Cost surface calculations</h2>
-    <p>
-    <img src="img/cost.png" class="stretch">
-</section>
-
-
-<section>
     <h2>Addons and Extensions</h2>
+</section>
+
+
+<section>
+    <h2>Skyview</h2>
+    Non-directional alternative to shaded relief
+    <img src="img/skyview.png" class="stretch">
+    <p>by Anna Petrasova
 </section>
 
 
@@ -413,6 +479,76 @@ d.legend.vect -b at=2,40 title="NC hospitals around Charlotte" symbol_size=17 bg
     <p><em>r.futures</em> - set of modules for urban growth modeling</p>
     <img src="img/futures_scenarios_incentive_table.png" class="stretch">
     <p>by NC State Center for Geospatial Analytics
+</section>
+
+
+<section>
+    <h2>Interfaces</h2>
+</section>
+
+
+<section>
+    <h2>Command Line</h2>
+    <p>The baseline interface for efficiency and reproducibility</p>
+    <img src="img/grass_cli.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Graphical User Interface</h2>
+    <p>The interface for beginners and desktop</p>
+    <img src="img/grass_gui.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Simple Python Editor</h2>
+    <p>Create Python scripts and modules with ease</p>
+    <img src="img/pyedit.png" class="stretch">
+    <p>by Vaclav Petras
+</section>
+
+
+<section>
+    <h2>Simplified batch processing</h2>
+<pre style="font-size: 94%;">grass72 /grassdata/nc_spm/work1 --exec \
+    r.viewshed input=elevation output=viewshed \
+               coordinates=642964,222890
+</pre>
+    <p>by Vaclav Petras
+</section>
+
+
+<section>
+    <h2>Links to source code</h2>
+    Documentation now links to relevant parts of the source code.
+    <img src="img/module_author_source.png" class="stretch">
+    <p>by Luca Delucchi
+</section>
+
+
+<section>
+    <h2>Data catalog</h2>
+    <p><em>g.gui.datacatalog</em> - browse, manage, and reproject raster and vector maps</p>
+    <img src="img/data_catalog.png" class="stretch">
+    <p>by Tereza Fiedlerova and Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Command line prevails: 1987</h2>
+    <img src="img/cli_movie.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Command line prevails: 2019</h2>
+    <img src="img/cli_tangible.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Conclusion</h2>
 </section>
 
 
