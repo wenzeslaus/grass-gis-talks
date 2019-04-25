@@ -103,6 +103,18 @@
   color: gray;
   margin: 0.1em;
 }
+
+.reveal .right, .reveal .textimg > img, .reveal .textimg > video, .reveal .textimg > iframe, .reveal .imgtext > p, .reveal .imgtext > ul, .reveal .imgtext > ol, .reveal .imgtext > div {
+    float: right;
+    text-align: left;
+    max-width: 47%;
+}
+
+.reveal .left, .reveal .imgtext > img, .reveal .imgtext > video, .reveal .imgtext > iframe, .reveal .textimg > p, .reveal .textimg > ul, .reveal .textimg > ol, .reveal .textimg > div {
+    float: left;
+    text-align: left;
+    max-width: 47%;
+}
 </style>
 
 
@@ -129,8 +141,22 @@
 </section>
 
 
+<section class="textimg">
+<h2>Vaclav (Vashek) Petras</h2>
+<ul>
+    <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague
+    <li>PhD in Geospatial Analytics, NC State
+    <li>Postdoctoral Researcher at NC State
+    <li>GRASS GIS Development Team Member
+    <li>GRASS GIS Project Steering Committee Member
+    <li>Open Source Geospatial Foundation Charter Member
+</ul>
+<img src="img/vp_field_work.jpg">
+</section>
+
+
 <section>
-<h2>The Beginning</h2>
+<h2>The Beginning of GRASS GIS</h2>
 <ul>
     <li>1980-1982: Ideas, predecessors and prototypes
     <li>1983: First reference manual published
@@ -159,7 +185,7 @@
 
 
 <section>
-<h2>GRASS GIS</h2>
+<h2>GRASS GIS Timeline (cont.)</h2>
 <ul>
     <li>90s a general purpose GIS <small>from a land management system</small>
     <li>1999 international team of developers + GNU GPL
@@ -223,9 +249,9 @@ No increase in license fees over time.
 
 <section>
     <h2>Return of investment</h2>
-    <h3>2002 code running in 2017?</h3>
+    <p><em>Code from 2002 running in 2019?</em></p>
     <!-- 5 pre-release -->
-    version 5.0 code works as is in 7.2:
+    version 5.0 code works as is in 7.6:
 <pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
 </pre>
 <p>
@@ -304,13 +330,13 @@ although there is a better way to write it:
 </section>
 
 
-<section data-years="2003 2009 2014">
-<h3>Vector network analysis</h3>
+<section>
+<h2>Vector network analysis</h2>
 
 <ul>
-    <li>2003: shortest path, traveling salesman, ...
-    <li>2009: centrality measures, connected components, ...
-    <li>2014: turn cost in network nodes
+    <li>shortest path, traveling salesman, ...
+    <li>centrality measures, connected components, ...
+    <li>turn cost in network nodes
 </ul>
 <img src="img/network.png" class="stretch">
 </section>
@@ -347,30 +373,14 @@ although there is a better way to write it:
 </section>
 
 
-<section data-years="2002 2016">
-<h3>Vector topology cleaning</h3>
+<section>
+<h2>Vector topology cleaning</h2>
 <ul>
     <li>introduced in 2002
     <li>continuous improvements
 </ul>
 <img src="img/topology_cleaning.png" class="stretch">
-</section>
-
-
-<section data-years="1992 2011">
-<!--
-    Brown and Gerdes, 1992: SG3d - supporting information
-    Brown and Astley, 1995: NVIZ
-          (It evolved from the earlier GRASS program SG3d)
--->
-<h3>3D view</h3>
-<ul>
-    <li>visualization and analytical visualization
-</ul>
-<p class="small">
-    reviewing UAV fligh path
-</p>
-<img src="img/drone_3d.png" class="stretch">
+<p>(actual data processed and displayed in GRASS GIS)
 </section>
 
 
@@ -394,6 +404,11 @@ although there is a better way to write it:
 
 <section>
     <h2>Temporal Algebra</h2>
+    <p>
+        <code>D = if(start_date(A) &lt; "2005-01-01", A + B)</code>
+        <br>
+        <small>Sum maps from A with maps with equal time stamps from B which are temporally before Jan 1, 2005</small>
+    </p>
     <img src="img/temporal_htc.png" class="stretch">
     <p>by Thomas Leppelt and Soeren Gebbert
 </section>
@@ -402,14 +417,14 @@ although there is a better way to write it:
 <section>
     <h2>Computational Features &amp; Improvements</h2>
     <ul>
-        <li>long established 64bit (since 2016 on Microsoft Windows)
-        <li>large file support <small>even on 32bit MS Windows</small>
-        <li>Virtual raster mosaics <em>r.buildvrt</em> - creates virtual raster (VRT) mosaics from a list of input raster maps
-        <li>Faster and higher compression <em>ZSTD</em> - an improvement over ZLIB method, providing both faster and higher compression
-        <li>Segment library all-in-memory mode the segment library uses a new fast all-in-memory cache instead of a file-based cache if all data can be kept in memory
-            faster cost path, point cloud binning, stream and flow, i.segment, v.surf.bspline
+        <li>Long established 64bit <small>(since 2016 also on Microsoft Windows)</small>
+        <li>Large file support <small>even on 32bit MS Windows</small>
+        <li>Many vector algorithms faster in version 7
+        <li>Faster and higher compression <em>ZSTD</em> for rasters
+        <li>Virtual raster mosaics <em>(&thinsp;r.buildvrt&thinsp;)</em>
+        <li>Segment library all-in-memory mode <small>(faster modules, easier module development)</small>
     </ul>
-    <img src="img/lidar_city.png" class="stretch">
+    <img src="img/piemonte_shaded_elevation.png" class="stretch">
 </section>
 
 
@@ -510,20 +525,27 @@ although there is a better way to write it:
 
 
 <section>
-    <h2>Simplified batch processing</h2>
-<pre style="font-size: 94%;">grass72 /grassdata/nc_spm/work1 --exec \
-    r.viewshed input=elevation output=viewshed \
-               coordinates=642964,222890
-</pre>
-    <p>by Vaclav Petras
-</section>
-
-
-<section>
     <h2>Links to source code</h2>
     Documentation now links to relevant parts of the source code.
     <img src="img/module_author_source.png" class="stretch">
     <p>by Luca Delucchi
+</section>
+
+
+<section>
+<!--
+    Brown and Gerdes, 1992: SG3d - supporting information
+    Brown and Astley, 1995: NVIZ
+          (It evolved from the earlier GRASS program SG3d)
+-->
+<h2>3D View</h2>
+<ul>
+    <li>visualization and analytical visualization
+</ul>
+<p class="small">
+    reviewing UAV fligh path
+</p>
+<img src="img/drone_3d.png" class="stretch">
 </section>
 
 
@@ -544,6 +566,27 @@ although there is a better way to write it:
 <section>
     <h2>Command line prevails: 2019</h2>
     <img src="img/cli_tangible.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>HPC</h2>
+    <ul>
+        <li>NC State University (henry2)
+        <li>University of Illinois Urbana-Champaign (Roger)
+        <li>&hellip;
+    </ul>
+    <img src="img/lidar_city.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Batch processing</h2>
+<pre style="font-size: 94%;">grass7 /grassdata/nc_spm/work1 --exec \
+    r.viewshed input=elevation output=viewshed \
+               coordinates=642964,222890
+</pre>
+    <p>by Vaclav Petras
 </section>
 
 
@@ -593,6 +636,253 @@ although there is a better way to write it:
         <br>
         <a href="https://www.linkedin.com/in/vaclav-petras-a24a1b114/">LinkedIn: Vaclav Petras</a>
     </p>
+</section>
+
+
+<section>
+<h2>Bonus Content</h2>
+</section>
+
+
+<section>
+<h2>Duality between GUI and commands</h2>
+<div class="left">
+    <img src="img/r_in_lidar_dialog.png" style="width: 100%;">
+</div>
+<div class="right">
+    <small>Command line (Bash):</small>
+    <br>
+    <img src="img/r_in_lidar_command_in_bash.png" style="width: 100%;">
+    <small>Python:</small>
+    <br>
+    <img src="img/r_in_lidar_command_in_python.png" style="width: 100%;">
+</div>
+<p><small>
+Examples in the documentation and class instructions are usually
+provided as commands which can be used to fill in the GUI, write Python
+code, or run them directly.
+</small></p>
+</section>
+
+
+<section>
+<h2>3rd Party Interfaces</h2>
+<ul>
+<li>QGIS Processing Plugin
+<li>QGIS GRASS Plugin
+<li>R <em>rgrass7</em> package
+</ul>
+<br>
+<img src="img/qgis_processing.png" class="stretch">
+</section>
+
+
+<section>
+<h2>3rd Party Interfaces</h2>
+<ul>
+<li>Actinia <small>&ndash; The GRASS GIS REST API</small>
+    <ul>
+        <li>Used in the OpenEO GRASS GIS driver
+    </ul>
+</ul>
+<br>
+<img src="img/actinia_logo.svg" class="stretch">
+</section>
+
+
+<section>
+<h2>3rd Party Interfaces</h2>
+<ul>
+<li>Tangible Landscape
+    <ul>
+        <li>tangible user interface to GRASS GIS and Blender
+        <li>by NC State University, Center for Geospatial Analytics
+    </ul>
+</ul>
+<p>
+<iframe data-autoplay width="700" height="350" src="https://www.youtube.com/embed/Uje8ORyhBaQ?rel=0&amp;showinfo=0&amp;loop=1&amp;playlist=Uje8ORyhBaQ" frameborder="0" allowfullscreen></iframe>
+<p><small>
+Modules running: v.surf.rst, r.contour, r.fill.dir, r.sim.water
+</small></p>
+</section>
+
+
+<section>
+    <h2>APIs</h2>
+    <ul>
+        <li>native:
+            <ul>
+                <li>C (usable in C++)
+                <li>Python
+                <li>command line (Bash, cmd, &hellip;)
+            </ul>
+        <li>3rd party:
+            <ul>
+                <li>R (<em>rgrass7</em> package)
+                <li>Ruby (<em>grassgis</em> gem)
+                <li>Java (<em>JGrasstools</em> library)
+            </ul>
+        <li>as backend:
+            <ul>
+                <li><em>QGIS Processing</em> (Python and R APIs)
+                <li><em>PyWPS, ZOO-Project</em> (OGC WPS)
+                <li><em>Actinia</em> (REST)
+                <li><em>gvSIG JGrasstools Spatial Toolbox</em> <small>under development</small>
+            </ul>
+</section>
+
+
+<section>
+<h2>GRASS GIS in the FOSS Ecosystem</h2>
+
+<dl>
+
+<dt>GRASS GIS</dt>
+<dd>
+Geospatial processing, algorithms, and workflows
+</dd>
+
+<dt>Inkscape, Gimp, ImageMagic, GMT, QGIS</dt>
+<dd>
+Graphics and refined the cartography
+</dd>
+
+<dt>PostgreSQL with PostGIS</dt>
+<dd>
+Relational database (spatial and non-spatial data storage)
+</dd>
+
+
+<dt>R, Octave, Python, Jupyter, LibreOffice</dt>
+<dd>
+Statistics, non-spatial data analysis
+</dd>
+
+
+<dt>OpenLayers, Leaflet, GeoExt, Django, Flask</dt>
+<dd>
+Web interface
+</dd>
+
+<dt>PyWPS, ZOO-Project, Actinia</dt>
+<dd>
+Processing server
+</dd>
+
+<dt>MapServer, GeoServer, QGIS Server</dt>
+<dd>
+spatial data publishing server
+</dd>
+
+</dl>
+
+<p>
+
+<!--<small>(native connection between GRASS GIS and PostGIS)</small>-->
+<!--<small>(OGC WPS, native support for GRASS GIS)</small>-->
+<!--<small>(MapServer can read directly from GRASS GIS database)</small>-->
+
+<!--
+GDAL, libLAS, PDAL
+
+<dt>Python, R, Bash, Perl, Ruby</dt>
+<dd>
+Scripting, extensions
+</dd>
+-->
+
+</section>
+
+
+<section>
+<h2>Concepts</h2>
+<ul>
+<li>locations and mapsets
+<li>data management
+<li>projections
+<li>computational region
+</ul>
+<br>
+<img src="img/hexagons_3d_white_outlier.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Spatial Database</h2>
+<img src="img/grass_data_tab.svg" class="stretch"
+     alt="Example of GRASS GIS database structure into locations (based on SRS) and further to mapsets (for organization)">
+</section>
+
+
+<section>
+<h2>Selecting Mapset</h2>
+<ul>
+<li>Selecting database, location, and mapset
+</ul>
+<br>
+<img src="img/grass_startup.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Import, export, linking</h2>
+<ul>
+    <li>Data need to be imported or linked <small>(GDAL)</small>
+    <li>Vector and raster data can be linked
+        <ul>
+            <li>r.external, r.external.out
+            <li>v.external, v.external.out
+        </ul>
+    <li>Export to various formats (or linking)
+    <li>GRASS GIS native exchange format (v.pack, r.pack, v.unpack, &hellip;)
+</ul>
+<br>
+<img src="img/piemonte_shaded_elevation.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Computational Region</h2>
+<ul>
+    <li>extent and resolution for raster computations
+</ul>
+<br>
+<img src="img/grass_computational_region.png" class="stretch">
+</section>
+
+
+<section>
+<h2>Resources</h2>
+
+<ul>
+    <li>
+        Documentation:
+        <ul>
+            <li>See <a href="https://grass.osgeo.org/grass76/manuals/graphical_index.html">full list of core modules</a>
+            <li>See <a href="https://grass.osgeo.org/grass74/manuals/addons">modules in Addons repository</a>
+        </ul>
+    <li>
+        Tutorials:
+        <ul>
+            <li>
+                <a href="https://grasswiki.osgeo.org/wiki/From_GRASS_GIS_novice_to_power_user_(workshop_at_FOSS4G_Boston_2017)">Introduction to GRASS GIS</a>
+            <li>
+                <a href="https://grasswiki.osgeo.org/wiki/Processing_lidar_and_UAV_point_clouds_in_GRASS_GIS_(workshop_at_FOSS4G_Boston_2017)">Processing lidar and UAV point clouds</a>
+            <li>
+                <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python module</a>
+            <li>
+                <a href="http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/">
+                Spatio-temporal data handling and visualization</a>
+        </ul>
+    <li>
+        Books:
+        <ul>
+            <li>Open Source GIS: A GRASS GIS Approach
+            <li>Tangible Modeling with Open Source GIS
+            <li>GIS-based Analysis of Coastal Lidar Time-Series
+            <li>Open Source Approaches to Spatial Data Handling
+        </ul>
+</ul>
 </section>
 
 
