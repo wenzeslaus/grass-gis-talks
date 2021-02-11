@@ -130,9 +130,30 @@
         <div class="reveal">
             <div class="slides">
 
+<!--
+GRASS GIS is an all-in-one tool for geospatial analysis and remote sensing made by users for users.
+GRASS GIS is open source which removes the licensing hassle and cost and puts users to the center of the story.
+This talk will highlight the new major release of GRASS GIS.
+Version 8 provides a completely new first-time user experience and streamlines how users interact with their data.
+New features include dark-themed interface support, Voronoi-based area skeletons,
+gap filling, near feature attribute statistics, image collection support,
+customizable solar radiance model, and unlimited fine-scale hydrologic simulation.
+The new version contains all features from the previous versions including Python 3 scripting,
+spatio-temporal data analysis, PostgreSQL connections, HPC cluster support, low-end hardware support, and more.
+Experimental features available for download now include buffer statistics, road centerlines,
+vector attribute update with Python syntax, coastal, stream, and dam flooding, mass-preserving interpolation,
+transect generation, longest flow path, iterative subwatershed delineation, edge detection,
+user and producer accuracies, attribute plots, valley flatness, cost-distance area connectivity,
+and Sentinel, MODIS, USGS, and GBIF data download.
+Additionally, issues, fixes, and ongoing improvements are now publicly accessible at GitHub.
+This talk presents contributions by the whole GRASS GIS user and developer community
+and highlights additions by the Center for Geospatial Analytics at North Carolina State University.
+-->
+
+
 <section>
-    <h1>GRASS GIS</h1>
-    <!--<h2>What's New</h2>-->
+    
+    <h1>New major release of GRASS&nbsp;GIS</h1>
     <p style="margin-top: 0.5em">
         <a href="http://wenzeslaus.github.io/">Vaclav (Vashek) Petras</a>
         <br>
@@ -161,6 +182,255 @@
     <li>Open Source Geospatial Foundation Charter Member
 </ul>
 <img src="img/vp_field_work.jpg">
+</section>
+
+<section>
+    <h2>Community Shares Improvements</h2>
+    <ul>
+        <li>GRASS GIS community provides software to the public
+        <li>Shares its source code
+        <li>Includes latest additions
+    </ul>
+    <br>
+    <img src="img/grass_team.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h2>Real Virtual Community</h2>
+    <ul>
+        <li>Open community of users and developers</li>
+        <li>Contributors to code, documentation, translations, &hellip;</li>
+        <li>Project Steering Committee</li>
+        <li>PSC Chair: Verónica Andreo</li>
+    </ul>
+    <br>
+    <img src="img/psc_meeting_2021.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Scientific Foundation</h2>
+    <ul>
+        <li>references to papers associated with modules
+        <li>references to related scientific papers
+    </ul>
+    <br>
+    <img src="img/module_references.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Access to Source Code</h2>
+    Documentation links to relevant parts of the source code.
+    <img src="img/module_author_source.png" class="stretch">
+    <p>by Luca Delucchi
+</section>
+
+
+
+<section>
+    <h2>Return of Investment</h2>
+    <p>
+    <em>Learn once, use forever.</em>
+    </p>
+    <ul>
+        <li>Emphasis on backwards compatibility
+        <li>No increasing license fees over time
+        <li>Employer-independent and contractor-independent
+    </ul>
+    <br>
+    <img src="img/modeler_skyview.png" class="stretch">
+<aside class="notes">
+Old commands, often work in new versions with minimal changes.
+No increase in license fees over time.
+</aside>
+</section>
+
+
+<section>
+    <h2>Return of Investment</h2>
+    <p><em>Code from 2002 running in 2019?</em></p>
+    <!-- 5 pre-release -->
+    version 5.0 code works as is in 7.6:
+<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
+</pre>
+<p>
+although there is a better way to write it:
+</p>
+<pre style="font-size: 94%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
+</pre>
+</section>
+
+
+<section>
+    <h2>All-in-one</h2>
+    <p>
+    <em>GRASS covers many fields.</em>
+    </p>
+    <ul>
+        <li>All matured tools available right away
+        <li>Download of experimental tools possible
+        <li>Hydrology, remote sensing, lidar, network analysis, &hellip;
+    </ul>
+    <br>
+    <img src="img/hexagons_3d_white_outlier.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>GRASS GIS 8.0.0</h2>
+    <ul>
+        <li>Roadmap:
+            <ul>
+                <li>7.8.5 December 2020</li>
+                <li>7.8.6 Spring 2021</li>
+                <li>8.0.0 Spring 2021
+                    <ul>
+                        <li>Presented here</li>
+                        <li>GDAL support</li>
+                        <li>PROJ support</li>
+                    </ul>
+                </li>
+                <li>8.0.1 Summer 2021</li>
+            </ul>
+        </li>
+    </ul>
+    <br>
+    <img src="img/pure_hexagons_on_surface.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Dark Theme Support</h2>
+    Interface respects system dark theme.
+    <img src="img/dark_theme_v_clip.png" class="stretch">
+    <p>by Anna Petrasova, Nicklas Larsson
+</section>
+
+
+<section>
+    <h2>First-time User Experience</h2>
+    
+    <img src="img/first-time_user_world.png" class="stretch">
+    <p>by Linda Kladivova
+</section>
+
+
+<section>
+    <h2>Data Management</h2>
+    All data manipulation centered around revamped <em>Data</em> tab.
+    <br>
+    <img src="img/data_catalog_isolines.png" class="stretch">
+    <p>by Linda Kladivova, Anna Petrasova, Vaclav Petras
+</section>
+
+<section>
+    <h2>Skeletons and Centerlines</h2>
+    <em>v.voronoi</em> tool can now create area skeletons and centerlines.
+    <img src="img/lake_skeleton_naip.png" class="stretch">
+    <p>by Markus Metz
+</section>
+
+
+<section>
+    <h2>Faster External Data Links</h2>
+    <em>r.external</em> links (opens) external raster data (GeoTiffs, &hellip;) faster.
+    <br>
+    <small>(2-5 &times; faster, or almost zero for some workflows)</small>
+    <br>
+    <img src="img/r_external_futures.png" class="stretch">
+    <p>by Markus Metz</p>
+    <p>Great for workflows when only portion of the data is processed in GRASS GIS.</p>
+</section>
+
+
+<section>
+    <h2>GitHub-centered Software Development</h2>
+    <ul>
+        <li>"Fork me on GitHub"</li>
+        <li>Filling out issues (tickets) requires only GitHub login</li>
+        <li>All issues publicly visible</li>
+    </ul>
+    <img src="img/octocat.png" class="stretch">
+</section>
+
+<section>
+    <h2>Open a issue</h2>
+    Documentation links to relevant parts of the source code.
+    <img src="img/module_author_source.png" class="stretch">
+    <p>by Luca Delucchi
+</section>
+
+
+
+<!--
+<section>
+    <h2>Code Quality</h2>
+    Documentation now links to relevant parts of the source code.
+    <img src="img/dark_theme_v_clip.png" class="stretch">
+    <p>by Nicklas Larsson
+</section>
+
+PROJ
+-->
+
+<section>
+    <h2>Support</h2>
+    
+    <ul>
+        <li>Community support
+            <ul>
+                <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a> <small>(archived since 1991)</small>
+                <li><a href="https://gis.stackexchange.com/questions/tagged/grass">GIS StackExchange</a>
+                <li>&hellip;
+            </ul>
+        <li>Commercial support
+            <ul>
+                <li><a href="https://geospatial.ncsu.edu/engage/service-center/">Center for Geospatial Analytics, NC State University</a>
+                <li><a href="https://www.northrivergeographic.com/">North River Geographic Systems, Inc.</a>
+                <li><a href="https://www.mundialis.de/open-source-gis/">mundialis</a>
+                <li>&hellip;
+            </ul>
+        <li>Hire a GRASS GIS power user or developer
+    </ul>
+    <p>
+    <small>
+    <a href="https://grass.osgeo.org/support/">grass.osgeo.org/support</a>
+    </small>
+</section>
+
+
+<section>
+    <h2>NCSU CGA Support</h2>
+    <p>research software engineering as a service</p>
+    <img src="img/FUTURES_Raleigh.png" class="stretch">
+    <p>by NC State Center for Geospatial Analytics
+</section>
+
+
+<section>
+    <h2>FUTURES</h2>
+    <p><em>r.futures</em> - set of modules for urban growth modeling</p>
+    <img src="img/FUTURES_Raleigh.png" class="stretch">
+    <p>by NC State Center for Geospatial Analytics</p>
+    <p>See poster: <em>FUTURES v2: Urban Growth Modeling at Scale</em></p>
+</section>
+
+
+<section>
+    <h2>PoPS</h2>
+    <p><em>r.pops.spread</em> - Pest or Pathogen Spread simulation</p>
+    <img src="img/pops_version_1.png" class="stretch">
+    <p>by NC State Center for Geospatial Analytics
+</section>
+
+
+<section>
+    <h2>Valley Bottom Flatness</h2>
+    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF) index </p>
+    <img src="img/r_valley_bottom_3d.png" class="stretch">
+    <p>by Helmut Kudrnovsky, Steven Pawley 
 </section>
 
 
