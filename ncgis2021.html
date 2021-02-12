@@ -168,6 +168,8 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
     </p>
     <img src="img/grass_gis.svg" class="stretch">
     <p><small>NCGIS 2021 Virtual</small></p>
+    <p>
+        <a href="https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html">wenzeslaus.github.io/grass-gis-talks</a>
 </section>
 
 
@@ -185,14 +187,18 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 </section>
 
 <section>
-    <h2>Community Shares Improvements</h2>
+    <h2>Community &amp; Shared Improvements</h2>
     <ul>
-        <li>GRASS GIS community provides software to the public
-        <li>Shares its source code
-        <li>Includes latest additions
+        <li>GRASS GIS community:
+            <ul>
+                <li>Provides software to the public.</li>
+                <li>Shares its source code.</li>
+                <li>Includes latest additions.</li>
+            </ul>
     </ul>
     <br>
     <img src="img/grass_team.jpg" class="stretch">
+    <p><em>Credit goes to the whole community, not just this talk's authors.</em></p>
 </section>
 
 
@@ -249,17 +255,21 @@ No increase in license fees over time.
 
 
 <section>
-    <h2>Return of Investment</h2>
-    <p><em>Code from 2002 running in 2019?</em></p>
-    <!-- 5 pre-release -->
-    version 5.0 code works as is in 7.6:
-<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
-</pre>
-<p>
-although there is a better way to write it:
-</p>
-<pre style="font-size: 94%;">r.mapcalc <em style="color: red;">"</em>depr<em style="color: red;">_</em>bin<em style="background-color: #FFDDDD;"> = </em>if((elev - fill) &lt; 0., 1, 0)"
-</pre>
+    <h2>Changes vs Stability</h2>
+    <ul>
+        <li>Graphical user interface changes as needed.</li>
+        <li>Python API added in v6, extended in v7.</li>
+        <li>Basic things continue to work in the same way.</li>
+    </ul>
+    <p><em>Raster algebra expression from 2002 (v5) in 2021 (v8):</em></p>
+    <p>
+    <code style="font-size: larger;">
+        <!--
+            depressions<em style="background-color: #f84040;"> </em>=<em style="background-color: #f84040;"> </em>
+        -->
+        if((elevation - fill) &lt; 0, 1, 0)
+    </code>
+    </p>
 </section>
 
 
@@ -355,13 +365,25 @@ although there is a better way to write it:
     <img src="img/octocat.png" class="stretch">
 </section>
 
+
 <section>
     <h2>Open a issue</h2>
     Documentation links to relevant parts of the source code.
-    <img src="img/module_author_source.png" class="stretch">
-    <p>by Luca Delucchi
+    <img src="img/octocat.png" class="stretch">
 </section>
 
+
+<section>
+    <h2>Tests of Proposed Changes</h2>
+    <ul>
+        <li>To propose a change, contributor opens a pull request (PR)</li>
+        <li>Continuous integration (CI) in GitHub Actions runs checks</li>
+        <li>Checks of code quality, standards, functionality before code </li>
+        <li>Manual evaluation, testing and feedback</li>
+        <li>Repeat as needed</li>
+    </ul>
+    <img src="img/octocat.png" class="stretch">
+</section>
 
 
 <!--
@@ -466,6 +488,21 @@ PROJ
             <li>Open Source Approaches to Spatial Data Handling
         </ul>
 </ul>
+</section>
+
+<section>
+    <img src="img/grass_gis.svg" alt="GRASS GIS logo" class="stretch">
+    <p>
+        Install GRASS GIS for free with this link in next 24 hours:
+        <a href="https://grass.osgeo.org/">grass.osgeo.org</a>
+    <p>
+        <a href="https://twitter.com/vaclavpetras/">Twitter: vaclavpetras</a>
+        <br>
+        <a href="https://www.linkedin.com/in/vaclav-petras-a24a1b114/">LinkedIn: Vaclav Petras</a>
+    </p>
+    <p><em>Thank you for Attending - This Session Has Ended</em></p>
+    <p>
+        <a href="https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html">wenzeslaus.github.io/grass-gis-talks</a>
 </section>
 
             </div>
