@@ -153,7 +153,7 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 <section>
     
-    <h1>New major release of GRASS&nbsp;GIS</h1>
+    <h1>New Major Release of GRASS&nbsp;GIS</h1>
     <p style="margin-top: 0.5em">
         <a href="http://wenzeslaus.github.io/">Vaclav (Vashek) Petras</a>
         <br>
@@ -216,17 +216,6 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
-    <h2>Scientific Foundation</h2>
-    <ul>
-        <li>references to papers associated with modules
-        <li>references to related scientific papers
-    </ul>
-    <br>
-    <img src="img/module_references.png" class="stretch">
-</section>
-
-
-<section>
     <h2>Access to Source Code</h2>
     Documentation links to relevant parts of the source code.
     <img src="img/module_author_source.png" class="stretch">
@@ -234,16 +223,24 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 </section>
 
 
+<section>
+    <h2>Scientific Foundation</h2>
+    <ul>
+        <li>references to related scientific papers</li>
+        <li>references to papers associated with a tool</li>
+    </ul>
+    <br>
+    <img src="img/module_references.png" class="stretch">
+</section>
+
 
 <section>
     <h2>Return of Investment</h2>
-    <p>
-    <em>Learn once, use forever.</em>
-    </p>
     <ul>
-        <li>Emphasis on backwards compatibility
-        <li>No increasing license fees over time
-        <li>Employer-independent and contractor-independent
+        <li>Emphasis on backwards compatibility</li>
+        <li>No increasing license fees over time</li>
+        <li>Employer-independent</li>
+        <li>Contractor-independent</li>
     </ul>
     <br>
     <img src="img/modeler_skyview.png" class="stretch">
@@ -254,6 +251,7 @@ No increase in license fees over time.
 </section>
 
 
+<!--
 <section>
     <h2>Changes vs Stability</h2>
     <ul>
@@ -264,24 +262,24 @@ No increase in license fees over time.
     <p><em>Raster algebra expression from 2002 (v5) in 2021 (v8):</em></p>
     <p>
     <code style="font-size: larger;">
-        <!--
-            depressions<em style="background-color: #f84040;"> </em>=<em style="background-color: #f84040;"> </em>
-        -->
+        depressions<em style="background-color: #f84040;"> </em>=<em style="background-color: #f84040;"> </em>
         if((elevation - fill) &lt; 0, 1, 0)
     </code>
     </p>
 </section>
-
+-->
 
 <section>
     <h2>All-in-one</h2>
+    <!--
     <p>
     <em>GRASS covers many fields.</em>
     </p>
+    -->
     <ul>
         <li>All matured tools available right away
         <li>Download of experimental tools possible
-        <li>Hydrology, remote sensing, lidar, network analysis, &hellip;
+        <li>Network analysis, hydrology, remote sensing, &hellip;
     </ul>
     <br>
     <img src="img/hexagons_3d_white_outlier.png" class="stretch">
@@ -298,8 +296,7 @@ No increase in license fees over time.
                 <li>8.0.0 Spring 2021
                     <ul>
                         <li>Presented here</li>
-                        <li>GDAL support</li>
-                        <li>PROJ support</li>
+                        <li>PROJ 6.0.0, 7.0.0 (and above) support</li>
                     </ul>
                 </li>
                 <li>8.0.1 Summer 2021</li>
@@ -314,21 +311,26 @@ No increase in license fees over time.
 <section>
     <h2>Dark Theme Support</h2>
     Interface respects system dark theme.
+    <br>
     <img src="img/dark_theme_v_clip.png" class="stretch">
     <p>by Anna Petrasova, Nicklas Larsson
 </section>
 
 
 <section>
-    <h2>First-time User Experience</h2>
-    
+    <h2>Improved First-time User Experience</h2>
+    Initial project sets up automatically. Guidance provided for next steps.
+    <br>
     <img src="img/first-time_user_world.png" class="stretch">
-    <p>by Linda Kladivova
+    <p>
+        by Linda Kladivova &amp;
+        rest of the community (many reviews, calls, user surveys, &hellip;)
+    </p>
 </section>
 
 
 <section>
-    <h2>Data Management</h2>
+    <h2>Centralized Data Management</h2>
     All data manipulation centered around revamped <em>Data</em> tab.
     <br>
     <img src="img/data_catalog_isolines.png" class="stretch">
@@ -347,7 +349,7 @@ No increase in license fees over time.
     <h2>Faster External Data Links</h2>
     <em>r.external</em> links (opens) external raster data (GeoTiffs, &hellip;) faster.
     <br>
-    <small>(2-5 &times; faster, or almost zero for some workflows)</small>
+    <small>(2-5&times; faster, or almost no time for some workflows)</small>
     <br>
     <img src="img/r_external_futures.png" class="stretch">
     <p>by Markus Metz</p>
@@ -359,17 +361,31 @@ No increase in license fees over time.
     <h2>GitHub-centered Software Development</h2>
     <ul>
         <li>"Fork me on GitHub"</li>
-        <li>Filling out issues (tickets) requires only GitHub login</li>
-        <li>All issues publicly visible</li>
+        <li>Filling out issues (tickets) requires only GitHub login.</li>
+        <li>All issues are publicly visible.</li>
     </ul>
     <img src="img/octocat.png" class="stretch">
 </section>
 
 
 <section>
-    <h2>Open a issue</h2>
-    Documentation links to relevant parts of the source code.
-    <img src="img/octocat.png" class="stretch">
+    <h2>Open an Issue: Feature Request</h2>
+    Open an issue to suggest a new feature.
+    <img src="img/github_issue_1144_feature.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Open an Issue: Bug Report</h2>
+    Open an issue to report that something is not working.
+    <img src="img/github_issue_1213_bug.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Propose Changes: Pull Request</h2>
+    Contribute to code or documentation by proposing a set of changes.
+    <img src="img/github_pr_1310_psmap_header.png" class="stretch">
 </section>
 
 
@@ -382,7 +398,19 @@ No increase in license fees over time.
         <li>Manual evaluation, testing and feedback</li>
         <li>Repeat as needed</li>
     </ul>
-    <img src="img/octocat.png" class="stretch">
+    <img src="img/github_pr_1310_psmap_checks.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Google Summer of Code</h2>
+    <ul>
+        <li>Stipend program by Google for students.</li>
+        <li>Students work on code with an open source project.</li>
+        <li>New rules in 2021: shorter commitment, greater eligibility.</li>
+        <li>Students: Engage with an org. or project + Apply at Google.</li>
+    </ul>
+    <img src="img/gsoc_at_osgeo.png" class="stretch">
 </section>
 
 
@@ -403,40 +431,46 @@ PROJ
     <ul>
         <li>Community support
             <ul>
-                <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a> <small>(archived since 1991)</small>
+                <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a> <small>(with vast archives since 1991)</small>
                 <li><a href="https://gis.stackexchange.com/questions/tagged/grass">GIS StackExchange</a>
                 <li>&hellip;
             </ul>
         <li>Commercial support
             <ul>
+                <li><a href="https://www.mundialis.de/en/open-source-gis/">mundialis</a>
+                <li><a href="https://www.northrivergeographic.com/">North River Geographic Systems</a>
                 <li><a href="https://geospatial.ncsu.edu/engage/service-center/">Center for Geospatial Analytics, NC State University</a>
-                <li><a href="https://www.northrivergeographic.com/">North River Geographic Systems, Inc.</a>
-                <li><a href="https://www.mundialis.de/open-source-gis/">mundialis</a>
                 <li>&hellip;
             </ul>
         <li>Hire a GRASS GIS power user or developer
     </ul>
-    <p>
-    <small>
-    <a href="https://grass.osgeo.org/support/">grass.osgeo.org/support</a>
-    </small>
 </section>
 
 
 <section>
     <h2>NCSU CGA Support</h2>
-    <p>research software engineering as a service</p>
-    <img src="img/FUTURES_Raleigh.png" class="stretch">
-    <p>by NC State Center for Geospatial Analytics
+    <ul>
+        <li>open source development and support</li>
+        <li>research software engineering as a service</li>
+        <li>consultation, skill-transfer, personalized training</li>
+        <li>support for tools created by NCSU CGA</li>
+    </ul>
+    <img src="img/ncsu_cga.png" class="stretch">
 </section>
 
 
 <section>
     <h2>FUTURES</h2>
-    <p><em>r.futures</em> - set of modules for urban growth modeling</p>
+    <p><em>r.futures</em> - set of tools for urban growth modeling</p>
     <img src="img/FUTURES_Raleigh.png" class="stretch">
     <p>by NC State Center for Geospatial Analytics</p>
-    <p>See poster: <em>FUTURES v2: Urban Growth Modeling at Scale</em></p>
+    <p>
+        See poster:
+        <br>
+        <em>FUTURES v2: Urban Growth Modeling at Scale</em>
+        <br>
+        Thursday, 5pm
+    </p>
 </section>
 
 
@@ -449,10 +483,44 @@ PROJ
 
 
 <section>
-    <h2>Valley Bottom Flatness</h2>
-    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF) index </p>
+    <h2>Tangible Landscape</h2>
+    <p>Geospatial tangible user interface</p>
+    <img src="img/cli_tangible.png" class="stretch">
+    <p>by NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <h2>Valley Bottom Flatness Index</h2>
+    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF)</p>
     <img src="img/r_valley_bottom_3d.png" class="stretch">
-    <p>by Helmut Kudrnovsky, Steven Pawley 
+    <p>by Helmut Kudrnovsky, Steven Pawley
+</section>
+
+
+<section>
+    <h2>Sentinel, MODIS, Landsat, NED, NAIP</h2>
+    <p>
+        Automated download and import of common datasets
+        <small>
+            i.sentinel, i.modis, i.landsat.download, r.in.usgs, &hellip;
+        </small>
+    </p>
+    <img src="img/usgs_ned_naip_3d.png" class="stretch">
+    <p>
+        <small>
+            by
+            Luca&nbsp;Delucchi (Fondazione Edmund Mach),
+            Martin Landa (OpenGeoLabs),
+            Anika&nbsp;Weinmann (mundialis),
+            Guido&nbsp;Riembauer (mundialis),
+            Roberta&nbsp;Fagandini (GSoC),
+            Zechariah&nbsp;Krautwurst (GSoC),
+            Anna&nbsp;Petrasova (NC&nbsp;State University),
+            Vaclav&nbsp;Petras (NC&nbsp;State University),
+            Veronica&nbsp;Andreo (CONICET, Argentina), &hellip;
+        </small>
+    </p>
 </section>
 
 
@@ -463,8 +531,8 @@ PROJ
     <li>
         Documentation:
         <ul>
-            <li>See <a href="https://grass.osgeo.org/grass78/manuals/graphical_index.html">full list of core modules</a>
-            <li>See <a href="https://grass.osgeo.org/grass78/manuals/addons">modules in Addons repository</a>
+            <li>See <a href="https://grass.osgeo.org/grass78/manuals/graphical_index.html">full list of core tools</a>
+            <li>See <a href="https://grass.osgeo.org/grass78/manuals/addons">tools in Addons repository</a>
         </ul>
     <li>
         Tutorials:
@@ -474,7 +542,7 @@ PROJ
             <li>
                 <a href="https://grasswiki.osgeo.org/wiki/Processing_lidar_and_UAV_point_clouds_in_GRASS_GIS_(workshop_at_FOSS4G_Boston_2017)">Processing lidar and UAV point clouds</a>
             <li>
-                <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python module</a>
+                <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python tool for GRASS</a>
             <li>
                 <a href="http://ncsu-geoforall-lab.github.io/grass-temporal-workshop/">
                 Spatio-temporal data handling and visualization</a>
@@ -500,9 +568,9 @@ PROJ
         <br>
         <a href="https://www.linkedin.com/in/vaclav-petras-a24a1b114/">LinkedIn: Vaclav Petras</a>
     </p>
-    <p><em>Thank you for Attending - This Session Has Ended</em></p>
     <p>
         <a href="https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html">wenzeslaus.github.io/grass-gis-talks</a>
+    <p><em>Thank you for Attending - This Session Has Ended</em></p>
 </section>
 
             </div>
