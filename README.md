@@ -4,7 +4,7 @@
 * NCGIS 2019 Winston-Salem: [GRASS GIS: What's New](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_whats_new.html)
 * NCGIS 2019 Winston-Salem: [GRASS GIS: Getting Started](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html)
 * DOI, Open GIS Group Webinar, 2019: [GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/doi2019_grass_gis.html)
-* NCGIS 2021 Virtual: [New Major Release of GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/ncgis2021_new_major_release.html)
+* NCGIS 2021 Virtual: [New Major Release of GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html)
 
 ## Authors and Contributors
 
