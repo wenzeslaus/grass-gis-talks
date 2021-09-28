@@ -1,19 +1,28 @@
 # GRASS GIS Talks
 
-* FOSS4G 2017 Boston: [Advanced geospatial technologies: The new powerful GRASS GIS 7.2 release](https://wenzeslaus.github.io/grass-gis-talks/foss4g2017.html)
-* NCGIS 2019 Winston-Salem: [GRASS GIS: What's New](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_whats_new.html)
-* NCGIS 2019 Winston-Salem: [GRASS GIS: Getting Started](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html)
-* DOI, Open GIS Group Webinar, 2019: [GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/doi2019_grass_gis.html)
+* FOSS4G 2021 Buenos Aires: [State of GRASS GIS: The Dawn of a New Era](https://wenzeslaus.github.io/grass-gis-talks/foss4g2021.html)
 * NCGIS 2021 Virtual: [New Major Release of GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html)
+* DOI, Open GIS Group Webinar, 2019: [GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/doi2019_grass_gis.html)
+* NCGIS 2019 Winston-Salem: [GRASS GIS: Getting Started](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_getting_started.html)
+* NCGIS 2019 Winston-Salem: [GRASS GIS: What's New](https://wenzeslaus.github.io/grass-gis-talks/ncgis2019_whats_new.html)
+* FOSS4G 2017 Boston: [Advanced geospatial technologies: The new powerful GRASS GIS 7.2 release](https://wenzeslaus.github.io/grass-gis-talks/foss4g2017.html)
 
 ## Authors and Contributors
 
 * Vaclav Petras, [NCSU GeoForAll Lab](http://geospatial.ncsu.edu/geoforall)
+* Veronica Andreo,
 * Markus Neteler, [mundialis](http://mundialis.de/)
 * Anna Petrasova, [NCSU GeoForAll Lab](http://geospatial.ncsu.edu/geoforall)
 * Helena Mitasova, [NCSU GeoForAll Lab](http://geospatial.ncsu.edu/geoforall)
 * Corey White, [NCSU GeoForAll Lab](http://geospatial.ncsu.edu/geoforall)
-* Doug Newcomb
+* Doug Newcomb,
+* Martin Landa,
+* Guido Riembauer,
+* Maris Nartiss,
+* Moritz Lennert,
+* Markus Metz,
+* Stefan Blumentrath,
+* Huidae Cho
 
 ## Copyright and License
 
