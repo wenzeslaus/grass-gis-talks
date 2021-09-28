@@ -131,23 +131,9 @@
             <div class="slides">
 
 <!--
-GRASS GIS is an all-in-one tool for geospatial analysis and remote sensing made by users for users.
-GRASS GIS is open source which removes the licensing hassle and cost and puts users to the center of the story.
-This talk will highlight the new major release of GRASS GIS.
-Version 8 provides a completely new first-time user experience and streamlines how users interact with their data.
-New features include dark-themed interface support, Voronoi-based area skeletons,
-gap filling, near feature attribute statistics, image collection support,
-customizable solar radiance model, and unlimited fine-scale hydrologic simulation.
-The new version contains all features from the previous versions including Python 3 scripting,
-spatio-temporal data analysis, PostgreSQL connections, HPC cluster support, low-end hardware support, and more.
-Experimental features available for download now include buffer statistics, road centerlines,
-vector attribute update with Python syntax, coastal, stream, and dam flooding, mass-preserving interpolation,
-transect generation, longest flow path, iterative subwatershed delineation, edge detection,
-user and producer accuracies, attribute plots, valley flatness, cost-distance area connectivity,
-and Sentinel, MODIS, USGS, and GBIF data download.
-Additionally, issues, fixes, and ongoing improvements are now publicly accessible at GitHub.
-This talk presents contributions by the whole GRASS GIS user and developer community
-and highlights additions by the Center for Geospatial Analytics at North Carolina State University.
+GRASS GIS is a well established, all-in-one geospatial number cruncher with Python interface, command line, and GUI. This talk will give an overview of new additions and highlight latest updates in version 7.8 and new major version 8.0. Major updates in 7.8 include Python 3 support, transition to PROJ 6+, easier batch processing, virtual raster mosaic, and improved data compression. Version 8.0 completely revamps the first-time user experience in GUI, streamlines how users interact with their data, and supports dark-themes. The development successfully runs on GitHub, several Docker images are available, and there is a growing number of Jupyter Notebooks.
+
+This talk gives an overview of the current state of the GRASS GIS project for both users and developers. The focus will be on new releases, specifically the new major version 8, and various updates including Python 3, PROJ, and GitHub transitions.
 -->
 
 
@@ -240,10 +226,11 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
         <li>Python API, C API, and libraries</li>
         <li>Interface &amp; connection with R, QGIS, WPS, &hellip;</li>
         <li>Different data types supported:
+            <a href="https://grass.osgeo.org/grass-stable/manuals/vectorintro.html">vector</a>,
             <a href="https://grass.osgeo.org/grass-stable/manuals/rasterintro.html">raster</a>
             (including <a href="https://grass.osgeo.org/grass-stable/manuals/imageryintro.html">satellite imagery</a>),
             <a href="https://grass.osgeo.org/grass-stable/manuals/raster3dintro.html">3D raster or voxel</a>,
-            <a href="https://grass.osgeo.org/grass-stable/manuals/vectorintro.html">vector</a> and,
+            and
             <a href="https://grass.osgeo.org/grass-stable/manuals/temporalintro.html">space-time datasets</a>.</li>
     </ul>
 </section>
@@ -265,10 +252,11 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
-    <h2>Innovation with stability</h2>
+    <h2>Innovation with Stability</h2>
+    Improvements bring need for changes, but breaking changes are introduced only when needed, for example:
     <ul>
         <li>Graphical user interface changes as needed.</li>
-        <li>Python API added in v6, matured in v7, additions for 8.2.</li>
+        <li>Python API added in v6 taking leading position from Bash, matured in v7, additions for 8.2.</li>
         <li>Basic things continue to work in the same way.</li>
     </ul>
     <p><em>Raster algebra expression from 2002 (v5) in 2021 (v8):</em></p>
@@ -282,11 +270,11 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
-    <h2>All-in-one</h2>
+    <h2>All-in-one Software Suite</h2>
     <ul>
-        <li>All matured tools available right away
-        <li>Download of experimental tools possible
-        <li>Network analysis, hydrology, remote sensing, &hellip;
+        <li>All matured tools available right away.
+        <li>Download of experimental tools possible.
+        <li>Network analysis, hydrology, OBIA, time series, &hellip;
     </ul>
     <br>
     <img src="img/hexagons_3d_white_outlier.png" class="stretch">
@@ -327,7 +315,7 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
-    <h1>New era</h1>
+    <h1>New Era</h1>
 </section>
 
 
@@ -340,6 +328,23 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
         by Linda Kladivova &amp;
         rest of the community (many reviews, calls, user surveys, &hellip;)
     </p>
+</section>
+
+<section>
+    <h2>No Startup Screen</h2>
+    <img src="img/grass_startup_gone.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Single-Window GUI</h2>
+    <p>
+        Code refactoring to enable Single-Window GUI with dockable widgets.
+    </p>
+    <img src="img/single_window_proposal.png" class="stretch">
+    <p>Opt-in preview coming in 8.2.</p>
+    <p>See talk <em>I hated the way GRASS started so I changed it.</em> <small>(2021-09-30, 08:00)</small></p>
+    <p>by Linda Kladivova</p>
 </section>
 
 
@@ -360,18 +365,6 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
     <p>by Anna Petrasova, Nicklas Larsson
 </section>
 
-<section>
-    <h2>Google Summer of Code 2021</h2>
-    <h3>Single-Window GUI by Linda Kladivova</h3>
-    <img src="img/gsoc/proposal3.png" class="stretch">
-    <p>
-        Code refactoring to enable Single-Window GUI with dockable widgets.
-    </p>
-    <p>Coming in 8.2</p>
-    <p>See talk <em>I hated the way GRASS started so I changed it</em> <small>(2021-09-30, 08:00)</small></p>
-    <p>by Linda Kladivova</p>
-</section>
-
 
 <section>
     <h2>GitHub-centered Software Development</h2>
@@ -390,7 +383,6 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
         <li>Python code checked against Flake8.</li>
         <li>Most of warnings in C code removed and now checked.</li>
         <li>Code tested with CodeQL.</li>
-        <li>Flake8 and Black checks also for Addons.</li>
     </ul>
     <img src="img/code_in_vscodium.png" class="stretch">
     <p>by Nicklas Larsson, Vaclav Petras, Anna Petrasova, Carmen Tawalika, ...
@@ -398,35 +390,21 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
-    <h2>Tests of Proposed Changes</h2>
-    <ul>
-        <li>To propose a change, contributor opens a pull request (PR)</li>
-        <li>Continuous integration (CI) in GitHub Actions runs checks</li>
-        <li>Checks of code quality, standards, functionality before code </li>
-        <li>Manual evaluation, testing and feedback</li>
-        <li>Repeat as needed</li>
-    </ul>
-    <img src="img/github_pr_1310_psmap_checks.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Docker containers</h2>
+    <h2>Docker Containers</h2>
     <br>
     <ul>
-        <li>Different flavours</li>
+        <li>Different flavours <small>(add or suggest more!)</small></li>
         <li>Built and updated automatically</li>
     </ul>
     <img src="img/grass_docker.png" class="stretch">
-    <p>See <a href="https://grass.osgeo.org/download/docker/">https://grass.osgeo.org/download/docker/</a></p>
 </section>
 
 
 <section>
-    <h2><a href="https://actinia.mundialis.de/"><strong>actinia</strong></a>: The GRASS GIS REST API</h2>
+    <h2>actinia</h2>
     <ul>
-        <li>"3rd party" open source
         <li>REST API</li>
+        <li>"3rd party" project, open source</li>
         <li><a href="https://github.com/mundialis/actinia_core">github.com/mundialis/actinia_core</a></li>
     </ul>
     <img src="img/actinia_logo.svg" class="stretch">
@@ -436,41 +414,41 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
-    <h2><a href="https://actinia.mundialis.de/"><strong>actinia</strong></a>: The GRASS GIS REST API</h2>
+    <h2>Improved HPC readiness</h2>
     <ul>
-        <img src="img/actinia.png" width="80px" style="float:right;pad-right:15px;">
         <li>Recipes for High Performance Computing setups</li>
+        <li>Better integration with conda environments</li>
     </ul>
-    <img src="img/ace_actinia_in_grass_session.jpg" class="stretch">
-    <small>by Vaclav Petras, Markus Neteler, &hellip;</small>
+    <small>by Vaclav Petras, Markus Neteler, Nicklas Larsson, &hellip;</small>
 </section>
 
 
 <section>
     <h2>Grassy the Hungry Cow</h2>
-    
-    <code style="font-size: larger;"><pre>
-         _____________________________
-        | I'm always hungry for more! |
-         -----------------------------
+    <pre style="font-size: 100%;">
+         -----------------------------------
+        | I'm always hungry for more GRASS! |
+         -----------------------------------
                 \   ^__^
                  \  (oo)\_______
                     (__)\       )\/\
                         ||----w |
         _\|/__\|/__\|/_ ||     ||  _\|/__\|/_
-    </pre></code>
+    </pre>
 </section>
+
 
 <section>
     <h1>More Improvements</h1>
 </section>
 
+
 <section>
-    <h2>LiDAR data import with PDAL</h2>
+    <h2>Lidar Data Import with PDAL</h2>
     <ul>
-        <li>import of any point dimension (including user defined ones e.g. from PDAL filters)</li>
-        <li>support of 19 binning methods (including eigenvalues)</li>
+        <li>binning using any point dimension <small>(including user defined ones, e.g., from PDAL filters)</small></li>
         <li>point filtering by values in any dimension</li>
+        <li>support of 19 binning methods <small>(including eigenvalues)</small></li>
     </ul>
     <img src="img/elevation.png" class="stretch">
     <p>by Vaclav Petras and Maris Nartiss</p>
@@ -506,6 +484,20 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
 
 
 <section>
+    <h2>Semantic Labels for Rasters</h2>
+    <ul>
+        <li>add a <em>semantic label</em> to any raster map <small>(e.g., <code>S2_1</code> or <code>red</code>)</small></li>
+        <li>image classification use sematic labels to identify bands</li>
+        <li>new <em>portable signature files</em> created as a result of training use it to identify bands</li>
+        <li>different scenes can then be classified if semantic labels are the same</li>
+    </ul>
+    <br>
+    <img src="img/.png" class="stretch">
+    <p>by Maris Nartiss and Martin Landa</p>
+</section>
+
+
+<section>
     <h2>Faster External Data Links</h2>
     <em>r.external</em> links (opens) external raster data (GeoTiffs, &hellip;) faster.
     <br>
@@ -516,6 +508,60 @@ and highlights additions by the Center for Geospatial Analytics at North Carolin
     <p>Great for workflows when only portion of the data is processed in GRASS GIS.</p>
 </section>
 
+
+<section>
+    <h1>More to Come in 8.2</h1>
+</section>
+
+
+<section>
+    <h2>OpenMP parallelization</h2>
+    <p>
+        r.series, r.univar, r.neighbors, r.patch, r.resamp.interp, r.resamp.filter, r.mfilter, r.slope.aspect + benchmarking library
+    </p>
+    <img src="img/openmp_graph.png" class="stretch">
+    <p>Coming in 8.2</p>
+    <p>by Aaron Saw Min Sern (Google Summer of Code 2021)</p>
+    <aside class="notes">
+        <ul>
+            <li>Parallelization of multiple, often used raster modules, with benchmarks.</li>
+            <li>Especially useful for big data processing</li>
+            <li>Can work on all platforms, providing GRASS is compiled with OpenMP</li>
+        </ul>
+    </aside>
+</section>
+
+
+<section>
+    <h2>Integration of GRASS GIS and Jupyter Notebooks</h2>
+    <p>
+        New Python library that simplifies the launch of GRASS GIS in Jupyter and the display of vector &amp; raster data.
+    </p>
+    <img src="img/jupyter_interactive.png" class="stretch">
+    <p>by Caitlin Haedrich (Google Summer of Code 2021)</p>
+    <aside class="notes">
+        <ul>
+            <li>Simpler GRASS GIS initialization</li>
+            <li>More intuitive API for rendering</li>
+            <li>Classic rendering with d.* commands, rendering with webmap and zooming, also 3D rendering</li>
+            <li>Available now as experimental, coming in 8.2 officially</li>
+        </ul>
+    </aside>
+</section>
+
+
+<section>
+    <h2>Spatial Query of Projections</h2>
+    Query CRSs spatially using user-drawn geometries.
+    <br>
+    <img src="img/g_projpicker_gui.png" class="stretch">
+    <p>by Huidae Cho, Owne Smith</p>
+</section>
+
+
+<section>
+    <h1>Much More by Broader Community</h1>
+</section>
 
 <section>
     <h2>FUTURES</h2>
