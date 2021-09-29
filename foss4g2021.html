@@ -229,10 +229,11 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
             <a href="https://grass.osgeo.org/grass-stable/manuals/vectorintro.html">vector</a>,
             <a href="https://grass.osgeo.org/grass-stable/manuals/rasterintro.html">raster</a>
             (including <a href="https://grass.osgeo.org/grass-stable/manuals/imageryintro.html">satellite imagery</a>),
-            <a href="https://grass.osgeo.org/grass-stable/manuals/raster3dintro.html">3D raster or voxel</a>,
+            <a href="https://grass.osgeo.org/grass-stable/manuals/raster3dintro.html">3D raster (voxel)</a>,
             and
-            <a href="https://grass.osgeo.org/grass-stable/manuals/temporalintro.html">space-time datasets</a>.</li>
+            <a href="https://grass.osgeo.org/grass-stable/manuals/temporalintro.html">space-time datasets (temporal data)</a>.</li>
     </ul>
+    <img src="img/modeler_skyview.png" class="stretch">
 </section>
 
 
@@ -256,15 +257,18 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
     Improvements bring need for changes, but breaking changes are introduced only when needed, for example:
     <ul>
         <li>Graphical user interface changes as needed.</li>
-        <li>Python API added in v6 taking leading position from Bash, matured in v7, additions for 8.2.</li>
-        <li>Basic things continue to work in the same way.</li>
+        <li>Python API added in v6 taking the leading position from Bash, matured in v7, additions planned for 8.2.</li>
+        <li>Basic things continue to work in the same way, for example:</li>
     </ul>
-    <p><em>Raster algebra expression from 2002 (v5) in 2021 (v8):</em></p>
+    <p><em>Raster algebra expression from 2002 (v5) works in 2021 (v8):</em></p>
     <p>
     <code style="font-size: larger;">
-        depressions<em style="background-color: #f84040;"> </em>=<em style="background-color: #f84040;"> </em>
-        if((elevation - fill) &lt; 0, 1, 0)
+        depressions<em style="background-color: #f8404090;"> </em>=<em style="background-color: #f8404090;"> </em>
+        if(elevation - fill &lt; 0, 1, 0)
     </code>
+    </p>
+    <p>
+        <em>Only the best practice on how you write spaces around an equal sign changed.</em>
     </p>
 </section>
 
@@ -321,12 +325,12 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 
 <section>
     <h2>Improved First-time User Experience</h2>
-    Initial project sets up automatically. Guidance provided for next steps.
+    Initial project sets up automatically and suggestions for next steps are provided.
     <br>
     <img src="img/first-time_user_world.png" class="stretch">
     <p>
         by Linda Kladivova &amp;
-        rest of the community (many reviews, calls, user surveys, &hellip;)
+        rest of the community (many reviews, video calls, user surveys, &hellip;)
     </p>
 </section>
 
@@ -339,11 +343,11 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 <section>
     <h2>Single-Window GUI</h2>
     <p>
-        Code refactoring to enable Single-Window GUI with dockable widgets.
+        Ongoing code refactoring to enable a single-window GUI with dockable widgets.
     </p>
     <img src="img/single_window_proposal.png" class="stretch">
     <p>Opt-in preview coming in 8.2.</p>
-    <p>See talk <em>I hated the way GRASS started so I changed it.</em> <small>(2021-09-30, 08:00)</small></p>
+    <p>See talk <em>I hated the way GRASS started so I changed it.</em> <small>2021-09-30,&nbsp;08:00</small></p>
     <p>by Linda Kladivova</p>
 </section>
 
@@ -369,15 +373,18 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 <section>
     <h2>GitHub-centered Software Development</h2>
     <ul>
-        <li>"Fork me on GitHub"</li>
-        <li>Filling out issues (tickets) requires only GitHub login.</li>
-        <li>All issues are publicly visible.</li>
+        <li>Git</li>
+        <li>PRs</li>
+        <li>Issues</li>
+        <li>GitHub Actions</li>
     </ul>
+    <br>
     <img src="img/octocat.png" class="stretch">
 </section>
 
+
 <section>
-    <h2>Improved and robust code quality checks</h2>
+    <h2>Improved and Robust Code Quality Checks</h2>
     <ul>
         <li>Python code formatted by Black.</li>
         <li>Python code checked against Flake8.</li>
@@ -404,7 +411,7 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
     <h2>actinia</h2>
     <ul>
         <li>REST API</li>
-        <li>"3rd party" project, open source</li>
+        <li>3rd party project, open source</li>
         <li><a href="https://github.com/mundialis/actinia_core">github.com/mundialis/actinia_core</a></li>
     </ul>
     <img src="img/actinia_logo.svg" class="stretch">
@@ -414,11 +421,12 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 
 
 <section>
-    <h2>Improved HPC readiness</h2>
+    <h2>Improved HPC Readiness</h2>
     <ul>
-        <li>Recipes for High Performance Computing setups</li>
+        <li><a href="https://github.com/ncsu-geoforall-lab/grass-gis-on-hpc-henry2">Recipes for High Performance Computing setups</a></li>
         <li>Better integration with conda environments</li>
     </ul>
+    <img src="img/skyview.png" class="stretch">
     <small>by Vaclav Petras, Markus Neteler, Nicklas Larsson, &hellip;</small>
 </section>
 
@@ -435,6 +443,9 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
                         ||----w |
         _\|/__\|/__\|/_ ||     ||  _\|/__\|/_
     </pre>
+    <p>
+        <small>Thanks to <em>cowsay</em>.</small>
+    </p>
 </section>
 
 
@@ -492,7 +503,7 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
         <li>different scenes can then be classified if semantic labels are the same</li>
     </ul>
     <br>
-    <img src="img/.png" class="stretch">
+    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
     <p>by Maris Nartiss and Martin Landa</p>
 </section>
 
@@ -503,7 +514,7 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
     <br>
     <small>(2-5&times; faster, or almost no time for some workflows)</small>
     <br>
-    <img src="img/r_external_futures.png" class="stretch">
+    <img src="img/r_external_us.png" class="stretch">
     <p>by Markus Metz</p>
     <p>Great for workflows when only portion of the data is processed in GRASS GIS.</p>
 </section>
@@ -520,7 +531,6 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
         r.series, r.univar, r.neighbors, r.patch, r.resamp.interp, r.resamp.filter, r.mfilter, r.slope.aspect + benchmarking library
     </p>
     <img src="img/openmp_graph.png" class="stretch">
-    <p>Coming in 8.2</p>
     <p>by Aaron Saw Min Sern (Google Summer of Code 2021)</p>
     <aside class="notes">
         <ul>
@@ -533,7 +543,7 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 
 
 <section>
-    <h2>Integration of GRASS GIS and Jupyter Notebooks</h2>
+    <h2>Integration with Jupyter Notebooks</h2>
     <p>
         New Python library that simplifies the launch of GRASS GIS in Jupyter and the display of vector &amp; raster data.
     </p>
@@ -552,16 +562,100 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 
 <section>
     <h2>Spatial Query of Projections</h2>
-    Query CRSs spatially using user-drawn geometries.
+    Select a CRS spatially on a map.
     <br>
-    <img src="img/g_projpicker_gui.png" class="stretch">
-    <p>by Huidae Cho, Owen Smith</p>
+    <img src="img/proj_picker.png" class="stretch">
+    <p>by Huidae Cho and Owen Smith</p>
 </section>
 
 
 <section>
     <h1>Much More by Broader Community</h1>
 </section>
+
+
+<section>
+    <h2>Valley Bottom Flatness Index</h2>
+    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF)</p>
+    <img src="img/r_valley_bottom_3d.png" class="stretch">
+    <p>by Helmut Kudrnovsky, Steven Pawley
+</section>
+
+
+<section>
+    <h2>Hydrologic Parameters Using a Flow Direction Raster</h2>
+    <em>r.accumulate</em> - weighted flow accumulation, subwatersheds, stream networks, and longest flow paths using a flow direction
+    <br>
+    <img src="img/subwatersheds.png" class="stretch">
+    <p>
+        <small>
+            See
+            <em>Physically-Based Hydrologic Modeling Using GRASS GIS</em>
+            <small>
+                (FOSS4G 2021 workshop,
+                <a href="https://github.com/HuidaeCho/foss4g-2021-r.topmodel-workshop">material</a>)
+            </small>
+        </small>
+    </p>
+    <p>by Huidae Cho</p>
+</section>
+
+
+<section>
+    <h2>Weighted layers for dasymetric mapping</h2>
+    <p><em>r.area.createweight</em> - Weighting layer for dasymetric mapping using a random forest regression model.</p>
+    <img src="img/r_area_createweight.png" class="stretch">
+    <p>
+        See talk <em>A tool for machine learning based dasymetric mapping approaches in GRASS GIS</em>. <small>(2021-09-30,&nbsp;08:00)</small>
+    </p>
+    <p>by Charlotte Flasse, Tais Grippa, Safa Fennia</p>
+</section>
+
+
+<section>
+    <h2>Sentinel, THREDDS, &hellip;, netCDF</h2>
+    <p>
+        Automated download and import of common datasets
+        <small>
+            i.sentinel, i.modis, i.landsat, r.in.usgs, r.in.nasadem, m.crawl.thredds, t.rast.import.netcdf, &hellip;
+        </small>
+    </p>
+    <img src="img/usgs_ned_naip_3d.png" class="stretch">
+    <p>
+        <small>
+            See talks
+            <em>Sentinel processing in GRASS GIS: A growing toolset for downloading, preprocessing and multitemporal analysis of Copernicus Sentinel data</em> <small>(2021-10-01,&nbsp;08:00)</small>
+            and
+            <em>Cold war reconnaissance imagery reloaded: orthorectifying the 1960s in high resolution</em> <small>(2021-09-29,&nbsp;11:00)</small>
+        </small>
+    </p>
+    <p>
+        <small>
+            by
+            Fondazione Edmund Mach,
+            OpenGeoLabs,
+            mundialis
+            GSoC,
+            NC&nbsp;State University,
+            CONICET,
+            Norwegian Institute for Nature Research,
+            <!--
+            Luca&nbsp;Delucchi (Fondazione Edmund Mach),
+            Martin Landa (OpenGeoLabs),
+            Anika&nbsp;Weinmann (mundialis),
+            Guido&nbsp;Riembauer (mundialis),
+            Roberta&nbsp;Fagandini (GSoC),
+            Zechariah&nbsp;Krautwurst (GSoC),
+            Anna&nbsp;Petrasova (NC&nbsp;State University),
+            Vaclav&nbsp;Petras (NC&nbsp;State University),
+            Veronica&nbsp;Andreo (CONICET),
+            Stefan&nbsp;Blumentrath (Norwegian Institute for Nature Research - NINA)
+            -->
+            &hellip;
+        </small>
+    </p>
+</section>
+
 
 <section>
     <h2>FUTURES</h2>
@@ -588,40 +682,6 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 
 
 <section>
-    <h2>Valley Bottom Flatness Index</h2>
-    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF)</p>
-    <img src="img/r_valley_bottom_3d.png" class="stretch">
-    <p>by Helmut Kudrnovsky, Steven Pawley
-</section>
-
-
-<section>
-    <h2>Sentinel, MODIS, Landsat, NED, NAIP</h2>
-    <p>
-        Automated download and import of common datasets
-        <small>
-            i.sentinel, i.modis, i.landsat, r.in.usgs, r.in.nasadem, &hellip;
-        </small>
-    </p>
-    <img src="img/usgs_ned_naip_3d.png" class="stretch">
-    <p>
-        <small>
-            by
-            Luca&nbsp;Delucchi (Fondazione Edmund Mach),
-            Martin Landa (OpenGeoLabs),
-            Anika&nbsp;Weinmann (mundialis),
-            Guido&nbsp;Riembauer (mundialis),
-            Roberta&nbsp;Fagandini (GSoC),
-            Zechariah&nbsp;Krautwurst (GSoC),
-            Anna&nbsp;Petrasova (NC&nbsp;State University),
-            Vaclav&nbsp;Petras (NC&nbsp;State University),
-            Veronica&nbsp;Andreo (CONICET), &hellip;
-        </small>
-    </p>
-</section>
-
-
-<section>
 <h2>Resources</h2>
 
 <ul>
@@ -636,7 +696,7 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
         Tutorials <small>(my three favorites)</small>:
         <ul>
             <li>
-                <a href="https://github.com/petrasovaa/grass-gis-workshop-FOSS4G-2021">Introduction to GRASS GIS with Jupyter</a>
+                <a href="https://github.com/petrasovaa/grass-gis-workshop-FOSS4G-2021">From Beginner to Power User <small>with Jupyter (FOSS4G 2021)</small></a>
             <li>
                 <a href="https://grasswiki.osgeo.org/wiki/Processing_lidar_and_UAV_point_clouds_in_GRASS_GIS_(workshop_at_FOSS4G_Boston_2017)">Processing lidar and UAV point clouds</a>
             <li>
@@ -661,13 +721,17 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 
 <section>
     <h2>Code contributions</h2>
-    <br>
-    <h3>GRASS GIS development is GitHub-centered: core, addons, website</h3>
+    <p>
+        GRASS GIS development is GitHub-centered:
+        <br>
+        core, addons, website
+    </p>
     <ul>
-        <li>Create your own addon, see this workshop for a guideline:
-            <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python tool for GRASS</a>
+        <li>
+            To create your own tools, see this tutorial for a guideline:
+            <em><a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python GRASS addon</a></em>.
         </li>
-        <li>Community Sprint</li>
+        <li>To get involved, join a community sprint.</li>
     </ul>
     <img src="img/octocat.png" class="stretch">
 </section>
@@ -675,10 +739,10 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 <section>
     <h2>Other contributions are relevant too!</h2>
     <ul>
-        <li>Translation: we use <a href="https://www.transifex.com/grass-gis/">Transifex</a></li>
-        <li>Documentation: start by fixing typos in manual pages, add examples where missing, create cool screenshots, write tutorials in the <a href="https://grasswiki.osgeo.org/wiki/GRASS-Wiki">wiki</a>, etc.</li>
-        <li>Contribute material for our social media
-        <li>Write a blog post for our website</li>
+        <li>Translation: Use <a href="https://www.transifex.com/grass-gis/">Transifex.</a></li>
+        <li>Documentation: Fix typos in manual pages, add examples, write <a href="https://grasswiki.osgeo.org/wiki/GRASS-Wiki">wiki</a> tutorials, &hellip;</li>
+        <li>Post material to GRASS social media.
+        <li>Write a blog post for GRASS website.</li>
         <li>Bring your own ideas!</li>
     </ul>
     <img src="https://grass.osgeo.org/images/news/grass_sprint2018_bonn_fotowall_medium.jpg" class="stretch">
@@ -688,23 +752,26 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
 <section>
     <h2>Sponsoring</h2>
     <ul>
-        <li>Money donations are very important for GRASS GIS development. They allow us to:</li>
+        <li>Money and employee time donations are very important for GRASS GIS development. You can:</li>
         <ul>
-            <li>organize focus coding sessions &amp; community sprints</li>
-            <li>finance infrastucture needs (web site, etc)</li>
-            <li>pay developers to implement new features and fix specific bugs</li>
+            <li>organize or finance community sprints</li>
+            <li>contribute to infrastucture needs <small>(e.g., website)</small></li>
+            <li>pay developers <small>to implement new features and fix specific bugs</small></li>
         </ul>
-        <li><a href="https://opencollective.com/grass">https://opencollective.com/grass</a></p></li>
+        <li>New: <a href="https://opencollective.com/grass">opencollective.com/grass</a></p></li>
     </ul>
-    <img src="https://grass.osgeo.org/images/other/Grass_osgeo_codesprint_2018.jpg">
-    <img src="img/opencollective_page.png" width="40%" style="float:right">
+    <img src="img/osgeo_codesprint_2018.jpg" class="stretch">
 </section>
 
 
 <section>
     <h2>Community Sprint</h2>
-    <p>Meet the GRASS team at the <a href="https://wiki.osgeo.org/wiki/FOSS4G_2021/Community_sprint">FOSS4G 2021 Community Sprint</a>!</p>
-    <img src="img/grass_gis.svg" class="stretch">
+    <p>
+        Meet the GRASS team at the <a href="https://wiki.osgeo.org/wiki/FOSS4G_2021/Community_sprint">FOSS4G 2021 Community Sprint</a>!
+        <br>
+        Saturday, October 2nd, 2021
+    </p>
+    <img src="img/bonn_osgeo_code_sprint_2018.jpg" class="stretch">
 </section>
 
 
@@ -713,12 +780,12 @@ This talk gives an overview of the current state of the GRASS GIS project for bo
     <p>
         <a href="https://grass.osgeo.org/">grass.osgeo.org</a>
     <p>
-        <a href="https://twitter.com/vaclavpetras/">Twitter: vaclavpetras</a>
+        <a href="https://twitter.com/vaclavpetras/"><small>Twitter:</small> vaclavpetras</a>
         <br>
-        <a href="https://www.linkedin.com/in/vaclav-petras-a24a1b114/">LinkedIn: Vaclav Petras</a>
+        <a href="https://www.linkedin.com/in/vaclav-petras-a24a1b114/"><small>LinkedIn:</small> Vaclav Petras</a>
     </p>
     <p>
-        <a href="https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html">wenzeslaus.github.io/grass-gis-talks</a>
+        <a href="https://wenzeslaus.github.io/grass-gis-talks/foss4g2021.html">wenzeslaus.github.io/grass-gis-talks</a>
 </section>
 
             </div>
