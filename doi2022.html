@@ -198,12 +198,15 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
     <h2>General Features</h2>
     <ul>
         <li>Open-source and directly user-driven development</li>
-        <li>Processing tools: <b>400+</b> <a href="https://grass.osgeo.org/grass80/manuals/full_index.html">in core</a>, <b>400+</b> <a href="https://grass.osgeo.org/grass78/manuals/addons/">addons</a></li>
+        <li>
+            Processing tools:
+            <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/full_index.html">in core</a>,
+            <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/addons/">addons</a></li>
         <li>Interfaces: graphical, command line, Python, C</li>
         <li>3rd party interfaces: actinia (REST API), R, QGIS, OGC WPS</li>
         <li>Innovation with Stability &amp; All-in-one Software Suite
     </ul>
-    <img src="img/hexagons_python_editor.png" class="stretch">
+    <img src="img/gui_pink_viewshed.png" class="stretch">
 </section>
 
 <section>
@@ -309,29 +312,80 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>Single-Window GUI</h2>
     <p>
-        One window with movable panels.
+        One window with optimized layout.
     </p>
     <img src="img/single_window_8.2_dark.png" class="stretch">
-    <p>Opt-in preview in 8.2.</p>
+    <p>Opt-in preview in 8.2: <em>Settings &gt; Preferences &gt; General</em></p>
     <p>by Linda Kladivova</p>
 </section>
 
 
 <section>
     <h2>Integration with Jupyter Notebooks</h2>
-    <p>
-        Python library simplifies launch of GRASS GIS in notebooks and display of data.
-    </p>
-    <img src="img/jupyter_interactive.png" class="stretch">
+    <ul>
+        <li>Notebooks: Mix of text, code, results, images, &hellip;</li>
+        <li>Usage: Prototyping, reproducibility, tutorials, &hellip;</li>
+        <li>Now in GRASS GIS: Python functions for easy integration</li>
+    </ul>
+    <img src="img/jupyter_text_images_3d.png" class="stretch">
     <p>by Caitlin Haedrich</p>
     <aside class="notes">
         <ul>
+            <li>Python library simplifies launch of GRASS GIS in notebooks and display of data.</li>
             <li>Simpler GRASS GIS initialization</li>
             <li>More intuitive API for rendering</li>
-            <li>Classic rendering with d.* commands, rendering with webmap and zooming, also 3D rendering</li>
+            <li>Classic rendering with d.* commands, , also 3D rendering</li>
             <li>Available now as experimental, coming in 8.2 officially</li>
         </ul>
     </aside>
+</section>
+
+
+<section>
+    <h2>Integration with Jupyter Notebooks</h2>
+    <p>
+        Web map with base maps, zooming, customizations, &hellip;
+    </p>
+    <img src="img/jupyter_interactive_viewshed.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Integration with Jupyter Notebooks</h2>
+    <p>
+        Time-series visualization
+    </p>
+    <img src="img/jupyter_timeseries_viewshed.gif" class="stretch">
+</section>
+
+
+<section>
+    <h2>Integration with Jupyter Notebooks</h2>
+    <p>
+        3D visualization
+    </p>
+    <img src="img/jupyter_3d_viewshed.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Semantic Labels for Rasters</h2>
+    <ul>
+        <li>
+            attach a labels to raster maps
+            <small>(e.g., <code>S2_1</code> or <code>red</code>)</small>
+            <ul>
+                <li>image classification can use sematic labels to identify bands</li>
+                <li>different scenes can then be classified if semantic labels are the same</li>
+            </ul>
+        </li>
+        <li>
+            organize bands within one spatio-temporal dataset
+        </li>
+    </ul>
+    <br>
+    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
+    <p>by Maris Nartiss, Martin Landa, Markus Metz</p>
 </section>
 
 
@@ -360,27 +414,13 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h2>Semantic Labels for Rasters</h2>
-    <ul>
-        <li>add a <em>semantic label</em> to any raster map <small>(e.g., <code>S2_1</code> or <code>red</code>)</small></li>
-        <li>image classification use sematic labels to identify bands</li>
-        <li>new <em>portable signature files</em> created as a result of training use it to identify bands</li>
-        <li>different scenes can then be classified if semantic labels are the same</li>
-    </ul>
-    <br>
-    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
-    <p>by Maris Nartiss, Martin Landa, Markus Metz</p>
-</section>
-
-
-<section>
     <h1>Speed</h1>
 </section>
 
 <section>
     <h2>Multi-threading with OpenMP</h2>
     <p>
-        Output cell value is a function of the corresponding cells in the inputs.
+        More tasks done in parallel in the same tool
     </p>
     <ul>
         <li><code>nprocs</code> specifies number of cores (processes, threads)</li>
@@ -437,7 +477,7 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
     <p>
         <img src="img/r_slope_aspect.png">
     </p>
-    <img src="img/openmp_r_slope.aspect.png" class="stretch">
+    <img src="img/openmp_r_slope_aspect.png" class="stretch">
     <p>by Aaron Saw Min Sern in 8.2</p>
 </section>
 
@@ -478,7 +518,7 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
             Parallelizing custom Python scripts:
             <ul>
                 <li>GridModule <small>(by tile)</small></li>
-                <li>ModuleQueue <small>(by task)</small></li>
+                <li>multiprocessing, ParallelModuleQueue <small>(by task)</small></li>
             </ul>
         </li>
     </ul>
@@ -488,13 +528,19 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 <section>
     <h2>Faster External Data Links</h2>
-    <em>r.external</em> links (opens) external raster data (GeoTiffs, &hellip;) faster.
-    <br>
-    <small>(2-5&times; faster or almost no time for some workflows)</small>
-    <br>
+    <ul>
+        <li>
+            <em>r.external</em> can link (open) external raster data faster.
+            <ul>
+                <li>2-5&times; faster computation of min &amp; max</li>
+                <li>almost no time if min &amp; max in metadata
+                <li>almost no time if min &amp; max are not needed later</li>
+            </ul>
+        </li>
+        <li>Great for workflows when only portion of the data is processed in GRASS GIS.</li>
+    </ul>
     <img src="img/r_external_us.png" class="stretch">
     <p>by Markus Metz</p>
-    <p>Great for workflows when only portion of the data is processed in GRASS GIS.</p>
 </section>
 
 
@@ -556,7 +602,7 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
     <ul>
         <li>binning using any point dimension <small>(including user defined ones, e.g., from PDAL filters)</small></li>
         <li>point filtering by values in any dimension</li>
-        <li>support of 19 binning methods <small>(including eigenvalues)</small></li>
+        <li>support of 19 binning methods</li>
         <li>Linux and and macOS only. Help needed for Windows!</li>
     </ul>
     <img src="img/elevation.png" class="stretch">
@@ -600,7 +646,18 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h1>Much More by Broader Community</h1>
+    <h2>Addons Repository</h2>
+    <ul>
+        <li>Community-maintained addons <small>(aka extensions, plugins)</small></li>
+        <li>A repository with the source code, not just a registry</li>
+        <li>Separate from the main repository, but only one repository</li>
+        <li>Best of both worlds:</li>
+        <ul>
+            <li>Broader community of contributors, <small>including one-time contributors</small></li>
+            <li>Single repository maintained by the core community</li>
+        </ul>
+    </ul>
+    <img src="img/grass_team.jpg" class="stretch">
 </section>
 
 
@@ -635,7 +692,21 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h2>Sentinel, THREDDS, &hellip;, netCDF</h2>
+    <h2>Hydrologic Parameters Using a Flow Direction Raster</h2>
+    <em>r.accumulate</em> - weighted flow accumulation, subwatersheds, stream networks, and longest flow paths using a flow direction
+    <br>
+    <img src="img/r_viewshed_exposure.png" class="stretch">
+    <p>
+        <small>
+            See also: <a href="https://workshop.isnew.info/foss4g-2021-r.topmodel/"><em>Physically-based hydrologic modeling using GRASS GIS r.topmodel</em></a>
+        </small>
+    </p>
+    <p>by Huidae Cho</p>
+</section>
+
+
+<section>
+    <h2>Sentinel, THREDDS, &hellip;, netCDF, CSV</h2>
     <p>
         Automated download and import of common datasets
         <small>
@@ -726,36 +797,6 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h2>Code contributions</h2>
-    <p>
-        GRASS GIS development is GitHub-centered:
-        <br>
-        core, addons, website
-    </p>
-    <ul>
-        <li>
-            To create your own tools, see this tutorial for a guideline:
-            <em><a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python GRASS addon</a></em>.
-        </li>
-        <li>To get involved, join a community sprint.</li>
-    </ul>
-    <img src="img/octocat.png" class="stretch">
-</section>
-
-<section>
-    <h2>Other contributions are relevant too!</h2>
-    <ul>
-        <li>Translation: Use <a href="https://www.transifex.com/grass-gis/">Transifex.</a></li>
-        <li>Documentation: Fix typos in manual pages, add examples, write <a href="https://grasswiki.osgeo.org/wiki/GRASS-Wiki">wiki</a> tutorials, &hellip;</li>
-        <li>Post material to GRASS social media.
-        <li>Write a blog post for GRASS website.</li>
-        <li>Bring your own ideas!</li>
-    </ul>
-    <img src="img/bonn_osgeo_code_sprint_2018_fotowall.jpg" class="stretch">
-</section>
-
-
-<section>
     <h2>Support</h2>
     <ul>
         <li>Community support
@@ -795,21 +836,12 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h2>Community Sprint</h2>
-    <p>
-        Meet the GRASS team at the <a href="https://wiki.osgeo.org/wiki/FOSS4G_2021/Community_sprint">FOSS4G 2021 Community Sprint</a>!
-        <br>
-        Saturday, October 2nd, 2021
-    </p>
-    <img src="img/bonn_osgeo_code_sprint_2018.jpg" class="stretch">
-</section>
-
-
-<section>
     <img src="img/grass_gis.svg" alt="GRASS GIS logo" class="stretch">
     <p>
         <a href="https://grass.osgeo.org/">grass.osgeo.org</a>
     <p>
+        vpetras&#64;ncsu&#46;edu
+        <br>
         <a href="https://twitter.com/vaclavpetras/"><small>Twitter:</small> vaclavpetras</a>
         <br>
         <a href="https://www.linkedin.com/in/vaclav-petras-a24a1b114/"><small>LinkedIn:</small> Vaclav Petras</a>
