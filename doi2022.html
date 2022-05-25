@@ -213,20 +213,22 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
     <h2>Long-term Benefits</h2>
     <ul>
         <li>
-            To individual users:
+            Individuals:
             <ul>
-                <li>Emphasis on backwards compatibility</li>
+                <li>Emphasis on backwards compatibility.</li>
+                <ul>
+                    <li>Old commands, often work in new versions with minimal changes.</li>
+                </ul>
+                <li>Employer-independent.</li>
                 <li><em>Learn once, use forever.</em></li>
-                <li>Old commands, often work in new versions with minimal changes.</li>
-                <li>Employer-independent</li>
             </ul>
         </li>
         <li>
-            To organizations:
+            Organizations:
             <ul>
-                <li>No increasing license fees over time for usage</li>
-                <li>Provider-independent, contractor-independent</li>
-                <li>financial investments go to a public pool</li>
+                <li>No usage license fees.</li>
+                <li>Provider-independent, contractor-independent.</li>
+                <li>Financial investments go to a public pool.</li>
             </ul>
         </li>
     </ul>
@@ -246,15 +248,11 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
             <small>New startup, data management.</small>
         </li>
         <li>
-            8.0.1, Feb 24, 2022
+            8.0.2, May 12, 2022
             <small>Stability and fixes.</small>
         </li>
         <li>
-            8.0.2 Release Candidate 1, Apr 28, 2022
-            <small>Stability and fixes.</small>
-        </li>
-        <li>
-            8.2.0 Release Candidate 1, Apr 28, 2022
+            8.2.0 Release Candidate 2, May 24, 2022
             <small>Available for testing.</small>
         </li>
         <li>
@@ -414,15 +412,13 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h1>Speed</h1>
+    <h1>Speed Improvements</h1>
 </section>
 
 <section>
     <h2>Multi-threading with OpenMP</h2>
-    <p>
-        More tasks done in parallel in the same tool
-    </p>
     <ul>
+        <li>More tasks done in parallel in the same tool</li>
         <li><code>nprocs</code> specifies number of cores (processes, threads)</li>
         <li><code>memory</code> specifies RAM in MB</li>
         <li><em>Performance</em> section in documentation describes the behavior</li>
@@ -433,10 +429,10 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>r.series (OpenMP parallel)</h2>
     <p>
-        Output cell value is a function of the corresponding cells in the inputs.
+        Cell value is a function of the corresponding cells in the inputs.
     </p>
     <p>
-        <img src="img/r_series_average_explanation.png">
+        <img src="img/r_series_average_explanation.png" style="height: 7ex">
     </p>
     <img src="img/openmp_r_series.png" class="stretch">
     <p>by Aaron Saw Min Sern in 8.2</p>
@@ -446,10 +442,10 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>r.neighbors (OpenMP parallel)</h2>
     <p>
-        Output cell value is a function of the cells around it.
+        Cell value is a function of the cells around it.
     </p>
     <p>
-        <img src="img/r_neighbors_explanation.png">
+        <img src="img/r_neighbors_explanation.png" style="height: 7ex">
     </p>
     <img src="img/openmp_r_neighbors.png" class="stretch">
     <p>by Aaron Saw Min Sern in 8.2</p>
@@ -459,10 +455,10 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>r.mfilter (OpenMP parallel)</h2>
     <p>
-        Output cell value is a function of the cells around it.
+        Cell value is a function of the cells around it.
     </p>
     <p>
-        <img src="img/r_mfilter_explanation.png">
+        <img src="img/r_mfilter_explanation.png" style="height: 7ex">
     </p>
     <img src="img/openmp_r_mfilter.png" class="stretch">
     <p>by Aaron Saw Min Sern in 8.2</p>
@@ -472,10 +468,10 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>r.slope.aspect (OpenMP parallel)</h2>
     <p>
-        Slope, aspect, curvatures and partial derivatives of an elevation raster.
+        Slope, aspect, and other derivatives of an elevation raster.
     </p>
     <p>
-        <img src="img/r_slope_aspect.png">
+        <img src="img/r_slope_aspect.png" style="height: 7ex">
     </p>
     <img src="img/openmp_r_slope_aspect.png" class="stretch">
     <p>by Aaron Saw Min Sern in 8.2</p>
@@ -488,7 +484,7 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
         Mosaic multiple rasters into one.
     </p>
     <p>
-        <img src="https://grass.osgeo.org/grass82/manuals/r_patch.png">
+        <img src="img/r_patch_explanation.png" style="height: 7ex">
     </p>
     <img src="img/openmp_r_patch.png" class="stretch">
     <p>by Aaron Saw Min Sern in 8.2</p>
@@ -600,9 +596,8 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>Lidar Data Import with PDAL</h2>
     <ul>
-        <li>binning using any point dimension <small>(including user defined ones, e.g., from PDAL filters)</small></li>
-        <li>point filtering by values in any dimension</li>
-        <li>support of 19 binning methods</li>
+        <li>Binning &amp; filtering using any point dimension <small>(including user defined ones, e.g., from PDAL filters)</small></li>
+        <li>Support for 19 binning methods</li>
         <li>Linux and and macOS only. Help needed for Windows!</li>
     </ul>
     <img src="img/elevation.png" class="stretch">
@@ -662,29 +657,16 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h2>Valley Bottom Flatness Index</h2>
-    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF)</p>
-    <img src="img/r_valley_bottom_3d.png" class="stretch">
-    <p>by Helmut Kudrnovsky, Steven Pawley
-</section>
-
-
-<section>
-    <h2>Hydrologic Parameters Using a Flow Direction Raster</h2>
-    <em>r.accumulate</em> - weighted flow accumulation, subwatersheds, stream networks, and longest flow paths using a flow direction
+    <h2>Visual Exposure to a Defined Source</h2>
+    <em>r.viewshed.exposure</em> - Weighted cumulative viewshed analysis defining visual exposure to a source
     <br>
-    <img src="img/subwatersheds.png" class="stretch">
-    <p>
-        <small>
-            See also: <a href="https://workshop.isnew.info/foss4g-2021-r.topmodel/"><em>Physically-based hydrologic modeling using GRASS GIS r.topmodel</em></a>
-        </small>
-    </p>
-    <p>by Huidae Cho</p>
+    <img src="img/r_viewshed_exposure.png" class="stretch">
+    <p>by Zofie Cimburova and Stefan Blumentrath</p>
 </section>
 
 
 <section>
-    <h2>Weighted layers for dasymetric mapping</h2>
+    <h2>Weighted Layers for Dasymetric Mapping</h2>
     <p><em>r.area.createweight</em> - Weighting layer for dasymetric mapping using a random forest regression model.</p>
     <img src="img/r_area_createweight.png" class="stretch">
     <p>by Charlotte Flasse, Tais Grippa, Safa Fennia</p>
@@ -693,15 +675,26 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 <section>
     <h2>Hydrologic Parameters Using a Flow Direction Raster</h2>
-    <em>r.accumulate</em> - weighted flow accumulation, subwatersheds, stream networks, and longest flow paths using a flow direction
+    <em>r.accumulate</em> - Weighted flow accumulation, subwatersheds, stream networks, and longest flow paths using a flow direction
     <br>
-    <img src="img/r_viewshed_exposure.png" class="stretch">
+    <img src="img/subwatersheds.png" class="stretch">
     <p>
         <small>
+            <a href="https://doi.org/10.1016/j.envsoft.2020.104774">Cho (2020): A recursive algorithm for calculating the longest flow path and its iterative implementation</a>
+            <small>(faster and better than competition)</small>
+            <br>
             See also: <a href="https://workshop.isnew.info/foss4g-2021-r.topmodel/"><em>Physically-based hydrologic modeling using GRASS GIS r.topmodel</em></a>
         </small>
     </p>
     <p>by Huidae Cho</p>
+</section>
+
+
+<section>
+    <h2>Valley Bottom Flatness Index</h2>
+    <p><em>r.valley.bottom</em> - Multi-resolution Valley Bottom Flatness (MrVBF)</p>
+    <img src="img/r_valley_bottom_3d.png" class="stretch">
+    <p>by Helmut Kudrnovsky, Steven Pawley
 </section>
 
 
@@ -759,11 +752,6 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 
 
 <section>
-    <h1>Get involved!</h1>
-</section>
-
-
-<section>
 <h2>Resources</h2>
 
 <ul>
@@ -813,7 +801,6 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
             <li><a href="https://geospatial.ncsu.edu/engage/service-center/">Center for Geospatial Analytics, NC State University</a>
             <li>&hellip;
         </ul>
-        <small><em>Write to grass-dev or contact me privately if your name is not here!</em></small>
     </ul>
     <br>
     <img src="img/grass_gis.svg" alt="GRASS GIS logo" class="stretch">
@@ -823,13 +810,21 @@ Add-ons now include tools for import of Sentinel, MODIS, USGS TNM, and more. The
 <section>
     <h2>Sponsoring</h2>
     <ul>
-        <li>Money and employee time donations are very important for GRASS GIS development. You can:</li>
-        <ul>
-            <li>organize or finance community sprints</li>
-            <li>contribute to infrastucture needs <small>(e.g., website)</small></li>
-            <li>pay developers <small>to implement new features and fix specific bugs</small></li>
-        </ul>
-        <li>New: <a href="https://opencollective.com/grass">opencollective.com/grass</a></p></li>
+        <li>Individuals:
+            <ul>
+                <li>Time: organize virtual community event, fix typos, &hellip;</li>
+                <li>
+                    Money: <a href="https://opencollective.com/grass">opencollective.com/grass</a>
+                    <small>(new!)</small>
+                </li>
+            </ul>
+        </li>
+        <li>Organizations:
+            <ul>
+                <li>Time: employee time</li>
+                <li>Money: pay developers (companies) <small>to add features or fix bugs</small></li>
+            </ul>
+        </li>
     </ul>
     <img src="img/osgeo_codesprint_2018.jpg" class="stretch">
 </section>
