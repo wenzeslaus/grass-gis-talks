@@ -1,5 +1,6 @@
 # GRASS GIS Talks
 
+* NCGIS 2023 Winston-Salem: [Tips and Tricks for GRASS GIS 8.2](https://wenzeslaus.github.io/grass-gis-talks/ncgis2023.html)
 * DOI Open Source Geospatial Committee Meeting, 2022: [Convenience and speed with GRASS GIS 8.0 and 8.2](https://wenzeslaus.github.io/grass-gis-talks/doi2022.html)
 * FOSS4G 2021 Buenos Aires: [State of GRASS GIS: The Dawn of a New Era](https://wenzeslaus.github.io/grass-gis-talks/foss4g2021.html)
 * NCGIS 2021 Virtual: [New Major Release of GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/ncgis2021.html)
