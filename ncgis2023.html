@@ -164,7 +164,7 @@ Limited number of lifetime licenses will be given out to the audience during the
 <section class="textimg">
 <h2>Vaclav (Vashek) Petras</h2>
 <ul>
-    <li>Geospatial Research Software Engineer at NC State
+    <li>Geospatial Research Software Engineer at NC State Center for Geospatial Analytics
     <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague, Czechia
     <li>PhD in Geospatial Analytics, NC State
     <li>GRASS GIS: Development Team, Project Steering Committee
@@ -175,24 +175,7 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
-    <h2>Explore Both Addons and Core Tools</h2>
-    <ul>
-        <li>
-            Processing tools:
-            <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/full_index.html">in core</a>,
-            <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/addons/">addons</a>
-        </li>
-        <li>Content in each is directly driven by users</li>
-        <ul>
-            <li>All-in-one software suite</li>
-        </ul>
-    </ul>
-    <img src="img/gui_pink_viewshed.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Pick Your Version</h2>
+    <h2>Pick Your Version of GRASS GIS</h2>
     <ul>
         <li>
             7.8.8 Legacy, Spring 2023
@@ -223,6 +206,38 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
+    <h2>Explore Both Addons and Core Tools</h2>
+    <ul>
+        <li>
+            Processing tools:
+            <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/full_index.html">in core</a>,
+            <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/addons/">addons</a>
+        </li>
+        <li>Content in each is directly driven by users</li>
+        <ul>
+            <li> &RightArrow; All-in-one software suite</li>
+        </ul>
+    </ul>
+    <img src="img/gui_orange_viewsheds_buffer.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Use Data Management Panel</h2>
+    &hellip; and explore other panels.
+    <br>
+    <img src="img/gui_data_pane_blue_isochrones.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Switch to Single-Window Interface in 8.2</h2>
+    <p><em>Settings &gt; Preferences &gt; General &gt; Use single-window mode</em></p>
+    <img src="img/single_window_8.2_dark.png" class="stretch">
+</section>
+
+
+<section>
     <h2>Forget the Startup Screen</h2>
     <img src="img/grass_startup_gone.png" class="stretch">
 </section>
@@ -230,27 +245,9 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 <section>
     <h2>Follow Startup Tips</h2>
-    Initial project sets up automatically and suggestions for next steps are provided.
+    Initial project sets up automatically, but read the provided suggestions for next steps.
     <br>
-    <img src="img/first-time_user_world.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Use Data Management</h2>
-    All data manipulation centered around revamped <em>Data</em> tab.
-    <br>
-    <img src="img/data_catalog_isolines.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Single-Window GUI</h2>
-    <p>
-        Make use of of various panels
-    </p>
-    <img src="img/single_window_8.2_dark.png" class="stretch">
-    <p>Opt-in preview in 8.2: <em>Settings &gt; Preferences &gt; General</em></p>
+    <img src="img/gui_first_time.png" class="stretch">
 </section>
 
 
@@ -260,9 +257,6 @@ Limited number of lifetime licenses will be given out to the audience during the
         Time-series visualization
     </p>
     <img src="img/jupyter_timeseries_viewshed.gif" class="stretch">
-    <p>
-        <a href="https://tinyurl.com/grass-rc2">tinyurl.com/grass-rc2</a>
-    </p>
 </section>
 
 
@@ -275,6 +269,9 @@ Limited number of lifetime licenses will be given out to the audience during the
         <li>Now in GRASS GIS: Python functions for easy integration</li>
     </ul>
     <img src="img/jupyter_text_images_3d.png" class="stretch">
+    <p>
+        <a href="https://tinyurl.com/grass-jupyter-8-2">tinyurl.com/grass-jupyter-8-2</a>
+    </p>
 </section>
 
 
@@ -303,6 +300,19 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
+    <h2>Check Command Line Interface</h2>
+    <ul>
+        <li>Underlying command is available at the bottom of the dialog.
+    </ul>
+    <br>
+    <img src="img/r_neighbors_dialog.png" class="stretch">
+    <p><small>
+        Standard dialog (form) for the r.neighbors module
+    </small></p>
+</section>
+
+
+<section>
     <h2>Attach a Semantic Labels to rasters</h2>
     <ul>
         <li>
@@ -323,11 +333,11 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
-    <h2>See the tool parameters for parallel support</h2>
+    <h2>See the Tool's Performance Parameters</h2>
     <ul>
-        <li>More tasks done in parallel in the same tool</li>
         <li><code>nprocs</code> specifies number of cores (processes, threads)</li>
         <li><code>memory</code> specifies RAM in MB</li>
+        <li>You can always run more multiple tools in parallel yourself</li>
     </ul>
     <!-- around 30 tools -->
     <img src="img/openmp_r_series_section.png" class="stretch">
@@ -337,26 +347,25 @@ Limited number of lifetime licenses will be given out to the audience during the
 <section>
     <h2>Check Tool Performance Documentation</h2>
     <p>
-        r.neighbors: Cell value is a function of the cells around it.  (parallel)
-        <em>Performance</em> section in documentation describes the behavior
-    </p>
-    
-    <p>
-        <img src="img/r_neighbors_explanation.png" style="height: 7ex">
+        <em>Performance</em> section in documentation describes the tool's behavior.
     </p>
     <img src="img/openmp_r_neighbors.png" class="stretch">
 </section>
 
 
 <section>
-    <h2>Links Data Instead of Importing</h2>
+    <h2>Link Data Instead of Importing</h2>
     <ul>
         <li>
             <em>r.external</em> can link (open) external raster data faster.
             <ul>
-                <li>2-5&times; faster computation of min &amp; max</li>
-                <li>almost no time if min &amp; max in metadata
-                <li>almost no time if min &amp; max are not needed later</li>
+                <li>almost no time if min &amp; max in metadata or not needed later</li>
+            </ul>
+        </li>
+        <li>
+            <em>v.external</em> can link (open) external raster data faster.
+            <ul>
+                <li>directly connects to PostGIS and understands its topology</li>
             </ul>
         </li>
         <li>Great for workflows when only portion of the data is processed in GRASS GIS.</li>
@@ -369,73 +378,25 @@ Limited number of lifetime licenses will be given out to the audience during the
     <h2>Don't Limit Yourself to Desktop</h2>
     <ul>
         <li>small VM, Raspberry Pi, old laptop</li>
-        <li><a href="https://github.com/ncsu-geoforall-lab/grass-gis-on-hpc-henry2">Recipes for High Performance Computing setups</a></li>
+        <li>Docker</li>
         <li>HPC Clusters</li>
-        <li>Reduced potential for race conditions</li>
-        <li>Easier to create parallel workflows</li>
-    </ul>
-    <img src="img/skyview.png" class="stretch">
-    <small>by Vaclav Petras, Markus Neteler, Nicklas Larsson, &hellip;</small>
-</section>
-
-
-<section>
-    <h2>Docker Containers</h2>
-    <br>
-    <ul>
-        <li>Different flavours</li>
-        <li>Built and updated automatically</li>
-        <li>For all branches and tags</li>
-    </ul>
-    <img src="img/grass_docker.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>actinia</h2>
-    <ul>
-        <li>REST API</li>
-        <li>open source</li>
-        <li><a href="https://github.com/mundialis/actinia_core">github.com/mundialis/actinia_core</a></li>
+        <li>actinia</li>
+        <li>OpenPlains</li>
     </ul>
     <img src="img/actinia_logo.svg" class="stretch">
 </section>
 
 
 <section>
-    <h2>Check for format- and dataset-specific imports</h2>
+    <h2>Check for dataset-specific imports</h2>
     <p>
         GDAL can do a lot, but
         <small>
             i.sentinel, i.modis, i.landsat, r.in.usgs, r.in.nasadem, m.crawl.thredds, t.rast.import.netcdf, &hellip;
         </small>
+        make things much more convenient.
     </p>
     <img src="img/usgs_ned_naip_3d.png" class="stretch">
-    <p>
-        <small>
-            by
-            Fondazione Edmund Mach,
-            OpenGeoLabs,
-            mundialis
-            GSoC,
-            NC&nbsp;State University,
-            CONICET,
-            Norwegian Institute for Nature Research,
-            <!--
-            Luca&nbsp;Delucchi (Fondazione Edmund Mach),
-            Martin Landa (OpenGeoLabs),
-            Anika&nbsp;Weinmann (mundialis),
-            Guido&nbsp;Riembauer (mundialis),
-            Roberta&nbsp;Fagandini (GSoC),
-            Zechariah&nbsp;Krautwurst (GSoC),
-            Anna&nbsp;Petrasova (NC&nbsp;State University),
-            Vaclav&nbsp;Petras (NC&nbsp;State University),
-            Veronica&nbsp;Andreo (CONICET),
-            Stefan&nbsp;Blumentrath (Norwegian Institute for Nature Research - NINA)
-            -->
-            &hellip;
-        </small>
-    </p>
 </section>
 
 
@@ -448,7 +409,6 @@ Limited number of lifetime licenses will be given out to the audience during the
                 <li><a href="https://lists.osgeo.org/mailman/listinfo/grass-user">user mailing list</a> <small>(with archive since 1991)</small></li>
                 <li><a href="https://gis.stackexchange.com/questions/tagged/grass">GIS StackExchange</a></li>
                 <li><a href="https://github.com/OSGeo/grass/discussions">GitHub Discussions</a></li>
-                <li><a href="https://github.com/OSGeo/grass/issues/new/choose">GitHub Issues</a></li>
             </ul>
         <li>Commercial support
         <ul>
@@ -468,13 +428,11 @@ Limited number of lifetime licenses will be given out to the audience during the
     <ul>
         <li>Individuals:
             <ul>
-                <li>Time: organize virtual community event, fix typos, &hellip;</li>
+                <li>Time: organize a [virtual] community event, check grammar</li>
                 <li>
                     Money: <a href="https://opencollective.com/grass">opencollective.com/grass</a>
-                    <small>(new!)</small>
                     <ul>
-                        <li>Single-Window Interfaces</li>
-                        <li>Time Series Interactive Visualization for Notebooks</li>
+                        <li>Single-Window Interface, Visualizations for Notebooks</li>
                     </ul>
                 </li>
             </ul>
@@ -482,10 +440,13 @@ Limited number of lifetime licenses will be given out to the audience during the
         <li>Organizations:
             <ul>
                 <li>Time: employee time</li>
-                <li>Money: pay developers (companies) <small>to add features or fix bugs</small></li>
-                                <li>Provider-independent, contractor-independent.</li>
-                <li>Financial investments go to a public pool.</li>
-                <li>Financial investments go to a public pool.</li>
+                <li>
+                    Money: pay developers/companies
+                    <ul>
+                        <li>Provider-independent, contractor-independent</li>
+                        <li>Financial investments go to a public pool</li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>
