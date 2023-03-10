@@ -161,16 +161,16 @@ Limited number of lifetime licenses will be given out to the audience during the
 </section>
 
 
-<section class="textimg">
+<section>
 <h2>Vaclav (Vashek) Petras</h2>
 <ul>
-    <li>Geospatial Research Software Engineer at NC State Center for Geospatial Analytics
-    <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague, Czechia
-    <li>PhD in Geospatial Analytics, NC State
+    <li>Geospatial Research Software Engineer at NC State's Center for Geospatial Analytics
+    <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague, Czechia,
+        PhD in Geospatial Analytics, NC State
     <li>GRASS GIS: Development Team, Project Steering Committee
     <li>OSGeo: Charter Member
 </ul>
-<img src="img/cli_tangible.png">
+<img src="img/cli_tangible.png" class="stretch">
 </section>
 
 
@@ -179,19 +179,16 @@ Limited number of lifetime licenses will be given out to the audience during the
     <ul>
         <li>
             7.8.8 Legacy, Spring 2023
-            <small>Mainatned legacy version</small>
+            <small>Maintained legacy version</small>
         </li>
         <li>
             8.2.1 Current, January 2023
             <small>Current version</small>
         </li>
         <li>
-            8.3.0 Current, Spring 2023
-            <small>Upcomming current version</small>
-        </li>
-        <li>
-            8.4.0 Preview, Daily
+            8.3.0 Preview, Daily
             <small>Latest reviewed functional code</small>
+            <!--<small>Upcoming version, Spring 2023</small>-->
         </li>
     </ul>
     <p><small>
@@ -206,17 +203,19 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
-    <h2>Explore Both Addons and Core Tools</h2>
+    <h2>Explore Both Core and Addons Tools</h2>
     <ul>
         <li>
             Processing tools:
             <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/full_index.html">in core</a>,
             <b>400+</b> <a href="https://grass.osgeo.org/grass82/manuals/addons/">addons</a>
         </li>
+        <!--
         <li>Content in each is directly driven by users</li>
         <ul>
             <li> &RightArrow; All-in-one software suite</li>
         </ul>
+        -->
     </ul>
     <img src="img/gui_orange_viewsheds_buffer.png" class="stretch">
 </section>
@@ -248,6 +247,19 @@ Limited number of lifetime licenses will be given out to the audience during the
     Initial project sets up automatically, but read the provided suggestions for next steps.
     <br>
     <img src="img/gui_first_time.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Use Mapsets to Organize Data</h2>
+    <p>
+        Use mapsets as subprojects to group related data.
+        <ul>
+            <li>Only data in the current mapset can be modified.</li>
+            <li>Data from other mapsets are accessible for reading.</li>
+        </ul>
+    </p>
+    <img src="img/mapsets_with_green_landscape.png" class="stretch">
 </section>
 
 
@@ -294,47 +306,85 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
-    <h2>Check Command Line Interface</h2>
+    <h2>Check out the Command Line Interface</h2>
     <p>
         Underlying command is available at the bottom of the dialog.
     </p>
-    <img src="img/r_neighbors_dialog.png" class="stretch">
+    <img src="img/copy_command.png" class="stretch">
 </section>
 
 
 <section>
-    <h2>Attach a Semantic Labels to Rasters</h2>
+    <h2>Use Smaller Region Extent for Tests</h2>
     <ul>
-        <li>
-            organize bands within one spatio-temporal dataset
+        <li>Use smaller extent for computation region when testing.</li>
+        <li>Switch to the full extent when you tested your workflow.</li>
+        <li>Keep the resolution the same.</li>
+    </ul>
+    <img src="img/region_small_and_large.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Align Your Grids</h2>
+    <ul>
+        <li>Align computation region grid to:
             <ul>
-                <li>example labels: <code>S2_1</code> or <code>red</code></li>
-                <li>image classification can use sematic labels to identify bands</li>
-                <li>different scenes can then be classified if semantic labels are the same</li>
+                <li>raster with <em>Adjust cells to clearly align with...</em></li>
+                <li>multiples of given resolution value with <em>Align to resolution</em></li>
             </ul>
         </li>
     </ul>
+    <img src="img/region_align_blue_red.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Attach Semantic Labels to Rasters</h2>
+    <ul>
+        <li>
+            image classification can use sematic labels to identify bands
+            <ul>
+                <li>different scenes can then be classified if semantic labels are the same</li>
+            </ul>
+        </li>
+        <li>
+            organize bands within one spatio-temporal dataset
+            <ul>
+                <li>each band can be referred to separately</li>
+            </ul>
+        </li>
+        <li>example labels: <code>red</code>, <code>blue</code>, <code>S2_1</code></li>
+    </ul>
     <br>
-    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
+    <img src="img/i_superpixels_slic_ndvi_detail.png" class="stretch">
 </section>
 
 
 <section>
     <h2>See the Tool's Performance Parameters</h2>
     <ul>
-        <li><code>nprocs</code> specifies number of cores (processes, threads)</li>
-        <li><code>memory</code> specifies RAM in MB</li>
-        <li>You can always run more multiple tools in parallel yourself</li>
+        <li><code>nprocs</code> specifies number of cores (processes, threads).</li>
+        <li><code>memory</code> specifies RAM in MB.</li>
+        <li>You can always run more multiple tools in the background.</li>
     </ul>
     <!-- around 30 tools -->
-    <img src="img/openmp_r_series_section.png" class="stretch">
+    <img src="img/tiling_2x2.png" class="stretch">
 </section>
 
 
 <section>
-    <h2>Check Tool Performance Documentation</h2>
+    <h2>Read the Performance Documentation</h2>
     <p>
-        <em>Performance</em> section in documentation describes the tool's behavior.
+        The <em>Performance</em> section in tool's documentation describes its
+    </p>
+    <ul>
+        <li>memory consumption</li>
+        <li>parallel efficiency</li>
+        <li>disk usage</li>
+    </ul>
+    <p>
+        in relation to different combinations of parameters.
     </p>
     <img src="img/openmp_r_neighbors.png" class="stretch">
 </section>
@@ -375,9 +425,9 @@ Limited number of lifetime licenses will be given out to the audience during the
 
 
 <section>
-    <h2>Check for dataset-specific imports</h2>
+    <h2>Check for Dataset-Specific Imports</h2>
     <p>
-        GDAL can do a lot, but
+        GDAL can do a lot just by itself, but
         <small>
             i.sentinel, i.modis, i.landsat, r.in.usgs, r.in.nasadem, m.crawl.thredds, t.rast.import.netcdf, &hellip;
         </small>
@@ -406,34 +456,39 @@ Limited number of lifetime licenses will be given out to the audience during the
         </ul>
     </ul>
     <br>
-    <img src="img/grass_gis.svg" alt="GRASS GIS logo" class="stretch">
+    <img src="img/grass_team.jpg" alt="GRASS GIS logo" class="stretch">
 </section>
 
 
 <section>
-    <h2>Get Things Done</h2>
+    <h2>Get Things Done (Individuals)</h2>
     <ul>
-        <li>Individuals:
+        <li>Time: organize a [virtual] community event, check grammar</li>
+        <li>
+            Money: <a href="https://opencollective.com/grass">opencollective.com/grass</a>
             <ul>
-                <li>Time: organize a [virtual] community event, check grammar</li>
-                <li>
-                    Money: <a href="https://opencollective.com/grass">opencollective.com/grass</a>
-                    <ul>
-                        <li>Single-Window Interface, Visualizations for Notebooks</li>
-                    </ul>
-                </li>
+                <li>Single-Window Interface, Visualizations for Notebooks</li>
             </ul>
         </li>
-        <li>Organizations:
+    </ul>
+    <img src="img/prague_isprs_sprint_cafe.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h2>Get Things Done (Organizations)</h2>
+    <ul>
+        <li>Time: employee time</li>
+        <li>
+            Money: pay developers/companies
             <ul>
-                <li>Time: employee time</li>
                 <li>
-                    Money: pay developers/companies
+                    Provider-independent, contractor-independent
                     <ul>
-                        <li>Provider-independent, contractor-independent</li>
-                        <li>Financial investments go to a public pool</li>
+                        <li>If you don't like us, you can hire someone completely independent.</li>
                     </ul>
                 </li>
+                <li>Financial investments go to a public pool</li>
             </ul>
         </li>
     </ul>
