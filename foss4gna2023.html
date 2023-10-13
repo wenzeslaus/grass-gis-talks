@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>GRASS GIS: Not What You Think</title>
+
+        <meta name="description" content="GRASS GIS is a general geospatial processing tool. The latest version comes with a single-window layout and streamlined data management addressing user feedback. GRASS’ code was recently revitalized by code quality improvements, a perfect gift for its 40th birthday!">
+        <meta name="author" content="Vaclav Petras">
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="css/theme/osgeo.css" id="theme">
+        <link rel="stylesheet" href="css/nouislider.min.css" id="slide">
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+        <!-- For chalkboard plugin -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+<!--        <link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">-->
+<style>
+/* miriam-libre-regular - latin */
+@font-face {
+  font-family: 'Miriam Libre';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Miriam Libre'), local('MiriamLibre-Regular'),
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.svg#MiriamLibre') format('svg'); /* Legacy iOS */
+}
+
+/* miriam-libre-700 - latin */
+@font-face {
+  font-family: 'Miriam Libre';
+  font-style: normal;
+  font-weight: 700;
+  src: url('lib/font/miriam-libre/miriam-libre-v1-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Miriam Libre Bold'), local('MiriamLibre-Bold'),
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.svg#MiriamLibre') format('svg'); /* Legacy iOS */
+}
+
+
+/* sintony-regular - latin */
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lib/font/sintony/sintony-v4-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Sintony'),
+       url('lib/font/sintony/sintony-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/sintony/sintony-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/sintony/sintony-v4-latin-regular.svg#Sintony') format('svg'); /* Legacy iOS */
+}
+
+/* sintony-700 - latin */
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 700;
+  src: url('lib/font/sintony/sintony-v4-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Sintony Bold'), local('Sintony-Bold'),
+       url('lib/font/sintony/sintony-v4-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/sintony/sintony-v4-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/sintony/sintony-v4-latin-700.svg#Sintony') format('svg'); /* Legacy iOS */
+}
+
+.reveal li > ul {
+    font-size: 85%;
+    line-height: 110%;
+  }
+
+.reveal small {
+  display: inline-block;
+  font-size: smaller;
+  line-height: 1.2em;
+  vertical-align: baseline;
+  margin: 0.1em; }
+
+.reveal small * {
+  vertical-align: baseline; }
+
+.reveal .credit {
+  font-size: small;
+  color: gray;
+  margin: 0.1em;
+}
+
+.reveal .right, .reveal .textimg > img, .reveal .textimg > video, .reveal .textimg > iframe, .reveal .imgtext > p, .reveal .imgtext > ul, .reveal .imgtext > ol, .reveal .imgtext > div {
+    float: right;
+    text-align: left;
+    max-width: 47%;
+}
+
+.reveal .left, .reveal .imgtext > img, .reveal .imgtext > video, .reveal .imgtext > iframe, .reveal .textimg > p, .reveal .textimg > ul, .reveal .textimg > ol, .reveal .textimg > div {
+    float: left;
+    text-align: left;
+    max-width: 47%;
+}
+</style>
+
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<!--
+This talk gives an overview of the current state of the GRASS GIS project for both users and developers. It will cover topics relevant for integrating GRASS GIS into existing workflows and projects and for contributing to this community-driven open-source project. Reflecting on the 40th birthday, the talk will try to address some common misconceptions about the project such as “it is command-line only”, “it is only a desktop GIS,” and “it’s been around for long, so it must be well-funded.”
+
+First, the talk will cover improvements to the graphical user interface (GUI). Warranted or not, many potential users perceive GRASS GIS as difficult to use; the new versions (8.0, 8.2, 8.3) are changing many parts of the GUI to address this problem and make it easier for first-time users to adopt GRASS GIS. The GUI is now switching to a single-window layout as this new layout matured and became the number one choice of even advanced users. This adds to an already established easier startup without a need for a welcome screen and streamlined data management in the GUI.
+
+The talk will also cover a series of improvements called for by industry and academic users including simplified session management and streamlined command line interface. This will transition into the various ways of how GRASS GIS can be used for geospatial data processing in Python, R, QGIS, command line, and in the cloud.
+
+Relevant to quality assurance, the code quality of C and C++ code improved significantly in the last year. The code compiles with more strict compiler settings than ever with the Clang compiler and we are heading towards pedantic compliance with the GCC compiler. Similarly, Python code improved significantly in the past few years and more improvements are underway and will be covered in the talk.
+
+New funding options - now available through OpenCollective - will be presented in the talk in the hope of sparking a discussion during the conference about meeting our funding goals.
+
+This talk will also report on GRASS GIS Community Meeting 2023 in Prague where the participants celebrated the 40th birthday of GRASS GIS by contributing more code.
+
+While this talk is presented by a single speaker, the project is a combined work by many organizations and individuals. GRASS GIS is an OSGeo Project, currently developed on GitHub with oversight from the Project Steering Committee elected by the project contributor community at large.
+-->
+
+
+<section>
+    <h1>GRASS GIS: Not What You Think</h1>
+    <p style="margin-top: 0.5em">
+        <a href="http://wenzeslaus.github.io/" style="font-weight: bold">
+            Vaclav (Vashek) Petras
+        </a>
+    </p>
+    <p class="title-foot">
+        <a href="http://geospatial.ncsu.edu/geoforall/" title="NCSU GeoForAll Lab">NCSU GeoForAll Lab</a>
+        at the
+        <a href="http://geospatial.ncsu.edu/" title="NCSU Center for Geospatial Analytics">Center for Geospatial Analytics</a>
+        <br>
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">NC State University</a>
+    </p>
+    <img src="img/grass_gis.svg" class="stretch">
+    <p><small>FOSS4G NA, Baltimore, October 23-25, 2023</small></p>
+    <p>
+        <a href="https://wenzeslaus.github.io/grass-gis-talks/ncgis2023.html">wenzeslaus.github.io/grass-gis-talks</a>
+</section>
+
+
+<section>
+<h2>Vaclav (Vashek) Petras</h2>
+<ul>
+    <li>Research Software Engineer at NC State's Center for Geospatial Analytics
+    <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague,
+        PhD in Geospatial Analytics, NC State
+    <li>GRASS GIS: Development Team, Project Steering Committee
+</ul>
+<img src="img/cli_tangible.png" class="stretch">
+</section>
+
+<section>
+    <h2>Community</h2>
+    Big thanks to the whole community!
+    <br>
+    <img src="img/community_prague_2023.jpg" class="stretch">
+    <img src="img/github_contributors_2023-10-09.png" style="width: 70%">
+</section>
+
+<section>
+    <h2>GRASS GIS is command-line only, no?</h2>
+    <img src="img/grass_cli.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>GRASS GIS is only a desktop GIS, no?</h2>
+    <img src="img/gui_data_pane_blue_isochrones.png" class="stretch">
+</section>
+
+<section>
+    <h1>About the Graphical User Interface</h1>
+</section>
+
+
+<section>
+    <h2>Multiple windows to start with&hellip;in the past</h2>
+    <img src="img/grass_gis_v7.2.1.png" class="stretch">
+</section>
+
+<section>
+    <h2>Now single-windows interface is the default</h2>
+    <img src="img/gui_orange_viewsheds_buffer.png" class="stretch">
+</section>
+
+<section>
+    <h2>Startup screen was a stumbling block for many first-time users</h2>
+    <img src="img/grass_startup.png" class="stretch">
+</section>
+
+<section>
+    <h2>Desktop GRASS GIS starts with a project loaded</h2>
+    <img src="img/gui_orange_viewsheds_buffer.png" class="stretch">
+</section>
+
+<section>
+    <h2>Streamlined data management</h2>
+    <img src="img/mapsets_with_green_landscape.png" class="stretch">
+</section>
+
+<section>
+    <h2><em>Location</em> is Becoming a <em>Project</em></h2>
+    <ul>
+        <li>
+            <code>/home/joanna/grassdata</code> (database directory, path)
+            <ul>
+                <li>
+                    <code>maryland</code> (location &rightarrow; project)
+                    <ul>
+                        <li><code>new_highway</code> (mapset, sub-project)
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
+
+<section>
+    <h2>Happy 40th birthday, GRASS GIS!</h2>
+    <img src="img/grassy_birthday_cake.webp" class="stretch">
+</section>
+
+
+<section>
+    <h2>Time to clear up some misconceptions related to age</h2>
+</section>
+
+
+
+<section>
+    <h2>It’s been around for long, so it must be well-funded</h2>
+</section>
+
+
+<section>
+    How people imagine a GRASS GIS developer
+    The real GRASS GIS developer
+    <br>
+    <img src="IMG_20230928_124951958.jpg" alt="Well-funded professor thinking about new algorithms and busy parent debugging some code" class="stretch">
+</section>
+
+
+<section>
+    <h2>There are no new releases, or?</h2>
+    <ul>
+        <li>
+            8.3.0 Current, June 2023
+            <small>Current version for everyday user</small>
+        </li>
+        <li>
+            8.4.0 Preview, Daily
+            <small>Latest reviewed functional code</small>
+        </li>
+        <li>
+            7.8.8 Legacy, August 2023
+            <small>Maintained legacy version for some production systems</small>
+        </li>
+    </ul>
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Minor Releases</h2>
+    Minor Releases Bring New Things T or F?
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Minor Releases</h2>
+    <ul>
+        <li>major.minor.micro
+            <ul>
+                <li>micro (x.y.z) brings fixes,</li>
+                <li>minor (x.y) brings features,</li>
+                <li>major (x) brings features and possibly backward incompatible changes</li>
+            </ul>
+        </li>
+    </ul>
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Features long requested from industry and academia now available</h2>
+</section>
+
+
+<section>
+    <h2>Managing GRASS session in Python</h2>
+
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Command line batch mode with <code>--exec</code></h2>
+
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+<section>
+    <h2>Python API for Jupyter</h2>
+    See the separate talk!
+    <p>
+    Caitlin Haedrich<br>
+    Computational Notebooks for Reproducible Geospatial Computation in Research and Education<br>
+    October 25<br>
+    2:00 – 2:30 PM<br>
+    Poe Room<br>
+    </p>
+
+    <img src="img/jupyter_timeseries_viewshed.gif" class="stretch">
+    <p>
+        <a href="https://tinyurl.com/grass-jupyter-8-2">tinyurl.com/grass-jupyter-8-2</a>
+    </p>
+</section>
+
+<section>
+    <h2>Other improvements called for by industry and academic users?</h2>
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+<section>
+    <h2>Python</h2>
+    <br>
+    <img src="img/jupyter_interactive_viewshed.png" class="stretch">
+</section>
+
+<section>
+    <h2>R</h2>
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+<section>
+    <h2>QGIS</h2>
+    GUI and Python
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+<section>
+    <h2>command line</h2>
+    shell and batch
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>in the cloud</h2>
+    CLI, Python, actinia, OpenPlains
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>C and C++ Code Quality</h2>
+    Relevant to quality assurance, the code quality of C and C++ code improved significantly in the last year. The code compiles with more strict compiler settings than ever with the Clang compiler and we are heading towards pedantic compliance with the GCC compiler.
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Python and More</h2>
+    Python code improved significantly in the past few years and more improvements are underway and will be covered in the talk.
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Open Collective</h2>
+    New funding options - now available through OpenCollective - will be presented in the talk in the hope of sparking a discussion during the conference about meeting our funding goals.
+    <br>
+    <img src="img/splash_screen.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Community Meeting 2023</h2>
+    
+    <br>
+    <img src="img/community_prague_2023_room.jpg" class="stretch">
+    <small><a href="https://grass.osgeo.org/news/2023_08_13_grass_community_meeting_prague_june_2023_report/">grass.osgeo.org/news/2023_08_13_grass_community_meeting_prague_june_2023_report</a></small>
+    <aside class="notes">This talk will also report on GRASS GIS Community Meeting 2023 in Prague where the participants celebrated the 40th birthday of GRASS GIS by contributing more code.</aside>
+</section>
+
+
+<section>
+    <h2>Join a Working Group</h2>
+    <ul>
+        <li>wiki</li>
+        <li>geoprocessing engine, documentation, &hellip;</li>
+    </ul>
+    <img src="img/community_prague_2023_laptop.jpg" class="stretch">
+</section>
+
+
+<section>
+    <img src="img/grass_license.png" alt="GRASS GIS logo" class="stretch">
+    <p>
+        <small>
+        Ask a question, get a special sticker.
+        </small>
+    </p>
+    <p>
+            <small>
+                vpetras&#64;ncsu&#46;edu,
+                <a href="https://twitter.com/vaclavpetras/">@vaclavpetras</a>, <a href="https://github.com/wenzeslaus/">@wenzeslaus</a>
+                <br>
+                <small>
+                    <a href="https://wenzeslaus.github.io/grass-gis-talks">wenzeslaus.github.io/grass-gis-talks</a>
+                </small>
+            </small>
+    </p>
+</section>
+
+
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/math/math.js"></script>
+        <script src="plugin/chalkboard/plugin.js"></script>
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                hash: true,
+                // Display controls in the bottom right corner
+                controls: true,
+
+                // Display a presentation progress bar
+                progress: true,
+
+                center: true,
+
+                // Display the page number of the current slide
+                slideNumber: false,
+
+                // Enable the slide overview mode
+                overview: true,
+
+                // Turns fragments on and off globally
+                fragments: true,
+
+                // The "normal" size of the presentation, aspect ratio will be preserved
+                // when the presentation is scaled to fit different resolutions. Can be
+                // specified using percentage units.
+                // width: 960,
+                // height: 700,
+
+                // Factor of the display size that should remain empty around the content
+                margin: 0.05,  // increase?
+
+                // Bounds for smallest/largest possible scale to apply to content
+                minScale: 0.5,
+                maxScale: 5.0,
+
+                // Push each slide change to the browser history
+                history: true,
+                // Enable keyboard shortcuts for navigation
+                keyboard: true,
+
+                // Vertical centering of slides
+                center: true,
+
+                // Enables touch navigation on devices with touch input
+                touch: true,
+
+                // Loop the presentation
+                loop: false,
+                // Flags if the presentation is running in an embedded mode,
+                // i.e. contained within a limited portion of the screen
+                embedded: false,
+
+                // Number of milliseconds between automatically proceeding to the
+                // next slide, disabled when set to 0, this value can be overwritten
+                // by using a data-autoslide attribute on your slides
+                autoSlide: 0,
+
+                // Stop auto-sliding after user input
+                autoSlideStoppable: true,
+
+                // Enable slide navigation via mouse wheel
+                mouseWheel: false,
+
+                // Hides the address bar on mobile devices
+                hideAddressBar: true,
+
+                // Opens links in an iframe preview overlay
+                previewLinks: false,
+
+                // Slide transition
+                transition: 'none', // default/none/slide/concave/convex/zoom
+
+                // Transition speed
+                transitionSpeed: 'default', // default/fast/slow
+
+                // Transition style for full page slide backgrounds
+                backgroundTransition: 'none', // default/none/slide/concave/convex/zoom
+
+                // Number of slides away from the current that are visible
+                viewDistance: 3,
+
+                // Parallax background image
+                //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+                // Parallax background size
+                //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+                chalkboard: {
+                    boardmarkerWidth: 3,
+                    chalkWidth: 7,
+                    chalkEffect: 1.0,
+                    src: null,
+                    readOnly: undefined,
+                    toggleChalkboardButton: true,
+                    toggleNotesButton: true,
+                    boardmarkers : [
+                        { color: 'rgba(220,20,60,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                        { color: 'rgba(255,140,0,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                    ]
+                },
+
+                math: {
+                    mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+                    config: 'TeX-AMS_HTML-full',
+                    // pass other options into `MathJax.Hub.Config()`
+                    TeX: { Macros: { RR: "{\\bf R}" } }
+                },
+
+                plugins: [
+                    RevealMath,
+                    RevealHighlight,
+                    RevealMarkdown,
+                    RevealChalkboard
+                ]
+            });
+        </script>
+    </body>
+</html>
