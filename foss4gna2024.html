@@ -5,9 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>GRASS GIS: Not What You Think</title>
+        <title>State of GRASS GIS</title>
 
-        <meta name="description" content="GRASS GIS is a general geospatial processing tool. The latest version comes with a single-window layout and streamlined data management addressing user feedback. GRASS’ code was recently revitalized by code quality improvements, a perfect gift for its 40th birthday!">
+        <meta name="description" content="GRASS GIS provides users with a large number of geospatial modeling, analysis, and data management tools. The software comes with a Python API, CLI, and graphical user interface, with additional APIs available for C and R. Faster release cycle now brings larger updates to users every year. In this talk, we will highlight what’s new in version 8.4 and discuss the greater GRASS GIS ecosystem and project roadmap. We will cover the most important tools available and will highlight tools even current users may not know about.">
         <meta name="author" content="Vaclav Petras">
 
         <link rel="stylesheet" href="dist/reset.css">
@@ -131,24 +131,17 @@
             <div class="slides">
 
 <!--
-This talk gives an overview of the current state of the GRASS GIS project for both users and developers. It will cover topics relevant for integrating GRASS GIS into existing workflows and projects and for contributing to this community-driven open-source project. Reflecting on the 40th birthday, the talk will try to address some common misconceptions about the project such as “it is command-line only”, “it is only a desktop GIS,” and “it’s been around for long, so it must be well-funded.”
+GRASS GIS provides users with a large number of geospatial modeling, analysis, and data management tools.
+The software comes with a Python API, CLI, and graphical user interface, with additional APIs available for C and R.
+Faster release cycle now brings larger updates to users every year.
 
-First, the talk will cover improvements to the graphical user interface (GUI). Warranted or not, many potential users perceive GRASS GIS as difficult to use; the new versions (8.0, 8.2, 8.3) are changing many parts of the GUI to address this problem and make it easier for first-time users to adopt GRASS GIS. The GUI is now switching to a single-window layout as this new layout matured and became the number one choice of even advanced users. This adds to an already established easier startup without a need for a welcome screen and streamlined data management in the GUI.
-
-The talk will also cover a series of improvements called for by industry and academic users including simplified session management and streamlined command line interface. This will transition into the various ways of how GRASS GIS can be used for geospatial data processing in Python, R, QGIS, command line, and in the cloud.
-
-Relevant to quality assurance, the code quality of C and C++ code improved significantly in the last year. The code compiles with more strict compiler settings than ever with the Clang compiler and we are heading towards pedantic compliance with the GCC compiler. Similarly, Python code improved significantly in the past few years and more improvements are underway and will be covered in the talk.
-
-New funding options - now available through OpenCollective - will be presented in the talk in the hope of sparking a discussion during the conference about meeting our funding goals.
-
-This talk will also report on GRASS GIS Community Meeting 2023 in Prague where the participants celebrated the 40th birthday of GRASS GIS by contributing more code.
-
-While this talk is presented by a single speaker, the project is a combined work by many organizations and individuals. GRASS GIS is an OSGeo Project, currently developed on GitHub with oversight from the Project Steering Committee elected by the project contributor community at large.
+In this talk, we will highlight what’s new in version 8.4 and discuss the greater GRASS GIS ecosystem and project roadmap.
+We will cover the most important tools available and will highlight tools even current users may not know about.
 -->
 
 
 <section>
-    <h1>GRASS GIS: Not What You Think</h1>
+    <h1>State of GRASS GIS</h1>
     <p style="margin-top: 0.5em">
         <a href="http://wenzeslaus.github.io/" style="font-weight: bold">
             Vaclav (Vashek) Petras
@@ -161,30 +154,30 @@ While this talk is presented by a single speaker, the project is a combined work
         <br>
         <a href="http://www.ncsu.edu/" title="North Carolina State University">NC State University</a>
     </p>
-    <img src="img/grass_gis.svg" class="stretch">
-    <p><small>FOSS4G NA, Baltimore, October 23-25, 2023</small></p>
+    <img src="img/splash_screen.png" class="stretch">
+    <p><small>FOSS4G NA St. Louis, September 9-11, 2024</small></p>
     <p>
-        <a href="https://wenzeslaus.github.io/grass-gis-talks/ncgis2023.html">wenzeslaus.github.io/grass-gis-talks</a>
+        <a href="https://wenzeslaus.github.io/grass-gis-talks/">wenzeslaus.github.io/grass-gis-talks</a>
 </section>
 
 
 <section>
 <h2>Vaclav (Vashek) Petras</h2>
 <ul>
-    <li>Research Software Engineer at NC State's Center for Geospatial Analytics
+    <li>Sr. Research Software Engineer at NC State's Center for Geospatial Analytics
     <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague,
         PhD in Geospatial Analytics, NC State
-    <li>GRASS GIS: Development Team, Project Steering Committee
+    <li>GRASS GIS: Core Development Team, Project Steering Committee
 </ul>
 <img src="img/cli_tangible.png" class="stretch">
 </section>
 
 <section>
     <h2>Community</h2>
-    Big thanks to the whole community!
+    Thanks to all those involved!
     <br>
-    <img src="img/community_prague_2023_group.jpg" class="stretch">
-    <img src="img/github_contributors_2023-10-09.png" style="width: 70%">
+    <img src="img/community_prague_2024_group.jpg" class="stretch">
+    <img src="img/github_contributors_2024-09-03.png" style="width: 80%">
 </section>
 
 
@@ -194,50 +187,12 @@ While this talk is presented by a single speaker, the project is a combined work
 
 
 <section>
-    <h2>That's something about grazing, no?</h2>
-    <img src="img/cows_on_a_pasture.jpg" class="stretch">
-</section>
-
-
-<section>
-    <h2>Grassy the Hungry Cow</h2>
-    <pre style="font-size: 100%;">
-         -----------------------------------
-        | I'm always hungry for more GRASS! |
-         -----------------------------------
-                \   ^__^
-                 \  (oo)\_______
-                    (__)\       )\/\
-                        ||----w |
-        _\|/__\|/__\|/_ ||     ||  _\|/__\|/_
-    </pre>
-    <p>
-        <small>Thanks to <em>cowsay</em>.</small>
-    </p>
-</section>
-
-
-<section>
-    <h2>It's not about smoking weed?</h2>
-    <img src="img/no_smoking.svg" class="stretch">
-</section>
-
-
-<section>
-    <h2>FOSS4G 2006 Conference</h2>
-    <p>
-        Lausanne, Switzerland, September 2006
-    </p>
-    <blockquote>
-        It was a great success. It was the first <b>joint</b> conference that brought together the different FOSS4G "tribes",
-        merging the GRASS Users conference series, with the Mapserver, EOGEO and Java developers meetings.
-        <br>
-        <small>
-            &mdash;
-            Mitasova (2006): FOSS4G 2006 Conference: The meeting of the tribes
-            in <em>GRASS&nbsp;/&nbsp;OSGeo-News</em>
-        </small>
-    </blockquote>
+    <h2></h2>
+    <ul>
+        <li>geospatial processing engine</li>
+        <li></li>
+    </ul>
+    <img src="img/grass_cli.png" class="stretch">
 </section>
 
 
@@ -249,7 +204,7 @@ While this talk is presented by a single speaker, the project is a combined work
 
 <section>
     <h2>GRASS GIS is only a desktop GIS, no?</h2>
-    <img src="img/gui_data_pane_blue_isochrones.png" class="stretch">
+    <img src="img/grass_gui_multiple_map_displays.png" class="stretch">
 </section>
 
 
@@ -269,7 +224,7 @@ While this talk is presented by a single speaker, the project is a combined work
     <h2>R</h2>
     rgrass package to use GRASS GIS from R is on CRAN.
     <br>
-    <img src="img/splash_screen.png" class="stretch">
+    <img src="img/grass_within_rstudio.png" class="stretch">
 </section>
 
 
@@ -366,57 +321,7 @@ While this talk is presented by a single speaker, the project is a combined work
 
 
 <section>
-    <h2>Happy 40th birthday, GRASS GIS!</h2>
-    <img src="img/grassy_birthday_cake.webp" class="stretch">
-</section>
-
-
-<section>
-    <h2>Time to clear up some misconceptions related to age</h2>
-</section>
-
-
-<section>
     <h1>Funding</h1>
-</section>
-
-
-<section>
-    <h2>It’s been around for long, so it must be well-funded</h2>
-</section>
-
-
-<section>
-    <h2>How people imagine a GRASS developer</h2>
-    <br>
-    <img src="img/funded_professor.jpg" alt="Person at a table working on laptop with file cabinets of submitted and funded proposals" class="stretch">
-    <p>
-        <small>
-            Well-funded professor thinking about new algorithms
-        </small>
-    </p>
-</section>
-
-
-<section>
-    <h2>The real GRASS developer</h2>
-    <br>
-    <img src="img/busy_parent.jpg" alt="Person at a table working on laptop and two shouting children" class="stretch">
-    <p>
-        <small>
-            Busy parent debugging some code
-        </small>
-    </p>
-</section>
-
-
-<section>
-    <img src="img/drawing_the_parent_image.jpg" class="stretch">
-    <p>
-        <small>
-            When I made the image
-        </small>
-    </p>
 </section>
 
 
@@ -428,31 +333,26 @@ While this talk is presented by a single speaker, the project is a combined work
         <li>to revise contributing guidelines</li>
         <li>to support community building</li>
     </ul>
-    <p>Note: The NSF program is aiming at sustainability, not adding features or fix bugs.</p>
+    <p>Note: The NSF program is aiming at sustainability, not adding features, fixing bugs, or ongoing maintenance.</p>
     <img src="img/nsf_grant_announcement.png" class="stretch">
 </section>
 
 
 <section>
-    <h2>New Funding Options on OpenCollective</h2>
+    <h2>Sponsoring</h2>
+
+    <img src="img/open_collective_top.png" style="width: 40%;">
+
+    <br>
     <ul>
-        <li>
-            Donation (one-time, any amount), Supporter starts at 10 USD/month, Sponsor starts at 500 USD/year
-            <img src="img/open_collective_top.png">
-        </li>
-        <li>
-            Feedback? Talk to me about being part of the solution!
-        </li>
-        <li>
-            T-shirt fundraiser test: Ask me after the talk for details!
-        </li>
+        <li>Money donations allow us to:</li>
+        <ul>
+            <li>organize face-to-face coding sessions (sprints)</li>
+            <li>support mentoring programs and student grants</li>
+            <li>finance infrastucture needs (web site, etc)</li>
+        </ul>
     </ul>
-    <img src="img/open_collective_qr.png" class="stretch">
-</section>
-
-
-<section>
-    <img src="img/open_collective_qr.png" class="stretch">
+    <img src="img/open_collective_qr.png"  class="stretch">
 </section>
 
 
@@ -461,16 +361,15 @@ While this talk is presented by a single speaker, the project is a combined work
 </section>
 
 
-
 <section>
-    <h2>There are no new releases, or?</h2>
+    <h2></h2>
     <ul>
         <li>
-            8.3.1 Current, October 2023
+            8.4.0 Current, July 2024
             <small>Current version for everyday user</small>
         </li>
         <li>
-            8.4.0 Preview, Daily
+            8.5.0 Preview, Daily
             <small>Latest reviewed functional code</small>
         </li>
         <li>
@@ -480,11 +379,6 @@ While this talk is presented by a single speaker, the project is a combined work
     </ul>
     <br>
     <img src="img/splash_screen.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Minor Releases Bring New Things: T or F?</h2>
 </section>
 
 
@@ -505,48 +399,168 @@ While this talk is presented by a single speaker, the project is a combined work
 
 
 <section>
-    <h1>Code</h1>
+    <h1>New in 8.4.0</h1>
 </section>
 
 
 <section>
-    <h2>C and C++ Code Quality</h2>
+    <h2>Tools</h2>
+    
+    <h3>More machine learning in GRASS GIS!!</h3>
+
+    <p>Supervised classification with Support Vector Machines
+
     <ul>
-        <li>Issues reported by GCC and Clang such as dangling-else, discarded-qualifiers, format, &hellip; fixed.</li>
-        <li>Even more to come in 2024.</li>
+        <li><a href="https://grass.osgeo.org/grass84/manuals/i.svm.train.html">i.svm.train</a>: Train a Support Vector Machine</li>
+        <li><a href="https://grass.osgeo.org/grass84/manuals/i.svm.predict.html">i.svm.predict</a>: Predict with a Support Vector Machine</li>
     </ul>
-    <br>
-    <img src="img/code_in_qtcreator.png" class="stretch">
+    </p>
+
+    <img src="img/user_accuracy_svm.png" class="stretch">
+    
+    <small>by Maris Nartiss (<a href="https://doi.org/10.1111/tgis.13102">Nartiss & Melniks 2023</a>)</small>
 </section>
 
 
 <section>
-    <h2>Python</h2>
+    <h2>Tools</h2>
+
+    <h3>More topology in GRASS GIS!!</h3>
+    
+    <p><a href="https://grass.osgeo.org/grass84/manuals/v.fill.holes.html">v.fill.holes</a>: 
+        Fill holes in areas by keeping only outer boundaries</p>
+
+    <img src="img/v_fill_holes.png" class="stretch">
+    
+    <small>by Vaclav Petras</small>
+</section>
+
+<section>
+    <h2>Tools</h2>
+
+    <h3>Streamline the connection of GRASS and other tools within data science workflows!!</h3>
+ 
+    <pre><code>
+        r.info elevation format=json
+        {
+            "north": 228500,
+            "south": 215000,
+            "nsres": 10,
+            "east": 645000,
+            "west": 630000,
+            "ewres": 10,
+            "rows": 1350,
+            "cols": 1500,
+            "cells": 2025000,
+            "datatype": "FCELL",
+            "ncats": 255,
+            "min": 55.578792572021484,
+            "max": 156.32986450195312,
+            "map": "elevation",
+            ...
+        }
+    </code></pre>
+
+    <p>JSON output format support <code>(format="json")</code> in multiple tools 
+        (e.g., r.report, r.info, v.db.select, t.rast.list, etc.)</p>
+
+</section>
+
+<section>
+    <h2>Tools</h2>
+
+    <h3>Revamped unique GRASS tools!</h3>        
+
+    <p><a href="https://grass.osgeo.org/grass84/manuals/r.horizon.html">r.horizon</a>: 
+    Output for multiple points, distances, and many other improvements</p>
+
+    <img src="https://grass.osgeo.org/grass83/manuals/rhorizon_polar_plot.png" class="stretch">
+
+    <small>Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
+
+<section>
+    <h2><em>Locations</em> are now <em>Projects</em></h2>
+
+    <p>The Python API, command line, and GUI are now using <b>project</b> instead 
+        of location for the main component of the data hierarchy.</p>
+
+    <img src="img/projects.png" class="stretch">
+
+    <aside class="notes">
+        This change was motivated by the results of a community survey, and to use terminology
+        common to other software projects.
+    </aside>
+</section>
+
+
+<section>
+    <h2>API and Library changes</h2> 
+
+    <p><code>grass.script</code> Python package: </p>
+
+    <p>Greatly simplified the creation of new projects in 
+    Python without a running session (no more chicken and egg problems)</p>
+
+    <pre><code data-trim data-noescape>
+        import grass.script as gs
+        import grass.jupyter as gj
+
+        gs.create_project("cordoba_utm21s", epsg="32721")
+        gj.init("cordoba_utm21s")
+    </code></pre>
+
+    <small>See <a href="https://grass.osgeo.org/grass84/manuals/libpython/_modules/grass/script/core.html#create_project">create_project</a> doc.</small>
+
+    <aside class="notes">
+        It is also possible to create a project in a temporary folder
+    </aside>
+</section> 
+
+
+    
+<section>
+    <h2>API and Library changes</h2> 
+    
+    <p><code>grass.jupyter</code> Python package: 
+
     <ul>
-        <li>Code formatted with Black.</li>
-        <li>Flake8 enabled, 2/3 fixed.</li>
-        <li>Pylint partially enabled.</li>
-        <li>Aiming at close-to-default configuration for 2024.</li>
+        <li>New <code>grass.jupyter.SeriesMap</code> class for animating series of vectors or rasters. See <a href="https://grass.osgeo.org/grass84/manuals/libpython/grass.jupyter.html#module-grass.jupyter.seriesmap">grass.jupyter.SeriesMap</a> doc.</li>
+        <li><code>ipyleaflet</code> integration to create a map in ipyleaflet and add GRASS data in a single line</li>
     </ul>
-    <br>
-    <img src="img/code_in_vscodium.png" class="stretch">
+    </p>
+
+    <pre><code data-trim data-noescape>
+    series = gj.SeriesMap(height = 500)
+    series.add_rasters(["elevation_shade", "geology", "soils"])
+    series.add_vectors(["streams", "streets", "viewpoints"])
+    series.d_barscale()
+    series.show()
+    </code></pre>
+
+    <img src="img/animation.gif" class="stretch">
 </section>
 
 
 <section>
-    <h1>Features</h1>
-    Features long-requested from industry now available and mature
-    (and usually overlooked by desktop users).
-</section>
+    <h2>GUI: New history browser panel</h2> 
+
+    <img src="img/history_panel.png" class="stretch">
+
+    <small>by Linda Karlovska with a <a href="https://grasswiki.osgeo.org/wiki/Student_Grants">GRASS GIS Student Grant</a></small> 
+    
+    <aside class="notes">
+        Commands grouped by date, we can see their status, the region setting when they were executed, etc.
+
+        Other GUI improvements include the integration of the modeler within single window layout, 
+        undockable map displays, faster rendering in d modules.
+    </aside>
+</section> 
 
 
 <section>
-    <h2>Managing GRASS session in Python</h2>
-    Revamped GRASS session makes it easier to use GRASS tools from Python.
-    <br>
-    <img src="img/python_session.png" class="stretch">
+    <h1>New in 8.4.0</h1>
 </section>
-
 
 <section>
     <h2>Command line batch mode with <code>--exec</code></h2>
@@ -576,15 +590,6 @@ While this talk is presented by a single speaker, the project is a combined work
 
 <section>
     <h2>Data Analytics Workflows</h2>
-    See the separate talk!
-    <p>
-    Caitlin Haedrich<br>
-    Computational Notebooks for Reproducible Geospatial Computation in Research and Education<br>
-    October 25<br>
-    2:00 – 2:30 PM<br>
-    Poe Room<br>
-    </p>
-
     <img src="img/jupyter_timeseries_viewshed.gif" class="stretch">
     <p>
         <a href="https://tinyurl.com/grass-jupyter-8-2">tinyurl.com/grass-jupyter-8-2</a>
@@ -593,20 +598,39 @@ While this talk is presented by a single speaker, the project is a combined work
 
 
 <section>
-    <h2>Community Meeting 2023</h2>
-    GRASS GIS birthday celebrated by advancing CMake build, 8.3.0 release, &hellip;
+    <h1>Community</h1>
+</section>
+
+
+<section>
+    <h2>PSC Elections</h2>
+    Project Steering Committee Elections: 4 out of 9 members for next 6 years
     <br>
-    <img src="img/community_prague_2023_room.jpg" class="stretch">
-    <small><a href="https://grass.osgeo.org/news/2023_08_13_grass_community_meeting_prague_june_2023_report/">grass.osgeo.org &gt; News &gt; Report of the GRASS GIS Community Meeting in Prague</a></small>
-    <aside class="notes">This talk will also report on GRASS GIS Community Meeting 2023 in Prague where the participants celebrated the 40th birthday of GRASS GIS by contributing more code.</aside>
+    <img src="img/grass_psc_team_prague_2024.jpg" class="stretch">
+    <p>
+        Broad community can nominate and anyone can be nominated (September)
+        <br>
+        Voting restricted to recognized contributors and participants (October)
+    </p>
+</section>
+
+
+
+<section>
+    <h2>Community Meeting 2024</h2>
+    12-hour work days, 8.4.0 release, CI, 3-year roadmap, &hellip;
+    <br>
+    <img src="img/community_prague_2024_group_old_town.jpg" class="stretch">
+    <small><a href="https://grass.osgeo.org/news/2024_08_02_report_community_meeting_prague_2024/">grass.osgeo.org &gt; Latest news &gt; Report from the GRASS Community Meeting</a></small>
+    <small><small>Funding: US NSF (Award 2303651), OSGeo, FOSSGIS, mundialis, INBO Research Institute for Nature and Forest, individual donors</small></small>
 </section>
 
 
 <section>
     <h2>Mentoring and Student Grants Program</h2>
     <ul>
-        <li><a href="https://grasswiki.osgeo.org/wiki/Mentoring_Program">Mentoring</a> to integrate GRASS GIS into your workflows</li>
-        <li><a href="https://grasswiki.osgeo.org/wiki/Student_Grants">Student grants</a> to contribute to GRASS GIS</li>
+        <li><a href="https://grasswiki.osgeo.org/wiki/Mentoring_Program">Mentoring</a> to integrate GRASS GIS into your workflows (open now)</li>
+        <li><a href="https://grasswiki.osgeo.org/wiki/Student_Grants">Student grants</a> to contribute to GRASS GIS (call open for 2024/2025)</li>
     </ul>
     <img src="img/community_prague_2023_laptop.jpg" class="stretch">
 </section>
@@ -618,15 +642,15 @@ While this talk is presented by a single speaker, the project is a combined work
         <li>
             Groups:
             <ul>
-                <li>geoprocessing engine</li>
-                <li>being a good neighbor in open source ecosystem</li>
-                <li>documentation</li>
-                <li>community engagement and promotion</li>
+                <li>Geoprocessing Engine</li>
+                <li>Open-Source Ecosystem</li>
+                <li>Documentation and Education</li>
+                <li>Community Engagement</li>
             </ul>
         </li>
         <li>See <a href="https://grasswiki.osgeo.org/wiki/Working_Groups">wiki</a> for details!</li>
     </ul>
-    <img src="img/community_prague_2023_explaining.jpg" class="stretch">
+    <img src="img/community_prague_2024_three_working.jpg" class="stretch">
 </section>
 
 

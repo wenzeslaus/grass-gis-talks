@@ -1,5 +1,6 @@
 # GRASS GIS Talks
 
+* FOSS4G NA 2024 St. Louis: [State of GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/foss4gna2024.html)
 * FOSS4G NA 2023 Baltimore: [GRASS GIS: Not What You Think](https://wenzeslaus.github.io/grass-gis-talks/foss4gna2023.html)
 * NCGIS 2023 Winston-Salem: [Tips and Tricks for GRASS GIS 8.2](https://wenzeslaus.github.io/grass-gis-talks/ncgis2023.html)
 * DOI Open Source Geospatial Committee Meeting, 2022: [Convenience and speed with GRASS GIS 8.0 and 8.2](https://wenzeslaus.github.io/grass-gis-talks/doi2022.html)
@@ -29,7 +30,7 @@
 
 ## Copyright and License
 
-&copy; 2017-2023 The Authors
+&copy; 2017-2024 The Authors
 
 See each slide deck for the list of authors.
 
