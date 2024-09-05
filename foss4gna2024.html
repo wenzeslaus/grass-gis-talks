@@ -182,19 +182,16 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h1>What is GRASS GIS?</h1>
-</section>
-
-
-<section>
     <h2>GRASS GIS</h2>
     <ul>
         <li>geospatial processing engine</li>
-        <li></li>
+        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/full_index.html">tools</a></li>
+        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/addons/">tools in addons</a></li>
     </ul>
-    <img src="img/grass_cli.png" class="stretch">
+    <img src="img/jupyter_interactive_viewshed.png" class="stretch">
 </section>
 
+<!--
 <section>
     <h2>Python</h2>
     Python API comes with GRASS GIS.
@@ -202,12 +199,14 @@ We will cover the most important tools available and will highlight tools even c
     <img src="img/jupyter_interactive_viewshed.png" class="stretch">
 </section>
 
+
 <section>
     <h2>R</h2>
     rgrass package to use GRASS GIS from R is on CRAN.
     <br>
     <img src="img/grass_within_rstudio.png" class="stretch">
 </section>
+
 
 <section>
     <h2>Command Line</h2>
@@ -219,14 +218,9 @@ We will cover the most important tools available and will highlight tools even c
     <img src="img/grass_cli_8_4.png" class="stretch">
 </section>
 
-<section>
-    <h2>GRASS GIS is command-line only, no?</h2>
-    <img src="img/grass_cli_8_4.png" class="stretch">
-</section>
-
 
 <section>
-    <h2>GRASS GIS is only a desktop GIS, no?</h2>
+    <h2>Desktop GIS</h2>
     <img src="img/grass_gui_multiple_map_displays.png" class="stretch">
 </section>
 
@@ -244,18 +238,14 @@ We will cover the most important tools available and will highlight tools even c
     <br>
     <img src="img/actinia_logo.svg" class="stretch">
 </section>
+-->
 
 
 <section>
-    <h1>Releases</h1>
-</section>
-
-
-<section>
-    <h2></h2>
+    <h2>Releases</h2>
     <ul>
         <li>
-            8.4.0 Current, July 2024
+            8.4.0, July 2024
             <small>Current version for everyday user</small>
         </li>
         <li>
@@ -268,23 +258,7 @@ We will cover the most important tools available and will highlight tools even c
         </li>
     </ul>
     <br>
-    <img src="img/splash_screen.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Minor Releases</h2>
-    <ul>
-        <li>major.minor.micro
-            <ul>
-                <li>micro (x.y.z) brings fixes,</li>
-                <li>minor (x.y) brings features,</li>
-                <li>major (x) brings features and possibly backward incompatible changes</li>
-            </ul>
-        </li>
-    </ul>
-    <br>
-    <img src="img/hexagons_3d_white_outlier.png" class="stretch">
+    <img src="img/futures_model_output.png" class="stretch">
 </section>
 
 
@@ -322,7 +296,7 @@ We will cover the most important tools available and will highlight tools even c
 </section>
 
 <section>
-    <h2>Tools: JSON for text outputs</h2>
+    <h2>Tools: JSON for Text Outputs</h2>
 
     <h3>Streamlines the connection with other tools</h3>
 
@@ -358,16 +332,14 @@ We will cover the most important tools available and will highlight tools even c
 </section>
 
 <section>
-    <h2>Tools</h2>
+    <h2>Tools: Better View and Ray Tracing</h2>
 
-    <h3>Revamped unique GRASS tools!</h3>        
-
-    <p><a href="https://grass.osgeo.org/grass84/manuals/r.horizon.html">r.horizon</a>: 
+    <p><a href="https://grass.osgeo.org/grass84/manuals/r.horizon.html">r.horizon</a>:
     Output for multiple points, distances, and many other improvements</p>
 
-    <img src="https://grass.osgeo.org/grass83/manuals/rhorizon_polar_plot.png" class="stretch">
+    <img src="img/rhorizon_polar_plot.png" class="stretch">
 
-    <small>Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+    <small>by Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
 </section>
 
 <section>
@@ -380,12 +352,12 @@ We will cover the most important tools available and will highlight tools even c
 
     <ul>
         <li>
-            <code>/home/joanna/grassdata</code> (database directory, path)
+            <code>~/data</code>
             <ul>
                 <li>
-                    <code>maryland</code> (location &rightarrow; project)
+                    <code>missouri</code> (location &rightarrow; project)
                     <ul>
-                        <li><code>new_highway</code> (mapset, sub-project)
+                        <li><code>interstate_44</code> (mapset aka sub-project)
                     </ul>
                 </li>
             </ul>
@@ -400,7 +372,7 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>API and Library changes</h2> 
+    <h2>API and Library changes</h2>
 
     <p><code>grass.script</code> Python package: </p>
 
@@ -421,15 +393,14 @@ We will cover the most important tools available and will highlight tools even c
         It is also possible to create a project in a temporary folder
     </aside>
 
-    <small>By Vaclav Petras, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
-</section> 
+    <small>by Vaclav Petras, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
 
 
-    
 <section>
     <h2>API and Library changes</h2> 
-    
-    <p><code>grass.jupyter</code> Python package: 
+
+    <p><code>grass.jupyter</code> Python package:
 
     <ul>
         <li>New <code>grass.jupyter.SeriesMap</code> class for animating series of vectors or rasters. See <a href="https://grass.osgeo.org/grass84/manuals/libpython/grass.jupyter.html#module-grass.jupyter.seriesmap">grass.jupyter.SeriesMap</a> doc.</li>
