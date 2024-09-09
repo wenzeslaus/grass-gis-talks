@@ -165,11 +165,11 @@ We will cover the most important tools available and will highlight tools even c
 <h2>Vaclav (Vashek) Petras</h2>
 <ul>
     <li>Sr. Research Software Engineer at NC State's Center for Geospatial Analytics
-    <li>BS &amp; MS in Geoinformatics, Czech Technical University in Prague,
-        PhD in Geospatial Analytics, NC State
     <li>GRASS GIS: Core Development Team, Project Steering Committee
+    <li>OSGeo: Charter Member, GRASS GIS is an OSGeo Project</li>
 </ul>
-<img src="img/cli_tangible.png" class="stretch">
+<img src="img/ncsu_cga.png"  style="width: 80%">
+<img src="img/osgeo.png"  style="width: 80%">
 </section>
 
 <section>
@@ -185,8 +185,8 @@ We will cover the most important tools available and will highlight tools even c
     <h2>GRASS GIS</h2>
     <ul>
         <li>geospatial processing engine</li>
-        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/full_index.html">tools</a></li>
-        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/addons/">tools in addons</a></li>
+        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/full_index.html">processing tools</a></li>
+        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/addons/">more tools in GRASS Addons</a></li>
     </ul>
     <img src="img/jupyter_interactive_viewshed.png" class="stretch">
 </section>
@@ -295,41 +295,6 @@ We will cover the most important tools available and will highlight tools even c
     <small>by Vaclav Petras</small>
 </section>
 
-<section>
-    <h2>Tools: JSON for Text Outputs</h2>
-
-    <h3>Streamlines the connection with other tools</h3>
-
-    <pre class="bash"><code>
-        r.info elevation format=json
-    </code></pre>
-
-    <pre class="json"><code>
-        {
-            "north": 228500,
-            "south": 215000,
-            "nsres": 10,
-            "east": 645000,
-            "west": 630000,
-            "ewres": 10,
-            "rows": 1350,
-            "cols": 1500,
-            "cells": 2025000,
-            "datatype": "FCELL",
-            "ncats": 255,
-            "min": 55.578792572021484,
-            "max": 156.32986450195312,
-            "map": "elevation",
-            ...
-        }
-    </code></pre>
-
-    <p>JSON output format support <code>(format="json")</code> in multiple tools 
-        (e.g., r.report, r.info, v.db.select, t.rast.list, etc.)</p>
-
-    <small>by Kriti Birda, Corey White, Vaclav Petras and others</small>
-
-</section>
 
 <section>
     <h2>Tools: Better View and Ray Tracing</h2>
@@ -341,6 +306,36 @@ We will cover the most important tools available and will highlight tools even c
 
     <small>by Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
 </section>
+
+
+<section>
+    <h2>Interfaces: JSON for Text Outputs</h2>
+
+    JSON output format support <code>(format="json")</code> in multiple tools (v.db.select, t.rast.list, &hellip;)
+
+    <pre class="bash"><code>
+        v.db.select roadsmajor format=json
+    </code></pre>
+
+    <p>
+    With better integration in Python:
+
+    <pre class="json"><code>
+        import json
+        import grass.script as gs
+
+        data = gs.parse_command("v.db.select", map="roadsmajor", format="json")
+        for row in data["records"]:
+            print(row["ROAD_NAME"])
+    </code></pre>
+
+    <p> More coming in 8.5
+        (r.report, r.info, &hellip;)</p>
+
+    <small>by Anna Petrasova, Vaclav Petras, Huidae Cho, Kriti Birda, Corey White, and others</small>
+
+</section>
+
 
 <section>
     <h2><em>Locations</em> are now <em>Projects</em></h2>
@@ -372,7 +367,18 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>API and Library changes</h2>
+    <h2>CLI: <code>--tmp-project</code> with <code>--exec</code></h2>
+    <code>--tmp-location</code> is now <code>--tmp-project</code>
+    <pre style="font-size: 94%;"><code data-trim data-noescape>grass --tmp-project EPSG:3358 --exec \
+        r.viewshed input=elevation \
+        output=viewshed coordinates=642964,222890
+    </code></pre>
+    <p><code>--tmp-location</code> continues to work</p>
+</section>
+
+
+<section>
+    <h2>Python API: Simpler Creation of Projects</h2>
 
     <p><code>grass.script</code> Python package: </p>
 
@@ -387,8 +393,6 @@ We will cover the most important tools available and will highlight tools even c
         gj.init("cordoba_utm21s")
     </code></pre>
 
-    <small>See <a href="https://grass.osgeo.org/grass84/manuals/libpython/_modules/grass/script/core.html#create_project">create_project</a> doc.</small>
-
     <aside class="notes">
         It is also possible to create a project in a temporary folder
     </aside>
@@ -398,7 +402,7 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>API and Library changes</h2> 
+    <h2>Python API: Animations and ipyleaflet</h2>
 
     <p><code>grass.jupyter</code> Python package:
 
@@ -406,22 +410,30 @@ We will cover the most important tools available and will highlight tools even c
         <li>New <code>grass.jupyter.SeriesMap</code> class for animating series of vectors or rasters. See <a href="https://grass.osgeo.org/grass84/manuals/libpython/grass.jupyter.html#module-grass.jupyter.seriesmap">grass.jupyter.SeriesMap</a> doc.</li>
         <li><code>ipyleaflet</code> integration to create a map in ipyleaflet and add GRASS data in a single line</li>
     </ul>
-    </p>
 
     <pre><code data-trim data-noescape>
-    series = gj.SeriesMap(height = 500)
-    series.add_rasters(["elevation_shade", "geology", "soils"])
-    series.add_vectors(["streams", "streets", "viewpoints"])
-    series.d_barscale()
-    series.show()
+    m = InteractiveMap(map_backend="ipyleaflet")
+    m.add_vector("streams")
+    m.add_raster("elevation")
+    m.show()
+
+    s = gj.SeriesMap(height = 500)
+    s.add_rasters(["elevation_shade", "geology", "soils"])
+    s.add_vectors(["streams", "streets", "viewpoints"])
+    s.d_barscale()
+    s.show()
     </code></pre>
 
     <img src="img/animation.gif" class="stretch">
+
+    <small>
+        by Caitlin Haedrich, Riya Saxena, Anna Petrasova
+    </small>
 </section>
 
 
 <section>
-    <h2>GUI: New history browser panel</h2> 
+    <h2>GUI: New History Browser Panel</h2>
 
     <img src="img/history_panel.png" class="stretch">
 
@@ -430,71 +442,11 @@ We will cover the most important tools available and will highlight tools even c
     <aside class="notes">
         Commands grouped by date, we can see their status, the region setting when they were executed, etc.
 
-        Other GUI improvements include the integration of the modeler within single window layout, 
+        Other GUI improvements include the integration of the modeler within single window layout,
         undockable map displays, faster rendering in d modules.
     </aside>
-</section> 
-
-
-<section>
-    <h1>New in 8.4.0</h1>
 </section>
 
-<section>
-    <h2>Command line batch mode with <code>--exec</code></h2>
-    Streamlined usage of GRASS tools through system calls.
-    <pre style="font-size: 94%;">grass /grassdata/nc_spm/work1 --exec \
-        r.viewshed input=elevation \
-        output=viewshed coordinates=642964,222890
-    </pre>
-</section>
-
-
-<section>
-    <h2>Command Line Description with <code>--json</code></h2>
-    <ul>
-        <li>Translates command line parameters to JSON.</li>
-        <li>Used by actinia to integrate with GRASS GIS.</li>
-        <li>Seeking feedback for other use-cases.</li>
-    </ul>
-    <pre style="font-size: 94%;">r.viewshed \
-        input=elevation \
-        output=viewshed \
-        coordinates=642964,222890 \
-        --json
-    </pre>
-</section>
-
-
-<section>
-    <h2>Data Analytics Workflows</h2>
-    <img src="img/jupyter_timeseries_viewshed.gif" class="stretch">
-    <p>
-        <a href="https://tinyurl.com/grass-jupyter-8-2">tinyurl.com/grass-jupyter-8-2</a>
-    </p>
-</section>
-
-<section>
-    <h2>Streamlined Data Management</h2>
-    New <em>Data</em> tab is a central place to manipulate data in a project.
-    <img src="img/mapsets_with_green_landscape.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Multiple windows</h2>
-    Multiple windows was the only option.
-    <p>
-        Still available as before, but&hellip;
-    </p>
-    <img src="img/grass_gis_v7.2.1.png" class="stretch">
-</section>
-
-<section>
-    <h2>Single-window Interface</h2>
-    Now single-window interface is the default.
-    <img src="img/gui_orange_viewsheds_buffer.png" class="stretch">
-</section>
 
 <section>
     <h1>Funding</h1>
@@ -502,8 +454,9 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>NSF grant lead by NC State</h2>
+    <h2>NSF Grant Lead by NC State</h2>
     <ul>
+        <li>Starting year 2 (out of 2)</li>
         <li>NSF grant awarded to NC State, ASU, NMSU, Yale</li>
         <li>to enhance infrastructure</li>
         <li>to revise contributing guidelines</li>
@@ -515,20 +468,20 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>Sponsoring</h2>
+    <h2>Financial Contributions</h2>
 
-    <img src="img/open_collective_top.png" style="width: 40%;">
+    <img src="img/open_collective_top.png" style="width: 80%;">
 
     <br>
     <ul>
-        <li>Money donations allow us to:</li>
-        <ul>
-            <li>organize face-to-face coding sessions (sprints)</li>
-            <li>support mentoring programs and student grants</li>
-            <li>finance infrastructure needs (web site, etc)</li>
-        </ul>
+        <li>
+            Contributions through Open Collective partially support face-to-face meetings and student grants.
+        </li>
+        <li>We would like to finance ongoing maintenance.</li>
+        <li>Talk to me if Open Collective does not work for you.</li>
     </ul>
     <img src="img/open_collective_qr.png"  class="stretch">
+    <p><small><a href="https://opencollective.com/grass">opencollective.com/grass</a></small></p>
 </section>
 
 <section>
@@ -552,7 +505,7 @@ We will cover the most important tools available and will highlight tools even c
 
 <section>
     <h2>Community Meeting 2024</h2>
-    12-hour work days, 8.4.0 release, CI, 3-year roadmap, &hellip;
+    12-hour work days, 8.4.0 release, CI, parallelization, &hellip;
     <br>
     <img src="img/community_prague_2024_group_old_town.jpg" class="stretch">
     <small><a href="https://grass.osgeo.org/news/2024_08_02_report_community_meeting_prague_2024/">grass.osgeo.org &gt; Latest news &gt; Report from the GRASS Community Meeting</a></small>
