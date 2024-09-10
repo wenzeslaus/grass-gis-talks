@@ -297,7 +297,7 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>Tools: Better View and Ray Tracing</h2>
+    <h2>Tools: Better Horizon Identification</h2>
 
     <p><a href="https://grass.osgeo.org/grass84/manuals/r.horizon.html">r.horizon</a>:
     Output for multiple points, distances, and many other improvements</p>
@@ -387,10 +387,9 @@ We will cover the most important tools available and will highlight tools even c
 
     <pre><code data-trim data-noescape>
         import grass.script as gs
-        import grass.jupyter as gj
 
         gs.create_project("cordoba_utm21s", epsg="32721")
-        gj.init("cordoba_utm21s")
+        gs.setup.init("cordoba_utm21s")
     </code></pre>
 
     <aside class="notes">
@@ -412,20 +411,23 @@ We will cover the most important tools available and will highlight tools even c
             class for animating series of vectors or rasters
             <small>(temporal animations already available)</small>
         </li>
-        <li>New option to create a maps with <em>ipyleaflet</em></li>
+        <li>
+            New option to create a maps with <em>ipyleaflet</em>
+            <small>(will bring interactivity in 8.5)</small>
+        </li>
     </ul>
 
     <pre><code data-trim data-noescape>
-    m = InteractiveMap(map_backend="ipyleaflet")
-    m.add_vector("streams")
-    m.add_raster("elevation")
-    m.show()
-
     s = gj.SeriesMap(height = 500)
     s.add_rasters(["elevation_shade", "geology", "soils"])
     s.add_vectors(["streams", "streets", "viewpoints"])
     s.d_barscale()
     s.show()
+
+    m = InteractiveMap(map_backend="ipyleaflet")
+    m.add_vector("streams")
+    m.add_raster("elevation")
+    m.show()
     </code></pre>
 
     <small>
@@ -474,18 +476,18 @@ We will cover the most important tools available and will highlight tools even c
 
 
 <section>
-    <h2>Addon Tools: Digest Data with EODAG</h2>
-    <p>download, import, preprocessing, cloud detection, and masking of remote sensing data with EODAG (Earth Observation Data Access Gateway)</p>
-    <img src="img/i_sentinel_mask_ES.png" class="stretch">
-    <p>by Hamed A. Elgizery, Veronica Andreo, Stefan Blumentrath
-</section>
-
-
-<section>
     <h2>Addon Tools: Wind-water Interactions</h2>
     <p><em>r.windfetch</em> &ndash; distance which winds blow without obstruction</p>
     <img src="img/r_windfetch.png" class="stretch">
     <p><small>by Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
+
+
+<section>
+    <h2>Addon Tools: Digest Data with EODAG</h2>
+    <p>download, import, preprocessing, cloud detection, and masking of remote sensing data with EODAG (Earth Observation Data Access Gateway)</p>
+    <img src="img/i_sentinel_mask_ES.png" class="stretch">
+    <p>by Hamed A. Elgizery, Veronica Andreo, Stefan Blumentrath
 </section>
 
 
@@ -497,13 +499,18 @@ We will cover the most important tools available and will highlight tools even c
 <section>
     <h2>NSF Grant Lead by NC State</h2>
     <ul>
+        <li>
+            NSF grant awarded to NC State, ASU, NMSU, Yale
+            <ul>
+                <li>To enhance infrastructure</li>
+                <li>To revise contributing guidelines</li>
+                <li>To support community building</li>
+            </ul>
+        </li>
+        <li>The NSF program is aiming at adding features, fixing bugs, or ongoing maintenance</li>
         <li>Starting year 2 (out of 2)</li>
-        <li>NSF grant awarded to NC State, ASU, NMSU, Yale</li>
-        <li>to enhance infrastructure</li>
-        <li>to revise contributing guidelines</li>
-        <li>to support community building</li>
     </ul>
-    <p>Note: The NSF program is aiming at sustainability, not adding features, fixing bugs, or ongoing maintenance.</p>
+    <p>Note: </p>
     <img src="img/nsf_grant_announcement.png" class="stretch">
 </section>
 
@@ -645,7 +652,7 @@ We will cover the most important tools available and will highlight tools even c
     <img src="img/grass_license.png" alt="GRASS GIS logo" class="stretch">
     <p>
         <small>
-        Ask a question, get a special sticker.
+        Ask me for a a special sticker.
         </small>
     </p>
     <p>
