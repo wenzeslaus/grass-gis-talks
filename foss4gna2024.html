@@ -407,8 +407,12 @@ We will cover the most important tools available and will highlight tools even c
     <p><code>grass.jupyter</code> Python package:
 
     <ul>
-        <li>New <code>grass.jupyter.SeriesMap</code> class for animating series of vectors or rasters. See <a href="https://grass.osgeo.org/grass84/manuals/libpython/grass.jupyter.html#module-grass.jupyter.seriesmap">grass.jupyter.SeriesMap</a> doc.</li>
-        <li><code>ipyleaflet</code> integration to create a map in ipyleaflet and add GRASS data in a single line</li>
+        <li>
+            New <a href="https://grass.osgeo.org/grass84/manuals/libpython/grass.jupyter.html#module-grass.jupyter.seriesmap"><code>grass.jupyter.SeriesMap</code></a>
+            class for animating series of vectors or rasters
+            <small>(temporal animations already available)</small>
+        </li>
+        <li>New option to create a maps with <em>ipyleaflet</em></li>
     </ul>
 
     <pre><code data-trim data-noescape>
@@ -423,8 +427,6 @@ We will cover the most important tools available and will highlight tools even c
     s.d_barscale()
     s.show()
     </code></pre>
-
-    <img src="img/animation.gif" class="stretch">
 
     <small>
         by Caitlin Haedrich, Riya Saxena, Anna Petrasova
@@ -445,6 +447,45 @@ We will cover the most important tools available and will highlight tools even c
         Other GUI improvements include the integration of the modeler within single window layout,
         undockable map displays, faster rendering in d modules.
     </aside>
+</section>
+
+
+<section>
+    <h1>Project Roadmap</h1>
+
+    <center>
+        <img src="img/roadmap_2024_part_2.png">
+        <img src="img/roadmap_2024_part_1.png">
+    </center>
+    <p><a href="https://grass.osgeo.org/about/roadmap/">grass.osgeo.org/about/roadmap</a></p>
+    <aside class="notes">
+        <ul>
+            <li>
+                Highlights
+                <ul>
+                    <li>Next release 1st quarter of 2025</li>
+                    <li>conda package</li>
+                    <li>CMake build</li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+</section>
+
+
+<section>
+    <h2>Addon Tools: Digest Data with EODAG</h2>
+    <p>download, import, preprocessing, cloud detection, and masking of remote sensing data with EODAG (Earth Observation Data Access Gateway)</p>
+    <img src="img/i_sentinel_mask_ES.png" class="stretch">
+    <p>by Hamed A. Elgizery, Veronica Andreo, Stefan Blumentrath
+</section>
+
+
+<section>
+    <h2>Addon Tools: Wind-water Interactions</h2>
+    <p><em>r.windfetch</em> &ndash; distance which winds blow without obstruction</p>
+    <img src="img/r_windfetch.png" class="stretch">
+    <p><small>by Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
 </section>
 
 
@@ -483,6 +524,7 @@ We will cover the most important tools available and will highlight tools even c
     <img src="img/open_collective_qr.png"  class="stretch">
     <p><small><a href="https://opencollective.com/grass">opencollective.com/grass</a></small></p>
 </section>
+
 
 <section>
     <h1>Community</h1>
@@ -538,6 +580,64 @@ We will cover the most important tools available and will highlight tools even c
         <li>See <a href="https://grasswiki.osgeo.org/wiki/Working_Groups">wiki</a> for details!</li>
     </ul>
     <img src="img/community_prague_2024_three_working.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h1>Highlights</h1>
+</section>
+
+
+<section>
+    <h2>Tools: Temporal Algebra</h2>
+    <p>
+        <code>D = if(start_date(A) &lt; "2005-01-01", A + B)</code>
+        <br>
+        <small>Sum maps from A with maps with equal time stamps from B which are temporally before Jan 1, 2005</small>
+    </p>
+    <img src="img/temporal_htc.png" class="stretch">
+    <p>by Thomas Leppelt and Soeren Gebbert
+</section>
+
+
+<section>
+    <h2>Tools: Skyview</h2>
+    <em>r.skyview</em> &ndash; non-directional alternative to shaded relief
+    <img src="img/skyview.png" class="stretch">
+    <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Tools: SLIC</h2>
+    <p><em>i.superpixels.slic</em> - image segmentation using SLIC superpixels</p>
+    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
+    <p>by Rashad Kanavath and Markus Metz
+</section>
+
+
+<section>
+    <h2>Tools: Fast Hydrology Algorithms</h2>
+    <em>r.accumulate</em> &ndash; fast weighted flow accumulation, watersheds, stream networks, and longest flow paths using a flow direction
+    <br>
+    <img src="img/r_accumulate_nc_lfp_example_multiple.png" class="stretch">
+    <p>by Huidae Cho</p>
+</section>
+
+
+<section>
+    <h2>Tools: Vector Topology Cleaning</h2>
+    <p><em>v.clean</em> &ndash; automated topology with outputs for additional checks</p>
+    <img src="img/topology_cleaning.png" class="stretch">
+    <p>by Markus Metz, Radim Blazek, and others
+</section>
+
+
+<section>
+    <h2>Tools: Urban Modeling</h2>
+    <p><em>r.futures</em> - set of tools for urban growth modeling</p>
+    <img src="img/FUTURES_Raleigh.png" class="stretch">
+    <p>by NC State Center for Geospatial Analytics</p>
 </section>
 
 
