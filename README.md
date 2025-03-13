@@ -1,5 +1,6 @@
-# GRASS GIS Talks
+# GRASS Talks
 
+* NC GIS 2025 Winston-Salem: [Into the Weeds of GRASS](https://wenzeslaus.github.io/grass-gis-talks/ncgis2025.html)
 * FOSS4G NA 2024 St. Louis: [State of GRASS GIS](https://wenzeslaus.github.io/grass-gis-talks/foss4gna2024.html)
 * FOSS4G NA 2023 Baltimore: [GRASS GIS: Not What You Think](https://wenzeslaus.github.io/grass-gis-talks/foss4gna2023.html)
 * NCGIS 2023 Winston-Salem: [Tips and Tricks for GRASS GIS 8.2](https://wenzeslaus.github.io/grass-gis-talks/ncgis2023.html)
@@ -30,7 +31,7 @@
 
 ## Copyright and License
 
-&copy; 2017-2024 The Authors
+&copy; 2017-2025 The Authors
 
 See each slide deck for the list of authors.
 

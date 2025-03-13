@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Into the Weeds of GRASS</title>
+
+        <meta name="description" content="The 8.4 version of GRASS comes with new topology and machine learning tools, more parallelized algorithms, and projects for data management. The Python package is now more flexible for scripting and more powerful in Jupyter notebooks. For desktop users, a redesigned interface is now generally available with features such as a processing history panel. To really get into the weeds, I will highlight a number of notable tools available, and I will cover how to effectively use GRASS in geospatial workflows, including its use in R scripting. I will also discuss how to get the most out of software licenses and, yes, I will be handing out lifetime licenses.">
+        <meta name="author" content="Vaclav Petras">
+
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="css/theme/osgeo.css" id="theme">
+        <link rel="stylesheet" href="css/nouislider.min.css" id="slide">
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+        <!-- For chalkboard plugin -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+<!--        <link href="https://fonts.googleapis.com/css?family=Miriam+Libre" rel="stylesheet">-->
+<style>
+/* miriam-libre-regular - latin */
+@font-face {
+  font-family: 'Miriam Libre';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Miriam Libre'), local('MiriamLibre-Regular'),
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-regular.svg#MiriamLibre') format('svg'); /* Legacy iOS */
+}
+
+/* miriam-libre-700 - latin */
+@font-face {
+  font-family: 'Miriam Libre';
+  font-style: normal;
+  font-weight: 700;
+  src: url('lib/font/miriam-libre/miriam-libre-v1-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Miriam Libre Bold'), local('MiriamLibre-Bold'),
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/miriam-libre/miriam-libre-v1-latin-700.svg#MiriamLibre') format('svg'); /* Legacy iOS */
+}
+
+
+/* sintony-regular - latin */
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lib/font/sintony/sintony-v4-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Sintony'),
+       url('lib/font/sintony/sintony-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/sintony/sintony-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/sintony/sintony-v4-latin-regular.svg#Sintony') format('svg'); /* Legacy iOS */
+}
+
+/* sintony-700 - latin */
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 700;
+  src: url('lib/font/sintony/sintony-v4-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Sintony Bold'), local('Sintony-Bold'),
+       url('lib/font/sintony/sintony-v4-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('lib/font/sintony/sintony-v4-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('lib/font/sintony/sintony-v4-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('lib/font/sintony/sintony-v4-latin-700.svg#Sintony') format('svg'); /* Legacy iOS */
+}
+
+.reveal li > ul {
+    font-size: 85%;
+    line-height: 110%;
+  }
+
+.reveal small {
+  display: inline-block;
+  font-size: smaller;
+  line-height: 1.2em;
+  vertical-align: baseline;
+  margin: 0.1em; }
+
+.reveal small * {
+  vertical-align: baseline; }
+
+.reveal .credit {
+  font-size: small;
+  color: gray;
+  margin: 0.1em;
+}
+
+.reveal .right, .reveal .textimg > img, .reveal .textimg > video, .reveal .textimg > iframe, .reveal .imgtext > p, .reveal .imgtext > ul, .reveal .imgtext > ol, .reveal .imgtext > div {
+    float: right;
+    text-align: left;
+    max-width: 47%;
+}
+
+.reveal .left, .reveal .imgtext > img, .reveal .imgtext > video, .reveal .imgtext > iframe, .reveal .textimg > p, .reveal .textimg > ul, .reveal .textimg > ol, .reveal .textimg > div {
+    float: left;
+    text-align: left;
+    max-width: 47%;
+}
+</style>
+
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+<!--
+The 8.4 version of GRASS comes with new topology and machine learning tools,
+more parallelized algorithms, and projects for data management.
+The Python package is now more flexible for scripting and more powerful in Jupyter notebooks.
+For desktop users, a redesigned interface is now generally available with features such as a processing history panel.
+
+To really get into the weeds, I will highlight a number of notable tools available,
+and I will cover how to effectively use GRASS in geospatial workflows, including its use in R scripting.
+I will also discuss how to get the most out of software licenses and, yes, I will be handing out lifetime licenses.
+-->
+
+
+<section>
+    <h1>Into the Weeds of GRASS GIS</h1>
+    <p style="margin-top: 0.5em">
+        <a href="http://wenzeslaus.github.io/" style="font-weight: bold">
+            Vaclav (Vashek) Petras
+        </a>
+    </p>
+    <p class="title-foot">
+        <a href="http://geospatial.ncsu.edu/geoforall/" title="NCSU GeoForAll Lab">NCSU GeoForAll Lab</a>
+        at the
+        <a href="http://geospatial.ncsu.edu/" title="NCSU Center for Geospatial Analytics">Center for Geospatial Analytics</a>
+        <br>
+        <a href="http://www.ncsu.edu/" title="North Carolina State University">NC State University</a>
+    </p>
+    <img src="img/splash_screen.png" class="stretch">
+    <p><small>NC GIS 2025, March 19-21, 2025</small></p>
+    <p>
+        <a href="https://wenzeslaus.github.io/grass-gis-talks/">wenzeslaus.github.io/grass-gis-talks</a>
+</section>
+
+
+<section>
+<h2>Vaclav (Vashek) Petras</h2>
+<ul>
+    <li>Sr. Research Software Engineer at NC State's Center for Geospatial Analytics
+    <li>GRASS: Core Development Team, Project Steering Committee
+    <li>OSGeo: Charter Member, GRASS is an OSGeo Project</li>
+</ul>
+<img src="img/ncsu_cga.png"  style="width: 80%">
+<img src="img/osgeo.png"  style="width: 80%">
+</section>
+
+<section>
+    <h2>Community</h2>
+    Thanks to all those involved!
+    <br>
+    <img src="img/community_prague_2024_group.jpg" class="stretch">
+    <img src="img/github_contributors_2024-09-03.png" style="width: 80%">
+</section>
+
+
+<section>
+    <h2>GRASS</h2>
+    <ul>
+        <li>geospatial processing engine</li>
+        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/full_index.html">processing tools</a></li>
+        <li><b>400+</b> <a href="https://grass.osgeo.org/grass-stable/manuals/addons/">more tools in GRASS Addons</a></li>
+    </ul>
+    <img src="img/jupyter_interactive_viewshed.png" class="stretch">
+</section>
+
+<!--
+<section>
+    <h2>Python</h2>
+    Python API comes with GRASS.
+    <br>
+    <img src="img/jupyter_interactive_viewshed.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>R</h2>
+    rgrass package to use GRASS from R is on CRAN.
+    <br>
+    <img src="img/grass_within_rstudio.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Command Line</h2>
+    <ul>
+        <li>Interactive shell</li>
+        <li>One-time execution or batch usage with <code>--exec</code></li>
+    </ul>
+    <br>
+    <img src="img/grass_cli_8_4.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Desktop GIS</h2>
+    <img src="img/grass_gui_multiple_map_displays.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>QGIS</h2>
+    GRASS tools are available through the Processing Plugin<br>(GUI and Python).
+    <br>
+    <img src="img/qgis_processing.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>actinia</h2>
+    <br>
+    <img src="img/actinia_logo.svg" class="stretch">
+</section>
+-->
+
+
+<section>
+    <h2>Releases</h2>
+    <ul>
+        <li>
+            8.4.0, July 2024
+            <small>Current version for everyday user</small>
+        </li>
+        <li>
+            8.5.0 Preview, Daily
+            <small>Latest reviewed functional code</small>
+        </li>
+        <li>
+            7.8.8 Legacy, August 2023
+            <small>Maintained legacy version for some production systems</small>
+        </li>
+    </ul>
+    <br>
+    <img src="img/futures_model_output.png" class="stretch">
+</section>
+
+
+<section>
+    <h1>New in 8.4.0</h1>
+</section>
+
+
+<section>
+    <h2>Tools: More Machine Learning</h2>
+
+    <p>Supervised classification with Support Vector Machines
+
+    <ul>
+        <li><a href="https://grass.osgeo.org/grass84/manuals/i.svm.train.html">i.svm.train</a>: Train a Support Vector Machine</li>
+        <li><a href="https://grass.osgeo.org/grass84/manuals/i.svm.predict.html">i.svm.predict</a>: Predict with a Support Vector Machine</li>
+    </ul>
+    </p>
+
+    <img src="img/svm_user_accuracy.png" class="stretch">
+    
+    <small>by Maris Nartiss (<a href="https://doi.org/10.1111/tgis.13102">Nartiss & Melniks 2023</a>)</small>
+</section>
+
+
+<section>
+    <h2>Tools: More Topology Handling</h2>
+    
+    <p><a href="https://grass.osgeo.org/grass84/manuals/v.fill.holes.html">v.fill.holes</a>: 
+        Fill holes in areas by keeping only outer boundaries</p>
+
+    <img src="img/v_fill_holes.png" class="stretch">
+    
+    <small>by Vaclav Petras</small>
+</section>
+
+
+<section>
+    <h2>Tools: Better Horizon Identification</h2>
+
+    <p><a href="https://grass.osgeo.org/grass84/manuals/r.horizon.html">r.horizon</a>:
+    Output for multiple points, distances, and many other improvements</p>
+
+    <img src="img/rhorizon_polar_plot.png" class="stretch">
+
+    <small>by Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
+
+
+<section>
+    <h2>Interfaces: JSON for Text Outputs</h2>
+
+    JSON output format support <code>(format="json")</code> in multiple tools (v.db.select, t.rast.list, &hellip;)
+
+    <pre class="bash"><code>
+        v.db.select roadsmajor format=json
+    </code></pre>
+
+    <p>
+    With better integration in Python:
+
+    <pre class="json"><code>
+        import json
+        import grass.script as gs
+
+        data = gs.parse_command("v.db.select", map="roadsmajor", format="json")
+        for row in data["records"]:
+            print(row["ROAD_NAME"])
+    </code></pre>
+
+    <p> More coming in 8.5
+        (r.report, r.info, &hellip;)</p>
+
+    <small>by Anna Petrasova, Vaclav Petras, Huidae Cho, Kriti Birda, Corey White, and others</small>
+
+</section>
+
+
+<section>
+    <h2><em>Locations</em> are now <em>Projects</em></h2>
+
+    <p>The Python API, command line, and GUI are now using <b>project</b> instead 
+        of location for the main component of the data hierarchy.</p>
+
+    <img src="img/projects_manage_with_viridis_data.png" class="stretch">
+
+    <ul>
+        <li>
+            <code>~/data</code>
+            <ul>
+                <li>
+                    <code>missouri</code> (location &rightarrow; project)
+                    <ul>
+                        <li><code>interstate_44</code> (mapset aka sub-project)
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <aside class="notes">
+        This change was motivated by the results of a community survey, and to use terminology
+        common to other software projects.
+    </aside>
+</section>
+
+
+<section>
+    <h2>CLI: <code>--tmp-project</code> with <code>--exec</code></h2>
+    <code>--tmp-location</code> is now <code>--tmp-project</code>
+    <pre style="font-size: 94%;"><code data-trim data-noescape>grass --tmp-project EPSG:3358 --exec \
+        r.viewshed input=elevation \
+        output=viewshed coordinates=642964,222890
+    </code></pre>
+    <p><code>--tmp-location</code> continues to work</p>
+</section>
+
+
+<section>
+    <h2>Python API: Simpler Creation of Projects</h2>
+
+    <p><code>grass.script</code> Python package: </p>
+
+    <p>Greatly simplified the creation of new projects in 
+    Python without a running session (no more chicken and egg problems)</p>
+
+    <pre><code data-trim data-noescape>
+        import grass.script as gs
+
+        gs.create_project("cordoba_utm21s", epsg="32721")
+        gs.setup.init("cordoba_utm21s")
+    </code></pre>
+
+    <aside class="notes">
+        It is also possible to create a project in a temporary folder
+    </aside>
+
+    <small>by Vaclav Petras, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
+
+
+<section>
+    <h2>Python API: Animations and ipyleaflet</h2>
+
+    <p><code>grass.jupyter</code> Python package:
+
+    <ul>
+        <li>
+            New <a href="https://grass.osgeo.org/grass84/manuals/libpython/grass.jupyter.html#module-grass.jupyter.seriesmap"><code>grass.jupyter.SeriesMap</code></a>
+            class for animating series of vectors or rasters
+            <small>(temporal animations already available)</small>
+        </li>
+        <li>
+            New option to create a maps with <em>ipyleaflet</em>
+            <small>(will bring interactivity in 8.5)</small>
+        </li>
+    </ul>
+
+    <pre><code data-trim data-noescape>
+    s = gj.SeriesMap(height = 500)
+    s.add_rasters(["elevation_shade", "geology", "soils"])
+    s.add_vectors(["streams", "streets", "viewpoints"])
+    s.d_barscale()
+    s.show()
+
+    m = InteractiveMap(map_backend="ipyleaflet")
+    m.add_vector("streams")
+    m.add_raster("elevation")
+    m.show()
+    </code></pre>
+
+    <small>
+        by Caitlin Haedrich, Riya Saxena, Anna Petrasova
+    </small>
+</section>
+
+
+<section>
+    <h2>GUI: New History Browser Panel</h2>
+
+    <img src="img/history_panel.png" class="stretch">
+
+    <small>by Linda Karlovska with a <a href="https://grasswiki.osgeo.org/wiki/Student_Grants">GRASS Student Grant</a></small> 
+    
+    <aside class="notes">
+        Commands grouped by date, we can see their status, the region setting when they were executed, etc.
+
+        Other GUI improvements include the integration of the modeler within single window layout,
+        undockable map displays, faster rendering in d modules.
+    </aside>
+</section>
+
+
+<section>
+    <h1>Project Roadmap</h1>
+
+    <center>
+        <img src="img/roadmap_2024_part_2.png">
+        <img src="img/roadmap_2024_part_1.png">
+    </center>
+    <p><a href="https://grass.osgeo.org/about/roadmap/">grass.osgeo.org/about/roadmap</a></p>
+    <aside class="notes">
+        <ul>
+            <li>
+                Highlights
+                <ul>
+                    <li>Next release 1st quarter of 2025</li>
+                    <li>conda package</li>
+                    <li>CMake build</li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+</section>
+
+
+<section>
+    <h2>Addon Tools: Wind-water Interactions</h2>
+    <p><em>r.windfetch</em> &ndash; distance which winds blow without obstruction</p>
+    <img src="img/r_windfetch.png" class="stretch">
+    <p><small>by Anna Petrasova, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
+
+
+<section>
+    <h2>Addon Tools: Digest Data with EODAG</h2>
+    <p>download, import, preprocessing, cloud detection, and masking of remote sensing data with EODAG (Earth Observation Data Access Gateway)</p>
+    <img src="img/i_sentinel_mask_ES.png" class="stretch">
+    <p>by Hamed A. Elgizery, Veronica Andreo, Stefan Blumentrath
+</section>
+
+
+<section>
+    <h1>Funding of Maintenance</h1>
+</section>
+
+
+<section>
+    <h2>NSF Grant Lead by NC State</h2>
+    <ul>
+        <li>
+            NSF grant awarded to NC State, ASU, NMSU, Yale
+            <ul>
+                <li>To enhance infrastructure</li>
+                <li>To revise contributing guidelines</li>
+                <li>To support community building</li>
+            </ul>
+        </li>
+        <li>The NSF program is not funding new features, bug fixes, or ongoing maintenance</li>
+        <li>Starting year 2 (out of 2)</li>
+    </ul>
+    <img src="img/nsf_grant_announcement.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Financial Contributions</h2>
+
+    <img src="img/open_collective_top.png" style="width: 80%;">
+
+    <br>
+    <ul>
+        <li>
+            Contributions through Open Collective partially support face-to-face meetings and student grants.
+        </li>
+        <li>We would like to finance ongoing maintenance.</li>
+        <li>Talk to me if Open Collective does not work for you.</li>
+    </ul>
+    <img src="img/open_collective_qr.png"  class="stretch">
+    <p><small><a href="https://opencollective.com/grass">opencollective.com/grass</a></small></p>
+</section>
+
+
+<section>
+    <h1>Community</h1>
+</section>
+
+
+<section>
+    <h2>PSC Elections</h2>
+    Project Steering Committee Elections: 4 out of 9 members for next 6 years
+    <br>
+    <img src="img/grass_psc_team_prague_2024.jpg" class="stretch">
+    <p>
+        Broad community can nominate and anyone can be nominated (September)
+        <br>
+        Voting restricted to recognized contributors and participants (October)
+    </p>
+</section>
+
+
+
+<section>
+    <h2>Community Meeting 2024</h2>
+    12-hour work days, 8.4.0 release, CI, parallelization, &hellip;
+    <br>
+    <img src="img/community_prague_2024_group_old_town.jpg" class="stretch">
+    <small><a href="https://grass.osgeo.org/news/2024_08_02_report_community_meeting_prague_2024/">grass.osgeo.org &gt; Latest news &gt; Report from the GRASS Community Meeting</a></small>
+    <small><small>Funding: US NSF (Award 2303651), OSGeo, FOSSGIS, mundialis, INBO Research Institute for Nature and Forest, individual donors</small></small>
+</section>
+
+
+<section>
+    <h2>Mentoring and Student Grants Program</h2>
+    <ul>
+        <li><a href="https://grasswiki.osgeo.org/wiki/Mentoring_Program">Mentoring</a> to integrate GRASS into your workflows (open now)</li>
+        <li><a href="https://grasswiki.osgeo.org/wiki/Student_Grants">Student grants</a> to contribute to GRASS (call open for 2024/2025)</li>
+    </ul>
+    <img src="img/community_prague_2023_laptop.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h2>Join a Working Group</h2>
+    <ul>
+        <li>
+            Groups:
+            <ul>
+                <li>Geoprocessing Engine</li>
+                <li>Open-Source Ecosystem</li>
+                <li>Documentation and Education</li>
+                <li>Community Engagement</li>
+            </ul>
+        </li>
+        <li>See <a href="https://grasswiki.osgeo.org/wiki/Working_Groups">wiki</a> for details!</li>
+    </ul>
+    <img src="img/community_prague_2024_three_working.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h1>Highlights</h1>
+</section>
+
+
+<section>
+    <h2>Tools: Temporal Algebra</h2>
+    <p>
+        <code>D = if(start_date(A) &lt; "2005-01-01", A + B)</code>
+        <br>
+        <small>Sum maps from A with maps with equal time stamps from B which are temporally before Jan 1, 2005</small>
+    </p>
+    <img src="img/temporal_htc.png" class="stretch">
+    <p>by Thomas Leppelt and Soeren Gebbert
+</section>
+
+
+<section>
+    <h2>Tools: Skyview</h2>
+    <em>r.skyview</em> &ndash; non-directional alternative to shaded relief
+    <img src="img/skyview.png" class="stretch">
+    <p>by Anna Petrasova
+</section>
+
+
+<section>
+    <h2>Tools: SLIC</h2>
+    <p><em>i.superpixels.slic</em> - image segmentation using SLIC superpixels</p>
+    <img src="img/i_superpixels_slic_ndvi.png" class="stretch">
+    <p>by Rashad Kanavath and Markus Metz
+</section>
+
+
+<section>
+    <h2>Tools: Fast Hydrology Algorithms</h2>
+    <em>r.accumulate</em> &ndash; fast weighted flow accumulation, watersheds, stream networks, and longest flow paths using a flow direction
+    <br>
+    <img src="img/r_accumulate_nc_lfp_example_multiple.png" class="stretch">
+    <p>by Huidae Cho</p>
+</section>
+
+
+<section>
+    <h2>Tools: Vector Topology Cleaning</h2>
+    <p><em>v.clean</em> &ndash; automated topology with outputs for additional checks</p>
+    <img src="img/topology_cleaning.png" class="stretch">
+    <p>by Markus Metz, Radim Blazek, and others
+</section>
+
+
+<section>
+    <h2>Tools: Urban Modeling</h2>
+    <p><em>r.futures</em> - set of tools for urban growth modeling</p>
+    <img src="img/FUTURES_Raleigh.png" class="stretch">
+    <p>by NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <img src="img/grass_license.png" alt="GRASS logo" class="stretch">
+    <p>
+        <small>
+        Ask me for a a special sticker.
+        </small>
+    </p>
+    <p>
+            <small>
+                vpetras&#64;ncsu&#46;edu,
+                <a href="https://twitter.com/vaclavpetras/">@vaclavpetras</a>, <a href="https://github.com/wenzeslaus/">@wenzeslaus</a>
+                <br>
+                <small>
+                    <a href="https://wenzeslaus.github.io/grass-gis-talks">wenzeslaus.github.io/grass-gis-talks</a>
+                </small>
+                <br>
+                <small>
+                    This talk was funded by the US <a href="https://www.nsf.gov/">National Science Foundation (NSF)</a>, 
+                    award <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2303651">2303651</a>.
+                </small>
+            </small>
+    </p>
+</section>
+
+
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/math/math.js"></script>
+        <script src="plugin/chalkboard/plugin.js"></script>
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                hash: true,
+                // Display controls in the bottom right corner
+                controls: true,
+
+                // Display a presentation progress bar
+                progress: true,
+
+                center: true,
+
+                // Display the page number of the current slide
+                slideNumber: false,
+
+                // Enable the slide overview mode
+                overview: true,
+
+                // Turns fragments on and off globally
+                fragments: true,
+
+                // The "normal" size of the presentation, aspect ratio will be preserved
+                // when the presentation is scaled to fit different resolutions. Can be
+                // specified using percentage units.
+                // width: 960,
+                // height: 700,
+
+                // Factor of the display size that should remain empty around the content
+                margin: 0.05,  // increase?
+
+                // Bounds for smallest/largest possible scale to apply to content
+                minScale: 0.5,
+                maxScale: 5.0,
+
+                // Push each slide change to the browser history
+                history: true,
+                // Enable keyboard shortcuts for navigation
+                keyboard: true,
+
+                // Vertical centering of slides
+                center: true,
+
+                // Enables touch navigation on devices with touch input
+                touch: true,
+
+                // Loop the presentation
+                loop: false,
+                // Flags if the presentation is running in an embedded mode,
+                // i.e. contained within a limited portion of the screen
+                embedded: false,
+
+                // Number of milliseconds between automatically proceeding to the
+                // next slide, disabled when set to 0, this value can be overwritten
+                // by using a data-autoslide attribute on your slides
+                autoSlide: 0,
+
+                // Stop auto-sliding after user input
+                autoSlideStoppable: true,
+
+                // Enable slide navigation via mouse wheel
+                mouseWheel: false,
+
+                // Hides the address bar on mobile devices
+                hideAddressBar: true,
+
+                // Opens links in an iframe preview overlay
+                previewLinks: false,
+
+                // Slide transition
+                transition: 'none', // default/none/slide/concave/convex/zoom
+
+                // Transition speed
+                transitionSpeed: 'default', // default/fast/slow
+
+                // Transition style for full page slide backgrounds
+                backgroundTransition: 'none', // default/none/slide/concave/convex/zoom
+
+                // Number of slides away from the current that are visible
+                viewDistance: 3,
+
+                // Parallax background image
+                //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+                // Parallax background size
+                //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+                chalkboard: {
+                    boardmarkerWidth: 3,
+                    chalkWidth: 7,
+                    chalkEffect: 1.0,
+                    src: null,
+                    readOnly: undefined,
+                    toggleChalkboardButton: true,
+                    toggleNotesButton: true,
+                    boardmarkers : [
+                        { color: 'rgba(220,20,60,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+                        { color: 'rgba(255,140,0,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+                    ]
+                },
+
+                math: {
+                    mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+                    config: 'TeX-AMS_HTML-full',
+                    // pass other options into `MathJax.Hub.Config()`
+                    TeX: { Macros: { RR: "{\\bf R}" } }
+                },
+
+                plugins: [
+                    RevealMath,
+                    RevealHighlight,
+                    RevealMarkdown,
+                    RevealChalkboard
+                ]
+            });
+        </script>
+    </body>
+</html>
