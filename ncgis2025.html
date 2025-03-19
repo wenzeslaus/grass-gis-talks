@@ -143,7 +143,7 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
 
 <section>
-    <h1>Into the Weeds of GRASS GIS</h1>
+    <h1>Into the Weeds of GRASS</h1>
     <p style="margin-top: 0.5em">
         <a href="http://wenzeslaus.github.io/" style="font-weight: bold">
             Vaclav (Vashek) Petras
@@ -156,10 +156,10 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
         <br>
         <a href="http://www.ncsu.edu/" title="North Carolina State University">NC State University</a>
     </p>
-    <img src="img/splash_screen.png" class="stretch">
+    <img src="img/grass-green.svg" class="stretch">
     <p><small>NC GIS 2025, March 19-21, 2025</small></p>
     <p>
-        <a href="https://wenzeslaus.github.io/grass-gis-talks/">wenzeslaus.github.io/grass-gis-talks</a>
+        <a href="https://wenzeslaus.github.io/grass-talks/">wenzeslaus.github.io/grass-talks</a>
 </section>
 
 
@@ -247,7 +247,7 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
     <h2>Releases</h2>
     <ul>
         <li>
-            8.4.0, July 2024
+            8.4.1, February 2025
             <small>Current version for everyday user</small>
         </li>
         <li>
@@ -265,7 +265,7 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
 
 <section>
-    <h1>New in 8.4.0</h1>
+    <h1>New in 8.4 comparing to 8.3</h1>
 </section>
 
 
@@ -349,14 +349,9 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
     <ul>
         <li>
-            <code>~/data</code>
+            <code>.../data/missouri</code> (location &rightarrow; project)
             <ul>
-                <li>
-                    <code>missouri</code> (location &rightarrow; project)
-                    <ul>
-                        <li><code>interstate_44</code> (mapset aka sub-project)
-                    </ul>
-                </li>
+                <li><code>interstate_44</code> (mapset aka sub-project)
             </ul>
         </li>
     </ul>
@@ -369,13 +364,43 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
 
 <section>
-    <h2>CLI: <code>--tmp-project</code> with <code>--exec</code></h2>
-    <code>--tmp-location</code> is now <code>--tmp-project</code>
-    <pre style="font-size: 94%;"><code data-trim data-noescape>grass --tmp-project EPSG:3358 --exec \
-        r.viewshed input=elevation \
-        output=viewshed coordinates=642964,222890
+    <h2>Projects</h2>
+
+    <ul>
+        <li>
+            Projects keep the data consistent.
+            <ul>
+                <li>Same format for all data.</li>
+                <li>Same CRS for all data.</li>
+                <li>Separates data preprocessing from analysis.</li>
+            </ul>
+        </li>
+        <li>
+            Mapsets keep the data organized.
+            <ul>
+                <li>One default mapset or multiple mapsets.</li>
+                <li>Work is happening in one mapset, but data from any mapset can be used.</li>
+            </ul>
+        </li>
+
+    <br>
+
+
+    <pre><code data-trim data-noescape>
+        import grass.script as gs
+
+        gs.create_project("/path/to/project", epsg="3358")
     </code></pre>
-    <p><code>--tmp-location</code> continues to work</p>
+
+    <ul>
+        <li>
+            <code>.../data/missouri</code> (project)
+            <ul>
+                <li><code>interstate_44</code> (mapset)
+                <li>...
+            </ul>
+        </li>
+    </ul>
 </section>
 
 
@@ -399,6 +424,81 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
     </aside>
 
     <small>by Vaclav Petras, funded by NSF Award #2322073, granted to Natrx, Inc.</small>
+</section>
+
+
+<section>
+    <h2>CLI: <code>--tmp-project</code> with <code>--exec</code></h2>
+    <code>--tmp-location</code> is now <code>--tmp-project</code>
+    <pre style="font-size: 94%;"><code data-trim data-noescape>grass --tmp-project EPSG:3358 --exec \
+    r.viewshed input=elevation \
+    output=viewshed coordinates=642964,222890
+    </code></pre>
+    <p><code>--tmp-location</code> continues to work</p>
+</section>
+
+
+<section>
+    <h1>Long-term view</h1>
+</section>
+
+
+<section>
+    <h2>Carrier Investment</h2>
+    <ul>
+        <li>Invest your time into technologies which stay and don't disapear in couple years.</li>
+        <li>Bash scripting, Python, GRASS</li>
+        <li>Longetivity, open-source, platfrom-idependent</li>
+        <li>Things develop, versions update, features are added...</li>
+        <li>...but general ideas stay the same.</li>
+    </ul>
+
+    <p><em>Code from 2002 running in 2019?</em></p>
+    <!-- 5 pre-release -->
+    version 5.0 code works as is in 7.6:
+<pre style="font-size: 94%;">r.mapcalc depr.bin="if((elev - fill)&lt; 0., 1, 0)"
+</pre>
+<p>
+although there is a better way to write it:
+</p>
+<pre style="font-size: 94%;">r.mapcalc <em>"</em>depr<em>_</em>bin<em> = </em>if((elev - fill) &lt; 0., 1, 0)"
+</pre>
+
+<br>
+<img src="img/grass-white.svg" class="stretch">
+
+</section>
+
+
+<section>
+    <h2>Open-Source Licensing</h2>
+
+    <ul>
+        <li>
+            Organizations:
+            <ul>
+                <li>Provider-independent, contractor-independent.</li>
+                <li>Financial investments go to a public pool.</li>
+                <li>Pay for support and features, not usage.</li>
+                <li>No per-CPU license fees.</li>
+            </ul>
+        </li>
+        <li>
+            Individuals:
+            <ul>
+                <li>Work computer or personal laptop.</li>
+                <li>Employer-independent.</li>
+            </ul>
+        </li>
+    </ul>
+    <br>
+    <img src="img/grass-green.svg" class="stretch">
+
+</section>
+
+
+<section>
+    <h1>More New Features 8.4</h1>
 </section>
 
 
@@ -455,29 +555,6 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
 
 <section>
-    <h1>Project Roadmap</h1>
-
-    <center>
-        <img src="img/roadmap_2024_part_2.png">
-        <img src="img/roadmap_2024_part_1.png">
-    </center>
-    <p><a href="https://grass.osgeo.org/about/roadmap/">grass.osgeo.org/about/roadmap</a></p>
-    <aside class="notes">
-        <ul>
-            <li>
-                Highlights
-                <ul>
-                    <li>Next release 1st quarter of 2025</li>
-                    <li>conda package</li>
-                    <li>CMake build</li>
-                </ul>
-            </li>
-        </ul>
-    </aside>
-</section>
-
-
-<section>
     <h2>Addon Tools: Wind-water Interactions</h2>
     <p><em>r.windfetch</em> &ndash; distance which winds blow without obstruction</p>
     <img src="img/r_windfetch.png" class="stretch">
@@ -494,105 +571,7 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
 
 <section>
-    <h1>Funding of Maintenance</h1>
-</section>
-
-
-<section>
-    <h2>NSF Grant Lead by NC State</h2>
-    <ul>
-        <li>
-            NSF grant awarded to NC State, ASU, NMSU, Yale
-            <ul>
-                <li>To enhance infrastructure</li>
-                <li>To revise contributing guidelines</li>
-                <li>To support community building</li>
-            </ul>
-        </li>
-        <li>The NSF program is not funding new features, bug fixes, or ongoing maintenance</li>
-        <li>Starting year 2 (out of 2)</li>
-    </ul>
-    <img src="img/nsf_grant_announcement.png" class="stretch">
-</section>
-
-
-<section>
-    <h2>Financial Contributions</h2>
-
-    <img src="img/open_collective_top.png" style="width: 80%;">
-
-    <br>
-    <ul>
-        <li>
-            Contributions through Open Collective partially support face-to-face meetings and student grants.
-        </li>
-        <li>We would like to finance ongoing maintenance.</li>
-        <li>Talk to me if Open Collective does not work for you.</li>
-    </ul>
-    <img src="img/open_collective_qr.png"  class="stretch">
-    <p><small><a href="https://opencollective.com/grass">opencollective.com/grass</a></small></p>
-</section>
-
-
-<section>
-    <h1>Community</h1>
-</section>
-
-
-<section>
-    <h2>PSC Elections</h2>
-    Project Steering Committee Elections: 4 out of 9 members for next 6 years
-    <br>
-    <img src="img/grass_psc_team_prague_2024.jpg" class="stretch">
-    <p>
-        Broad community can nominate and anyone can be nominated (September)
-        <br>
-        Voting restricted to recognized contributors and participants (October)
-    </p>
-</section>
-
-
-
-<section>
-    <h2>Community Meeting 2024</h2>
-    12-hour work days, 8.4.0 release, CI, parallelization, &hellip;
-    <br>
-    <img src="img/community_prague_2024_group_old_town.jpg" class="stretch">
-    <small><a href="https://grass.osgeo.org/news/2024_08_02_report_community_meeting_prague_2024/">grass.osgeo.org &gt; Latest news &gt; Report from the GRASS Community Meeting</a></small>
-    <small><small>Funding: US NSF (Award 2303651), OSGeo, FOSSGIS, mundialis, INBO Research Institute for Nature and Forest, individual donors</small></small>
-</section>
-
-
-<section>
-    <h2>Mentoring and Student Grants Program</h2>
-    <ul>
-        <li><a href="https://grasswiki.osgeo.org/wiki/Mentoring_Program">Mentoring</a> to integrate GRASS into your workflows (open now)</li>
-        <li><a href="https://grasswiki.osgeo.org/wiki/Student_Grants">Student grants</a> to contribute to GRASS (call open for 2024/2025)</li>
-    </ul>
-    <img src="img/community_prague_2023_laptop.jpg" class="stretch">
-</section>
-
-
-<section>
-    <h2>Join a Working Group</h2>
-    <ul>
-        <li>
-            Groups:
-            <ul>
-                <li>Geoprocessing Engine</li>
-                <li>Open-Source Ecosystem</li>
-                <li>Documentation and Education</li>
-                <li>Community Engagement</li>
-            </ul>
-        </li>
-        <li>See <a href="https://grasswiki.osgeo.org/wiki/Working_Groups">wiki</a> for details!</li>
-    </ul>
-    <img src="img/community_prague_2024_three_working.jpg" class="stretch">
-</section>
-
-
-<section>
-    <h1>Highlights</h1>
+    <h1>More Features</h1>
 </section>
 
 
@@ -650,19 +629,191 @@ I will also discuss how to get the most out of software licenses and, yes, I wil
 
 
 <section>
-    <img src="img/grass_license.png" alt="GRASS logo" class="stretch">
+    <h1>Community and Project Maintenance</h1>
+</section>
+
+
+<section>
+    <h2>Project Roadmap</h2>
+
+    <center>
+        <img src="img/roadmap_2024_part_2.png">
+        <img src="img/roadmap_2024_part_1.png">
+    </center>
+    <p><a href="https://grass.osgeo.org/about/roadmap/">grass.osgeo.org/about/roadmap</a></p>
+    <aside class="notes">
+        <ul>
+            <li>
+                Highlights
+                <ul>
+                    <li>Next release 1st quarter of 2025</li>
+                    <li>conda package</li>
+                    <li>CMake build</li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+</section>
+
+
+<section>
+    <h2>Project Steering Committee Elections</h2>
+    <ul>
+        <li>Elections: October 2024, Positions Filled: 4</li>
+        <li>Total Members: 9, Term Length: 6 years</li>
+    </ul>
+    <br>
+    <img src="img/psc_members_2025.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>NSF Grant Lead by NC State</h2>
+    <ul>
+        <li>
+            NSF grant awarded to NC State, ASU, NMSU, Yale
+            <ul>
+                <li>To enhance infrastructure</li>
+                <li>To revise contributing guidelines</li>
+                <li>To support community building</li>
+            </ul>
+        </li>
+        <li>The NSF program is not funding new features, bug fixes, or ongoing maintenance</li>
+    </ul>
+    <img src="img/nsf_grant_announcement.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>Financial Contributions</h2>
+
+    <img src="img/open_collective_top.png" style="width: 80%;">
+
+    <br>
+    <ul>
+        <li>
+            Contributions through Open Collective partially support face-to-face meetings and student grants.
+        </li>
+        <li>We would like to finance ongoing maintenance.</li>
+        <li>Talk to me if Open Collective does not work for you.</li>
+    </ul>
+    <img src="img/open_collective_qr.png"  class="stretch">
+    <p><small><a href="https://opencollective.com/grass">opencollective.com/grass</a></small></p>
+</section>
+
+
+<section>
+    <h2>Commercial Support</h2>
+    <img src="img/commercial_support_2025.png" class="stretch">
+</section>
+
+
+<section>
+    <h2>New Tutorials Site</h2>
+    <p>Just launched: <a href="https://grass-tutorials.osgeo.org">grass-tutorials.osgeo.org</a></p>
+    <img src="img/grass-tutorials.png" class="stretch">
+    <p>lead by the NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <h2>Re-adopting the Classic Name</h2>
     <p>
-        <small>
-        Ask me for a a special sticker.
-        </small>
+        Since GRASS is doing more in geospatial than just GIS,
+        we are re-adopting <em>GRASS</em> instead of <em>GRASS GIS</em>.
     </p>
+    <p style="font-size: 400%">GRASS</p>
+    <p>Lead by the NC State Center for Geospatial Analytics <br>&amp; Approved by the Project Steering Committee in February</p>
+</section>
+
+
+<section>
+    <h2>New Logo &amp; Branding</h2>
+    <p>
+        In a testing phase and under the Project Steering Committee approval process
+    </p>
+    <img src="img/grass-green.svg" class="stretch">
+    <p>lead by the NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <h2>New Documentation</h2>
+    <p></p>
+    <img src="img/documentation.png" class="stretch">
+    <p>lead by the NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <h2>Swag Shop</h2>
+    <p><a href="https://www.redbubble.com/people/grassgis/">redbubble.com/people/grassgis</a></p>
+    <p>or search for "grass project shop" on Redbubble</p>
+    <img src="img/swag_shop_white_t-shirts.png" class="stretch">
+    <p>lead by the NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <h2>Mentoring and Student Grants Program</h2>
+    <ul>
+        <li><a href="https://grasswiki.osgeo.org/wiki/Mentoring_Program">Mentoring</a> to integrate GRASS into your workflows (registration closes in May)</li>
+        <li><a href="https://grasswiki.osgeo.org/wiki/Student_Grants">Student grants</a> to contribute to GRASS (call open for 2025)</li>
+    </ul>
+    <img src="img/community_prague_2023_laptop.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h2>Community Meeting 2024</h2>
+    12-hour work days, 8.4.0 release, CI, parallelization, &hellip;
+    <br>
+    <img src="img/community_prague_2024_group_old_town.jpg" class="stretch">
+    <small><a href="https://grass.osgeo.org/news/2024_08_02_report_community_meeting_prague_2024/">grass.osgeo.org &gt; Latest news &gt; Report from the GRASS Community Meeting</a></small>
+    <small><small>Funding: US NSF (Award 2303651), OSGeo, FOSSGIS, mundialis, INBO Research Institute for Nature and Forest, individual donors</small></small>
+</section>
+
+
+<section>
+    <h2>Join a Working Group</h2>
+    <ul>
+        <li>
+            Groups:
+            <ul>
+                <li>Geoprocessing Engine</li>
+                <li>Open-Source Ecosystem</li>
+                <li>Documentation and Education</li>
+                <li>Community Engagement</li>
+            </ul>
+        </li>
+        <li>See <a href="https://grasswiki.osgeo.org/wiki/Working_Groups">wiki</a> for details!</li>
+    </ul>
+    <img src="img/community_prague_2024_three_working.jpg" class="stretch">
+</section>
+
+
+<section>
+    <h2>GRASS Developer Summit 2025</h2>
+    <ul>
+        <li>Raleigh, NC</li>
+        <li>May 19-24</li>
+        <li>Register and become an insider: <a href="https://tinyurl.com/grass-2025">tinyurl.com/grass-2025</a></li>
+        <li>Stay tuned for a user-focused event on Thursday, May 22</li>
+    </ul>
+    <img src="img/community_prague_2023_room.jpg" class="stretch">
+    <p>lead by the NC State Center for Geospatial Analytics</p>
+</section>
+
+
+<section>
+    <img src="img/grass-green.svg" alt="GRASS logo" class="stretch">
     <p>
             <small>
                 vpetras&#64;ncsu&#46;edu,
-                <a href="https://twitter.com/vaclavpetras/">@vaclavpetras</a>, <a href="https://github.com/wenzeslaus/">@wenzeslaus</a>
+                <a href="https://www.linkedin.com/in/vaclav-petras/">LinkedIn: Vaclav Petras</a>, <a href="https://github.com/wenzeslaus/">@wenzeslaus</a>
                 <br>
                 <small>
-                    <a href="https://wenzeslaus.github.io/grass-gis-talks">wenzeslaus.github.io/grass-gis-talks</a>
+                    <a href="https://wenzeslaus.github.io/grass-talks">wenzeslaus.github.io/grass-talks</a>
                 </small>
                 <br>
                 <small>
